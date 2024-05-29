@@ -1,0 +1,7 @@
+{
+  "name": "@yamori-design/styles",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "sass"
+  }
+}

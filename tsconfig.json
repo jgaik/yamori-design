@@ -1,3 +1,19 @@
 {
-  "extends": "@repo/typescript-config/base.json"
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@yamori-design/components/*": ["packages/components/src/*"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": ["packages", "apps"],
+  "exclude": ["node_modules", "dist"]
 }

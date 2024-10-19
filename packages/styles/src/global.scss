@@ -1,0 +1,8 @@
+@use 'foundations' as *;
+
+:root {
+  --yamori-d-border-radius-none: #{$scale-0};
+  --yamori-d-border-radius-small: #{$scale-50};
+  --yamori-d-border-radius-medium: #{$scale-100};
+  --yamori-d-border-radius-large: #{$scale-200};
+}

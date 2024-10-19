@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "@yamori-design/react-components";
+import "@yamori-design/styles/dist/components/button.css";
 
 const meta: Meta<typeof Button> = {
   component: Button,

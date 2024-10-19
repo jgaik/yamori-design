@@ -2,9 +2,12 @@
   "name": "@yamori-design/styles",
   "version": "0.0.0",
   "description": "Yamori Design stylesheets files",
+  "files": [
+    "dist/*"
+  ],
   "scripts": {
-    "build": "sass src:dist",
-    "dev": "sass --watch src:dist",
+    "build": "npm run clean && sass --no-source-map src:dist",
+    "dev": "sass --no-source-map --watch src:dist",
     "clean": "rm -rf .turbo && rm -rf dist"
   },
   "author": "Jakub Gaik",

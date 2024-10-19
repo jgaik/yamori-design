@@ -10,7 +10,7 @@
     "build": "npm run clean && tsc",
     "dev": "tsc --watch",
     "lint": "eslint . --max-warnings 0",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf dist"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",

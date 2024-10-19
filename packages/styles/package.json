@@ -1,0 +1,15 @@
+{
+  "name": "@yamori-design/styles",
+  "version": "0.0.0",
+  "description": "Yamori Design stylesheets files",
+  "scripts": {
+    "build": "sass src:dist",
+    "dev": "sass --watch src:dist",
+    "clean": "rm -rf .turbo && rm -rf dist"
+  },
+  "author": "Jakub Gaik",
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.80.3"
+  }
+}

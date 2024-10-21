@@ -13,12 +13,14 @@
     "clean": "rm -rf .turbo && rm -rf dist"
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
+    "@eslint/js": "^9.13.0",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
-    "eslint": "^8.57.0",
-    "typescript": "latest"
+    "eslint": "^9.13.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.11.0",
+    "typescript": "latest",
+    "typescript-eslint": "^8.10.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -26,5 +28,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "classnames": "^2.5.1"
   }
 }

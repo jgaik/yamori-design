@@ -1,9 +1,10 @@
 {
   "name": "@yamori-design/styles",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Yamori Design stylesheets files",
   "files": [
-    "dist/*"
+    "dist",
+    "src"
   ],
   "scripts": {
     "build": "npm run clean && sass --no-source-map src:dist",

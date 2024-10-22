@@ -1,11 +1,14 @@
 {
   "name": "@yamori-design/react-components",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": false,
   "license": "MIT",
   "author": "Jakub Gaik",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "npm run clean && tsc",
     "dev": "tsc --watch",

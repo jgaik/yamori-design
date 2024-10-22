@@ -6,5 +6,6 @@
   "linked": [],
   "access": "public",
   "updateInternalDependencies": "patch",
-  "ignore": ["@yamori-design/docs"]
+  "ignore": ["@yamori-design/docs"],
+  "baseBranch": "main"
 }

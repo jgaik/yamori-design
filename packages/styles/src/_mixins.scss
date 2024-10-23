@@ -49,7 +49,7 @@
   );
 
   font-family: inherit;
-  font-size: map-get($font-size, $size);
+  font-size: map.get($font-size, $size);
   line-height: #{$line-height-body};
 
   @if ($type == "bold") {
@@ -71,7 +71,7 @@
     "h6": #{$font-size-heading-h6},
   );
 
-  font-size: map-get($font-size, $level);
+  font-size: map.get($font-size, $level);
   font-weight: #{$font-weight-bold};
   line-height: #{$line-height-heading};
 }

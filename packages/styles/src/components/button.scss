@@ -1,13 +1,17 @@
 @use "../mixins";
 
 .yamori-button {
+  all: unset;
+
   @include mixins.yamori-font-body(medium, bold);
 
+  align-items: center;
   box-sizing: border-box;
   border: none;
   border-radius: var(--yamori-border-radius-medium);
   column-gap: var(--yamori-spacing-small);
   display: flex;
+  justify-content: center;
   padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
 
   &:focus-visible {

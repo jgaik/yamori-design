@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.2.1
+
+### Patch Changes
+
+- ac96322: Reset button styles and fix sass:map usage
+
 ## 0.2.0
 
 ### Minor Changes

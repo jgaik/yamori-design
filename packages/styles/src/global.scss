@@ -48,18 +48,21 @@
   --yamori-focus-primary: var(--yamori-theme-primary);
 
   font-family: sans-serif; // TODO change
-  color: var(--yamori-text-body);
 
-  @each $heading in h1, h2, h3, h4, h5, h6 {
-    #{$heading} {
-      @include mixins.yamori-font-heading($heading);
+  body {
+    color: var(--yamori-text-body);
 
-      color: var(--yamori-text-heading);
+    @each $heading in h1, h2, h3, h4, h5, h6 {
+      #{$heading} {
+        @include mixins.yamori-font-heading($heading);
+
+        color: var(--yamori-text-heading);
+        margin: unset;
+      }
+    }
+
+    p {
       margin: unset;
     }
-  }
-
-  p {
-    margin: unset;
   }
 }

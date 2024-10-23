@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.2.2
+
+### Patch Changes
+
+- 21d6298: Update global and mixins to support typography styles
+
 ## 0.2.1
 
 ### Patch Changes

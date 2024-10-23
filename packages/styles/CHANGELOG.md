@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.2.3
+
+### Patch Changes
+
+- dad89c4: Add default color and size
+
 ## 0.2.2
 
 ### Patch Changes

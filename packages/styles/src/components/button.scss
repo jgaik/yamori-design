@@ -1,4 +1,58 @@
-button {
-  background-color: green;
-  border-radius: var(--yamori-d-border-radius-medium);
+@use "../mixins";
+
+.yamori-button {
+  @include mixins.yamori-font-body(medium, bold);
+
+  box-sizing: border-box;
+  border: none;
+  border-radius: var(--yamori-border-radius-medium);
+  column-gap: var(--yamori-spacing-small);
+  display: flex;
+  padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
+
+  &:focus-visible {
+    @include mixins.yamori-focus-visible-outline;
+  }
+
+  &:enabled {
+    cursor: pointer;
+  }
+
+  &--primary {
+    background-color: var(--yamori-surface-action);
+    color: var(--yamori-text-on-action);
+
+    &:enabled {
+      &:hover {
+        background-color: var(--yamori-surface-action-hover);
+      }
+
+      &:active {
+        background-color: var(--yamori-surface-action-active);
+      }
+    }
+
+    &:disabled {
+      background-color: var(--yamori-surface-action-disabled);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--yamori-surface-secondary-action);
+    color: var(--yamori-text-on-secondary-action);
+
+    &:enabled {
+      &:hover {
+        color: var(--yamori-text-on-secondary-action-hover);
+      }
+
+      &:active {
+        color: var(--yamori-text-on-secondary-action-active);
+      }
+    }
+
+    &:disabled {
+      color: var(--yamori-text-on-secondary-action-disabled);
+    }
+  }
 }

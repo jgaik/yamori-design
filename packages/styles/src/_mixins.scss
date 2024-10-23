@@ -1,0 +1,77 @@
+@use "sass:map";
+@use "foundations" as *;
+
+@mixin yamori-theme-light() {
+  --yamori-theme-primary: #{$color-green-default};
+  --yamori-theme-primary-dark: #{$color-green-dark};
+  --yamori-theme-primary-darker: #{$color-green-darker};
+  --yamori-theme-primary-light: #{$color-green-light};
+  --yamori-theme-primary-lighter: #{$color-green-lighter};
+
+  --yamori-theme-neutral: #{$color-gray-default};
+  --yamori-theme-neutral-dark: #{$color-gray-dark};
+  --yamori-theme-neutral-darker: #{$color-gray-darker};
+  --yamori-theme-neutral-darkest: #{$color-gray-darkest};
+  --yamori-theme-neutral-light: #{$color-gray-light};
+  --yamori-theme-neutral-lighter: #{$color-gray-lighter};
+  --yamori-theme-neutral-lightest: #{$color-gray-lightest};
+}
+
+@mixin yamori-theme-dark() {
+  --yamori-theme-primary: #{$color-green-default};
+  --yamori-theme-primary-dark: #{$color-green-light};
+  --yamori-theme-primary-darker: #{$color-green-lighter};
+  --yamori-theme-primary-light: #{$color-green-dark};
+  --yamori-theme-primary-lighter: #{$color-green-darker};
+
+  --yamori-theme-neutral: #{$color-gray-default};
+  --yamori-theme-neutral-dark: #{$color-gray-light};
+  --yamori-theme-neutral-darker: #{$color-gray-lighter};
+  --yamori-theme-neutral-darkest: #{$color-gray-lightest};
+  --yamori-theme-neutral-light: #{$color-gray-dark};
+  --yamori-theme-neutral-lighter: #{$color-gray-darker};
+  --yamori-theme-neutral-lightest: #{$color-gray-darkest};
+}
+
+@mixin yamori-focus-visible-outline() {
+  outline: none;
+  outline-style: solid;
+  outline-color: var(--yamori-focus-primary);
+  outline-offset: #{$scale-50};
+  outline-width: #{$scale-50};
+}
+
+@mixin yamori-font-body($size, $type: null) {
+  $font-size: (
+    "small": #{$font-size-body-small},
+    "medium": #{$font-size-body-medium},
+    "large": #{$font-size-body-large},
+  );
+
+  font-family: inherit;
+  font-size: map-get($font-size, $size);
+  line-height: #{$line-height-body};
+
+  @if ($type == "bold") {
+    font-weight: #{$font-weight-semibold};
+  } @else if ($type == "link") {
+    text-decoration: underline;
+  } @else {
+    font-weight: #{$font-weight-regular};
+  }
+}
+
+@mixin yamori-font-heading($level) {
+  $font-size: (
+    "h1": #{$font-size-heading-h1},
+    "h2": #{$font-size-heading-h2},
+    "h3": #{$font-size-heading-h3},
+    "h4": #{$font-size-heading-h4},
+    "h5": #{$font-size-heading-h5},
+    "h6": #{$font-size-heading-h6},
+  );
+
+  font-size: map-get($font-size, $level);
+  font-weight: #{$font-weight-bold};
+  line-height: #{$line-height-heading};
+}

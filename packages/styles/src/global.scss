@@ -48,4 +48,16 @@
   --yamori-surface-secondary-action: var(--yamori-theme-primary-lighter);
 
   --yamori-focus-primary: var(--yamori-theme-primary);
+
+  @each $heading in h1, h2, h3, h4, h5, h6 {
+    #{$heading} {
+      margin: unset;
+
+      @include mixins.yamori-font-heading($heading);
+    }
+  }
+
+  p {
+    margin: unset;
+  }
 }

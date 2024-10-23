@@ -1,10 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Button, ButtonProps } from "@yamori-design/react-components";
+import {
+  Button as ButtonComponent,
+  ButtonProps,
+} from "@yamori-design/react-components";
 import "@yamori-design/styles/dist/components/button.css";
 
 export default {
-  title: "Button",
-  component: Button,
+  component: ButtonComponent,
   argTypes: {
     children: {
       control: "text",
@@ -23,17 +25,8 @@ export default {
     children: "Button",
     disabled: false,
     onClick: () => alert("Button clicked"),
-  },
-} satisfies Meta<typeof Button>;
-
-export const Primary: StoryObj<typeof Button> = {
-  args: {
     variant: "primary",
   },
-};
+} satisfies Meta<typeof ButtonComponent>;
 
-export const Secondary: StoryObj<typeof Button> = {
-  args: {
-    variant: "secondary",
-  },
-};
+export const Button: StoryObj<typeof ButtonComponent> = {};

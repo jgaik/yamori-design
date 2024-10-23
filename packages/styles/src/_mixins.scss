@@ -48,9 +48,16 @@
     "large": #{$font-size-body-large},
   );
 
+  $margin-block: (
+    "small": #{$paragraph-spacing-small},
+    "medium": #{$paragraph-spacing-medium},
+    "large": #{$paragraph-spacing-large},
+  );
+
   font-family: inherit;
   font-size: map.get($font-size, $size);
   line-height: #{$line-height-body};
+  margin-block: map.get($margin-block, $size);
 
   @if ($type == "bold") {
     font-weight: #{$font-weight-semibold};

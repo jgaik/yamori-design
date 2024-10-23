@@ -1,0 +1,13 @@
+@use "@yamori-design/styles/src/mixins" as yamori-mixins;
+
+.body-story {
+  @each $size in "small", "medium", "large" {
+    &[data-size="#{$size}"] {
+      @each $type in "default", "bold", "link" {
+        &[data-type="#{$type}"] {
+          @include yamori-mixins.yamori-font-body($size, $type);
+        }
+      }
+    }
+  }
+}

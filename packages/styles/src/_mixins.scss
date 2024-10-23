@@ -41,7 +41,7 @@
   outline-width: #{$scale-50};
 }
 
-@mixin yamori-font-body($size, $type: null) {
+@mixin yamori-font-body($size: "medium", $type: null) {
   $font-size: (
     "small": #{$font-size-body-small},
     "medium": #{$font-size-body-medium},

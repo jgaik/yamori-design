@@ -33,14 +33,6 @@
   --yamori-theme-neutral-lightest: #{$color-gray-darkest};
 }
 
-@mixin yamori-focus-visible-outline() {
-  outline: none;
-  outline-style: solid;
-  outline-color: var(--yamori-focus-primary);
-  outline-offset: #{$scale-50};
-  outline-width: #{$scale-50};
-}
-
 @mixin yamori-font-body($size: "medium", $type: null) {
   $font-size: (
     "small": #{$font-size-body-small},

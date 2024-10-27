@@ -1,8 +1,6 @@
 @use "../mixins";
 
 .yamori-button {
-  all: unset;
-
   @include mixins.yamori-font-body(medium, bold);
 
   align-items: center;
@@ -13,10 +11,6 @@
   display: flex;
   justify-content: center;
   padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
-
-  &:focus-visible {
-    @include mixins.yamori-focus-visible-outline;
-  }
 
   &:enabled {
     cursor: pointer;

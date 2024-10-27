@@ -4,6 +4,8 @@ import { Preview } from "@storybook/react";
 import "@yamori-design/styles/dist/global.css";
 import "./preview.scss";
 
+type Theme = "light" | "dark" | "system";
+
 export default {
   globalTypes: {
     theme: {
@@ -11,24 +13,28 @@ export default {
       toolbar: {
         title: "Theme",
         icon: "paintbrush",
-        items: ["light", "dark"],
+        items: ["system", "light", "dark"] satisfies Theme[],
         dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
-    theme: "light",
+    theme: "system",
   },
   decorators: [
     (Story, context) => {
-      const selectedTheme = context.globals.theme || "light";
+      const selectedTheme = (context.globals.theme as Theme) || "system";
 
       // TODO move to context or util
       useEffect(() => {
-        document.documentElement.setAttribute(
-          "data-yamori-theme",
-          selectedTheme
-        );
+        if (selectedTheme === "system") {
+          document.documentElement.removeAttribute("data-yamori-theme");
+        } else {
+          document.documentElement.setAttribute(
+            "data-yamori-theme",
+            selectedTheme
+          );
+        }
       }, [selectedTheme]);
 
       return <Story />;

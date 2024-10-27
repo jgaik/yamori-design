@@ -2,7 +2,7 @@
 @use "mixins";
 
 :root {
-  &:not([data-yamori-theme="dark"]) {
+  &[data-yamori-theme="light"] {
     @include mixins.yamori-theme-light;
   }
 
@@ -47,10 +47,16 @@
 
   --yamori-focus-primary: var(--yamori-theme-primary);
 
-  font-family: sans-serif; // TODO change
+  color-scheme: light dark;
+  font-family: Inter, sans-serif;
 
   body {
     color: var(--yamori-text-body);
+
+    :focus-visible {
+      outline: var(--yamori-focus-primary) solid #{$scale-50};
+      outline-offset: #{$scale-50};
+    }
 
     @each $heading in h1, h2, h3, h4, h5, h6 {
       #{$heading} {
@@ -64,5 +70,17 @@
     p {
       margin: unset;
     }
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-yamori-theme]) {
+    @include mixins.yamori-theme-light;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-yamori-theme]) {
+    @include mixins.yamori-theme-dark;
   }
 }

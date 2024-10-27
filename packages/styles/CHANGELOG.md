@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.3.0
+
+### Minor Changes
+
+- fb85bcc: Update dark/light theme variables handling
+
 ## 0.2.3
 
 ### Patch Changes

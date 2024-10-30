@@ -1,0 +1,21 @@
+@use "../mixins";
+
+.yamori-link {
+  @include mixins.yamori-font-body(medium);
+
+  color: var(--yamori-text-action);
+  cursor: pointer;
+
+  &:not(:hover) {
+    @include mixins.yamori-font-body(medium, link);
+  }
+
+  &:hover {
+    color: var(--yamori-text-action-hover);
+  }
+
+  &:visited,
+  &:active {
+    color: var(--yamori-text-action-active);
+  }
+}

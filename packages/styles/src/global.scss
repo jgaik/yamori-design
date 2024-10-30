@@ -50,13 +50,15 @@
   color-scheme: light dark;
   font-family: Inter, sans-serif;
 
-  body {
-    color: var(--yamori-text-body);
+  :focus-visible {
+    outline: var(--yamori-focus-primary) solid #{$scale-50};
+    outline-offset: #{$scale-50};
+    border-radius: var(--yamori-border-radius-small);
+  }
 
-    :focus-visible {
-      outline: var(--yamori-focus-primary) solid #{$scale-50};
-      outline-offset: #{$scale-50};
-    }
+  body {
+    background-color: var(--yamori-surface-page);
+    color: var(--yamori-text-body);
 
     @each $heading in h1, h2, h3, h4, h5, h6 {
       #{$heading} {

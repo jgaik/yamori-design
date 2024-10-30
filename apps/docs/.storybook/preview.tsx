@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
 import { Preview } from "@storybook/react";
+import { ThemeOption } from "@yamori-design/react-components";
 
 import "@yamori-design/styles/dist/global.css";
 import "./preview.scss";
-
-type Theme = "light" | "dark" | "system";
 
 export default {
   globalTypes: {
@@ -13,27 +12,23 @@ export default {
       toolbar: {
         title: "Theme",
         icon: "paintbrush",
-        items: ["system", "light", "dark"] satisfies Theme[],
+        items: ["default", "light", "dark"] satisfies ThemeOption[],
         dynamicTitle: true,
       },
     },
   },
   initialGlobals: {
-    theme: "system",
+    theme: localStorage.getItem("@yamori-design:theme") ?? "default",
   },
   decorators: [
     (Story, context) => {
-      const selectedTheme = (context.globals.theme as Theme) || "system";
+      const selectedTheme = (context.globals.theme as ThemeOption) || "default";
 
-      // TODO move to context or util
       useEffect(() => {
-        if (selectedTheme === "system") {
-          document.documentElement.removeAttribute("data-yamori-theme");
+        if (selectedTheme === "default") {
+          delete document.documentElement.dataset.yamoriTheme;
         } else {
-          document.documentElement.setAttribute(
-            "data-yamori-theme",
-            selectedTheme
-          );
+          document.documentElement.dataset.yamoriTheme = selectedTheme;
         }
       }, [selectedTheme]);
 

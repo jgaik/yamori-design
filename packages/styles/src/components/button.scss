@@ -6,7 +6,6 @@
   align-items: center;
   box-sizing: border-box;
   border: none;
-  border-radius: var(--yamori-border-radius-medium);
   column-gap: var(--yamori-spacing-small);
   display: flex;
   justify-content: center;
@@ -14,6 +13,11 @@
 
   &:enabled {
     cursor: pointer;
+  }
+
+  &,
+  &:focus-visible {
+    border-radius: var(--yamori-border-radius-medium);
   }
 
   &--primary {

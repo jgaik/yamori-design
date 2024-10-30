@@ -1,4 +1,8 @@
-.docs-story,
-body {
+.sbdocs.sbdocs-wrapper,
+.docs-story {
   background-color: var(--yamori-surface-page);
+
+  table.docblock-argstable {
+    background-color: white;
+  }
 }

@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.4.0
+
+### Minor Changes
+
+- 79ae2a0: Add Link and initial ThemeSelect components
+
 ## 0.3.0
 
 ### Minor Changes

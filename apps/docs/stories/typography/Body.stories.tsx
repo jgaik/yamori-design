@@ -9,8 +9,8 @@ const BodyComponent: React.FC<{
   size: (typeof BODY_SIZES)[number];
   type: (typeof BODY_TYPES)[number];
 }> = ({ text, size, type }) =>
-  text.split("\n").map((textChunk) => (
-    <p className="body-story" data-size={size} data-type={type}>
+  text.split(/\n+/).map((textChunk) => (
+    <p key={textChunk} className="body-story" data-size={size} data-type={type}>
       {textChunk}
     </p>
   ));

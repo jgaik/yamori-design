@@ -21,6 +21,7 @@
     "@types/react-dom": "^18.2.19",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react-hooks": "^5.0.0",
     "globals": "^15.11.0",
     "typescript": "latest",
     "typescript-eslint": "^8.10.0"

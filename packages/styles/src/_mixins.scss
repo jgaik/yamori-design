@@ -53,10 +53,13 @@
 
   @if ($type == "bold") {
     font-weight: #{$font-weight-semibold};
+    text-decoration: none;
   } @else if ($type == "link") {
+    font-weight: #{$font-weight-regular};
     text-decoration: underline;
   } @else {
     font-weight: #{$font-weight-regular};
+    text-decoration: none;
   }
 }
 

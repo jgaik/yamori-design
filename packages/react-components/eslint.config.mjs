@@ -1,21 +1,24 @@
 import globals from "globals";
 import pluginJs from "@eslint/js";
-import tsEslint from "typescript-eslint";
+import tseslint from "typescript-eslint";
+import pluginReactHooks from 'eslint-plugin-react-hooks'
 import pluginReact from "eslint-plugin-react";
 
-export default [
-  { 
-    files: ["src/**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-  },
-  { languageOptions: { globals: globals.browser } },
-  pluginJs.configs.recommended,
-  tsEslint.configs.eslintRecommended,
+export default tseslint.config(
+  { ignores: ['dist'] },
   {
-    ...pluginReact.configs.flat.recommended,
-    settings: {
-      react: {
-        version: "detect",
-      },
+    extends: [pluginJs.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': pluginReactHooks,
+      'react': pluginReact,
+    },
+    rules: {
+      ...pluginReactHooks.configs.recommended.rules,
     },
   },
-];
+)

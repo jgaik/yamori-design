@@ -4,6 +4,7 @@ import "@yamori-design/styles/dist/components/link.css";
 
 export default {
   component: LinkComponent,
+  tags: ["!dev"],
   argTypes: {
     children: {
       control: "text",

@@ -4,14 +4,14 @@ import {
   forwardRef,
   useMemo,
 } from "react";
-import { createBemClassNames } from "../functions";
+import { bemClassNamesCreator } from "../utilities";
 
 export type LinkProps = ComponentPropsWithoutRef<"a">;
 
 export const Link = forwardRef<ElementRef<"a">, LinkProps>(
   ({ className, ...props }, ref) => {
     const bemClassNames = useMemo(
-      () => createBemClassNames("link", className),
+      () => bemClassNamesCreator.create("link", className),
       [className]
     );
 

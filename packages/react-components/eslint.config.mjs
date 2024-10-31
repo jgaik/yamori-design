@@ -17,8 +17,7 @@ export default tseslint.config(
       'react-hooks': pluginReactHooks,
       'react': pluginReact,
     },
-    rules: {
-      ...pluginReactHooks.configs.recommended.rules,
-    },
+    rules: pluginReactHooks.configs.recommended.rules,
+    
   },
 )

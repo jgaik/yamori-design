@@ -1,15 +1,15 @@
 @use "foundations" as *;
 @use "mixins";
 
+@include mixins.within-yamori-theme(light) {
+  @include mixins.yamori-theme-light;
+}
+
+@include mixins.within-yamori-theme(dark) {
+  @include mixins.yamori-theme-dark;
+}
+
 :root {
-  &[data-yamori-theme="light"] {
-    @include mixins.yamori-theme-light;
-  }
-
-  &[data-yamori-theme="dark"] {
-    @include mixins.yamori-theme-dark;
-  }
-
   --yamori-border-radius-small: #{$scale-50};
   --yamori-border-radius-medium: #{$scale-100};
   --yamori-border-radius-large: #{$scale-200};
@@ -70,19 +70,7 @@
     }
 
     p {
-      margin: unset;
+      margin-block: #{$paragraph-spacing};
     }
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  :root:not([data-yamori-theme]) {
-    @include mixins.yamori-theme-light;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-yamori-theme]) {
-    @include mixins.yamori-theme-dark;
   }
 }

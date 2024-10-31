@@ -11,6 +11,7 @@ HeadingComponent.displayName = "Heading";
 
 export default {
   component: HeadingComponent,
+  tags: ["!autodocs"],
   args: {
     tag: "h1",
     children: "This is a heading",

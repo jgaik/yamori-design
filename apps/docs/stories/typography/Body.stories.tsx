@@ -19,6 +19,7 @@ BodyComponent.displayName = "Body";
 
 export default {
   component: BodyComponent,
+  tags: ["!autodocs"],
   args: {
     size: "medium",
     type: "default",

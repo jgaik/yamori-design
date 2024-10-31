@@ -4,7 +4,7 @@ import {
   forwardRef,
   useMemo,
 } from "react";
-import { createBemClassNames } from "../functions";
+import { bemClassNamesCreator } from "../utilities";
 
 export type ButtonProps = ComponentPropsWithoutRef<"button"> & {
   variant?: "primary" | "secondary";
@@ -13,7 +13,8 @@ export type ButtonProps = ComponentPropsWithoutRef<"button"> & {
 export const Button = forwardRef<ElementRef<"button">, ButtonProps>(
   ({ className, variant = "primary", ...props }, ref) => {
     const bemClassNames = useMemo(
-      () => createBemClassNames(["button", { [variant]: true }], className),
+      () =>
+        bemClassNamesCreator.create(["button", { [variant]: true }], className),
       [className, variant]
     );
 

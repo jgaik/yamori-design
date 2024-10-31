@@ -7,6 +7,7 @@ import "@yamori-design/styles/dist/components/button.css";
 
 export default {
   component: ButtonComponent,
+  tags: ["!dev"],
   argTypes: {
     children: {
       control: "text",

@@ -4,7 +4,9 @@
   @include mixins.yamori-font-body(medium);
 
   color: var(--yamori-text-action);
+  column-gap: var(--yamori-spacing-small);
   cursor: pointer;
+  display: inline-flex;
 
   &:not(:hover) {
     @include mixins.yamori-font-body(medium, link);

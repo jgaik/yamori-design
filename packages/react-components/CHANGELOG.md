@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 0.4.0
+
+### Minor Changes
+
+- fc0adda: Add mixin for themed content and update default font body mixin
+
 ## 0.3.0
 
 ### Minor Changes

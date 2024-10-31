@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.4.1
+
+### Patch Changes
+
+- fc0adda: Add mixin for themed content and update default font body mixin
+
 ## 0.4.0
 
 ### Minor Changes

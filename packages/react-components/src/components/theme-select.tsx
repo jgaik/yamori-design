@@ -1,4 +1,5 @@
-import { useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from "react";
+import { usePackageTranslation } from "../i18n";
 
 const THEME_OPTIONS = ["light", "dark", "default"] as const;
 
@@ -6,16 +7,12 @@ const LOCAL_STORAGE_KEY = "@yamori-design:theme";
 
 export type ThemeOption = (typeof THEME_OPTIONS)[number];
 
-export type ThemeSelectProps = {
-  translationFunction?: (themeOption: ThemeOption) => string;
-};
+export const ThemeSelect: React.FC = () => {
+  const { t } = usePackageTranslation();
 
-export const ThemeSelect: React.FC<ThemeSelectProps> = ({
-  translationFunction,
-}) => {
   const [value, setValue] = useState<ThemeOption>("default");
 
-  const onThemeChange = (themeOption: ThemeOption) => {
+  const onThemeChange = useCallback((themeOption: ThemeOption) => {
     setValue(themeOption);
 
     if (themeOption === "default") {
@@ -27,7 +24,7 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = ({
 
       localStorage.setItem(LOCAL_STORAGE_KEY, themeOption);
     }
-  };
+  }, []);
 
   useLayoutEffect(() => {
     const savedTheme = localStorage.getItem(
@@ -37,7 +34,7 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = ({
     if (savedTheme) {
       onThemeChange(savedTheme);
     }
-  }, []);
+  }, [onThemeChange]);
 
   return (
     <select
@@ -47,8 +44,8 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = ({
       }}
     >
       {THEME_OPTIONS.map((themeOption) => (
-        <option value={themeOption}>
-          {translationFunction?.(themeOption) ?? themeOption}
+        <option key={themeOption} value={themeOption}>
+          {t(themeOption)}
         </option>
       ))}
     </select>

@@ -1,0 +1,16 @@
+{
+  "en": {
+    "translation": {
+      "dark": "Dark",
+      "default": "Default",
+      "light": "Light"
+    }
+  },
+  "ja": {
+    "translation": {
+      "dark": "暗い",
+      "default": "デフォルト",
+      "light": "明るい"
+    }
+  }
+}

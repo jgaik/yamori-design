@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 0.5.0
+
+### Minor Changes
+
+- Add LanguageSelect
+
 ## 0.4.0
 
 ### Minor Changes

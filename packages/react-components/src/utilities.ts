@@ -1,31 +1,29 @@
 import classNames from "classnames";
 
-type NameWithModifiers<Name extends string> =
-  | Name
-  | [name: Name, modifiers: Record<string, unknown>];
+type NameWithModifiers<Name extends string> = [
+  name: Name,
+  modifiers: Record<string, unknown>,
+];
 
 export class BemClassNamesCreator {
   constructor(private prefix?: string) {
     this.prefix = prefix;
   }
 
-  public create<Name extends string>(
-    block: NameWithModifiers<Name>,
-    className: string | undefined,
-    ...elements: NameWithModifiers<Name>[]
-  ): Record<Name, string> {
-    const blockName = typeof block === "string" ? block : block[0];
-    const blockModifiers = typeof block === "string" ? {} : block[1];
+  private getNameWithModifiers<Name extends string>(
+    nameElement: Name | NameWithModifiers<Name>
+  ): NameWithModifiers<Name> {
+    const name = typeof nameElement === "string" ? nameElement : nameElement[0];
+    const modifiers = typeof nameElement === "string" ? {} : nameElement[1];
 
-    const blockNames = [
-      this.prefix ? `${this.prefix}-${blockName}` : blockName,
-      ...(className?.trim().split(/\s+/) ?? []),
-    ];
+    return [name, modifiers];
+  }
 
-    const elementsNames = elements.map<[Name, Record<string, unknown>]>(
-      (element) => (typeof element === "string" ? [element, {}] : element)
-    );
-
+  private createBemRecord<Name extends string>(
+    [blockName, blockModifiers]: NameWithModifiers<Name>,
+    blockNames: string[],
+    elementsNames: Array<NameWithModifiers<Name>>
+  ) {
     const returnObject = {
       [blockName]: blockNames
         .map((name) =>
@@ -61,6 +59,52 @@ export class BemClassNamesCreator {
     });
 
     return returnObject as Record<Name, string>;
+  }
+
+  static create<Name extends string>(
+    block: Name | NameWithModifiers<Name>,
+    className: string | undefined,
+    ...elements: Array<Name | NameWithModifiers<Name>>
+  ): Record<Name, string> {
+    const creator = new BemClassNamesCreator();
+
+    const blockNameWithModifiers = creator.getNameWithModifiers(block);
+
+    const blockNames = [
+      blockNameWithModifiers[0],
+      ...(className?.trim().split(/\s+/) ?? []),
+    ];
+
+    const elementsNames = elements.map(creator.getNameWithModifiers);
+
+    return creator.createBemRecord(
+      blockNameWithModifiers,
+      blockNames,
+      elementsNames
+    );
+  }
+
+  public create<Name extends string>(
+    block: Name | NameWithModifiers<Name>,
+    className: string | undefined,
+    ...elements: Array<Name | NameWithModifiers<Name>>
+  ): Record<Name, string> {
+    const blockNameWithModifiers = this.getNameWithModifiers(block);
+
+    const [blockName] = blockNameWithModifiers;
+
+    const blockNames = [
+      this.prefix ? `${this.prefix}-${blockName}` : blockName,
+      ...(className?.trim().split(/\s+/) ?? []),
+    ];
+
+    const elementsNames = elements.map(this.getNameWithModifiers);
+
+    return this.createBemRecord(
+      blockNameWithModifiers,
+      blockNames,
+      elementsNames
+    );
   }
 }
 

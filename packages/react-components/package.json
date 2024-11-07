@@ -19,6 +19,7 @@
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
+    "@yamori-design/icons": "*",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.0.0",

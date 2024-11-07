@@ -1,0 +1,103 @@
+@use "../mixins";
+
+.yamori-select {
+  @include mixins.yamori-font-body(medium);
+
+  align-items: center;
+  background-color: var(--yamori-surface-primary);
+  box-sizing: border-box;
+  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
+  border-radius: var(--yamori-border-radius-medium);
+  color: var(--yamori-text-primary);
+  column-gap: var(--yamori-spacing-small);
+  display: flex;
+  padding: var(--yamori-spacing-medium);
+
+  svg:last-child {
+    margin-left: auto;
+  }
+
+  &:enabled {
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--yamori-border-hover);
+    }
+  }
+
+  &:disabled {
+    background-color: var(--yamori-surface-primary-disabled);
+    color: var(--yamori-text-disabled);
+  }
+
+  &__placeholder {
+    color: var(--yamori-text-disabled);
+  }
+
+  &:focus-visible {
+    outline-offset: 0;
+    border-color: transparent;
+    border-radius: var(--yamori-border-radius-medium);
+  }
+
+  &__dropdown {
+    background-color: var(--yamori-surface-primary);
+    box-sizing: border-box;
+    border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
+    border-radius: var(--yamori-border-radius-medium);
+    list-style: none;
+    margin: 0;
+    padding: var(--yamori-spacing-x-small) 0;
+
+    .yamori-option {
+      background-color: var(--yamori-surface-primary);
+      border: none;
+      border-bottom: var(--yamori-border-width-small) solid
+        var(--yamori-border-primary);
+      box-sizing: border-box;
+      color: var(--yamori-text-primary);
+      column-gap: var(--yamori-spacing-small);
+      display: flex;
+      padding: var(--yamori-spacing-medium);
+      width: 100%;
+
+      &:enabled {
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--yamori-surface-action-hover-2);
+          color: var(--yamori-text-on-action);
+        }
+      }
+
+      &:disabled {
+        background-color: var(--yamori-surface-primary-disabled);
+        color: var(--yamori-text-disabled);
+      }
+
+      &:focus-visible {
+        border-bottom-color: transparent;
+        outline-offset: 0;
+      }
+
+      &--selected {
+        background-color: var(--yamori-surface-action);
+        color: var(--yamori-text-on-action);
+
+        &:enabled {
+          &:hover {
+            background-color: var(--yamori-surface-action-hover);
+          }
+        }
+
+        &:disabled {
+          background-color: var(--yamori-surface-action-disabled);
+        }
+      }
+    }
+
+    li:last-child .yamori-option {
+      border-bottom: unset;
+    }
+  }
+}

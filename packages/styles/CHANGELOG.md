@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.5.0
+
+### Minor Changes
+
+- Add Select component and update usage
+
 ## 0.4.1
 
 ### Patch Changes

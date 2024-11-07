@@ -1,16 +1,32 @@
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { usePackageTranslation } from "../i18n";
+import { Select } from "./select";
+import { MoonIcon, SunIcon } from "@yamori-design/icons";
+import { useMediaQuery } from "usehooks-ts";
 
-const THEME_OPTIONS = ["light", "dark", "default"] as const;
+const THEME_OPTIONS_MAP = {
+  light: <SunIcon />,
+  dark: <MoonIcon />,
+  default: null,
+};
 
 const LOCAL_STORAGE_KEY = "@yamori-design:theme";
 
-export type ThemeOption = (typeof THEME_OPTIONS)[number];
+export type ThemeOption = keyof typeof THEME_OPTIONS_MAP;
 
 export const ThemeSelect: React.FC = () => {
   const { t } = usePackageTranslation();
 
   const [value, setValue] = useState<ThemeOption>("default");
+
+  const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)", {
+    initializeWithValue: false,
+  });
+
+  const defaultIcon = useMemo(
+    () => THEME_OPTIONS_MAP[isDarkMode ? "dark" : "light"],
+    [isDarkMode]
+  );
 
   const onThemeChange = useCallback((themeOption: ThemeOption) => {
     setValue(themeOption);
@@ -37,17 +53,18 @@ export const ThemeSelect: React.FC = () => {
   }, [onThemeChange]);
 
   return (
-    <select
+    <Select
       value={value}
-      onChange={(e) => {
-        onThemeChange(e.target.value as ThemeOption);
+      onChange={(value) => {
+        onThemeChange(value as ThemeOption);
       }}
     >
-      {THEME_OPTIONS.map((themeOption) => (
-        <option key={themeOption} value={themeOption}>
+      {Object.entries(THEME_OPTIONS_MAP).map(([themeOption, icon]) => (
+        <Select.Option key={themeOption} value={themeOption}>
+          {icon ?? defaultIcon}
           {t(themeOption)}
-        </option>
+        </Select.Option>
       ))}
-    </select>
+    </Select>
   );
 };

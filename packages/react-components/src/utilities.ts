@@ -1,5 +1,10 @@
 import classNames from "classnames";
 
+export type OverwriteAndMerge<
+  BaseType extends object,
+  OverwritingType extends object,
+> = Omit<BaseType, keyof OverwritingType> & OverwritingType;
+
 type NameWithModifiers<Name extends string> = [
   name: Name,
   modifiers: Record<string, unknown>,

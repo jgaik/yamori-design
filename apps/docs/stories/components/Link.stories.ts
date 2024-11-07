@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { Link as LinkComponent } from "@yamori-design/react-components";
+import {
+  Link as LinkComponent,
+  LinkProps,
+} from "@yamori-design/react-components";
 import "@yamori-design/styles/dist/components/link.css";
 
 export default {
@@ -14,6 +17,6 @@ export default {
     children: "Link",
     href: location.origin,
   },
-} satisfies Meta<typeof LinkComponent>;
+} satisfies Meta<LinkProps>;
 
-export const Link: StoryObj<typeof LinkComponent> = {};
+export const Link: StoryObj<LinkProps> = {};

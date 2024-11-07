@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 0.6.0
+
+### Minor Changes
+
+- Add Select component and update usage
+
 ## 0.5.0
 
 ### Minor Changes

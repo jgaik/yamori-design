@@ -1,4 +1,5 @@
 import { usePackageTranslation } from "../i18n";
+import { Select } from "./select";
 
 type LanguageSelectProps = {
   supportedLanguages: string[];
@@ -17,20 +18,20 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   const { i18n } = usePackageTranslation();
 
   return (
-    <select
-      value={i18n.resolvedLanguage}
-      onChange={(e) => {
-        i18n.changeLanguage(e.target.value);
-        onChange?.(e.target.value);
+    <Select
+      value={i18n.resolvedLanguage ?? null}
+      onChange={(value) => {
+        i18n.changeLanguage(value!);
+        onChange?.(value!);
       }}
     >
       {Object.entries(SUPPORTED_LANGUAGES)
         .filter(([lng]) => supportedLanguages.includes(lng))
         .map(([value, label]) => (
-          <option key={value} value={value}>
+          <Select.Option key={value} value={value}>
             {label}
-          </option>
+          </Select.Option>
         ))}
-    </select>
+    </Select>
   );
 };

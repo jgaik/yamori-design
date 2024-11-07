@@ -26,7 +26,7 @@
 
   --yamori-text-heading: var(--yamori-theme-neutral-darkest);
   --yamori-text-body: var(--yamori-theme-neutral-dark);
-  --yamori-text-disabled: var(--yamori-theme-neutral-light);
+  --yamori-text-disabled: var(--yamori-theme-neutral);
   --yamori-text-action: var(--yamori-theme-primary);
   --yamori-text-action-disabled: var(--yamori-theme-primary-lighter);
   --yamori-text-action-hover: var(--yamori-theme-primary-dark);
@@ -38,20 +38,25 @@
   --yamori-text-on-secondary-action-active: var(--yamori-theme-primary-darker);
 
   --yamori-surface-page: var(--yamori-theme-neutral-lightest);
-  --yamori-surface-disabled: var(--yamori-theme-neutral-light);
+  --yamori-surface-primary: var(--yamori-theme-neutral-lightest);
+  --yamori-surface-primary-disabled: var(--yamori-theme-neutral-lighter);
   --yamori-surface-action: var(--yamori-theme-primary);
   --yamori-surface-action-disabled: var(--yamori-theme-primary-lighter);
   --yamori-surface-action-hover: var(--yamori-theme-primary-dark);
+  --yamori-surface-action-hover-2: var(--yamori-theme-primary-light);
   --yamori-surface-action-active: var(--yamori-theme-primary-darker);
   --yamori-surface-secondary-action: var(--yamori-theme-primary-lighter);
 
-  --yamori-focus-primary: var(--yamori-theme-primary);
+  --yamori-border-focus: var(--yamori-theme-primary-darker);
+  --yamori-border-primary: var(--yamori-theme-neutral);
+  --yamori-border-disabled: var(--yamori-theme-neutral-light);
+  --yamori-border-hover: var(--yamori-theme-primary);
 
   color-scheme: light dark;
   font-family: Inter, sans-serif;
 
   :focus-visible {
-    outline: var(--yamori-focus-primary) solid #{$scale-50};
+    outline: var(--yamori-border-focus) solid #{$scale-50};
     outline-offset: #{$scale-50};
     border-radius: var(--yamori-border-radius-small);
   }

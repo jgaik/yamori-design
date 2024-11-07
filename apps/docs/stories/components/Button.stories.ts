@@ -28,6 +28,6 @@ export default {
     onClick: () => alert("Button clicked"),
     variant: "primary",
   },
-} satisfies Meta<typeof ButtonComponent>;
+} satisfies Meta<ButtonProps>;
 
-export const Button: StoryObj<typeof ButtonComponent> = {};
+export const Button: StoryObj<ButtonProps> = {};

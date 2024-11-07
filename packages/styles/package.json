@@ -1,6 +1,6 @@
 {
   "name": "@yamori-design/styles",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Yamori Design stylesheets files",
   "files": [
     "dist",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "npm run clean && sass --no-source-map src:dist",
     "dev": "sass --no-source-map --watch src:dist",
-    "clean": "rm -rf .turbo && rm -rf dist"
+    "clean": "rimraf .turbo dist"
   },
   "author": "Jakub Gaik",
   "license": "MIT",

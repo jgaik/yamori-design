@@ -7,10 +7,11 @@
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
     "preview-storybook": "serve storybook-static",
-    "clean": "rm -rf .turbo && rm -rf storybook-static",
+    "clean": "rimraf .turbo storybook-static",
     "lint": "eslint ./stories/*.stories.tsx --max-warnings 0"
   },
   "dependencies": {
+    "@yamori-design/icons": "*",
     "@yamori-design/react-components": "*",
     "@yamori-design/styles": "*",
     "react": "^18.2.0",

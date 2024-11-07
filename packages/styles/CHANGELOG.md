@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.5.1
+
+### Patch Changes
+
+- Fix dropdown Select.Option styles
+
 ## 0.5.0
 
 ### Minor Changes

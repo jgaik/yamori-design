@@ -50,6 +50,9 @@
     padding: var(--yamori-spacing-x-small) 0;
 
     .yamori-option {
+      @include mixins.yamori-font-body(medium);
+
+      align-items: center;
       background-color: var(--yamori-surface-primary);
       border: none;
       border-bottom: var(--yamori-border-width-small) solid

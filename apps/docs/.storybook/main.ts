@@ -12,10 +12,14 @@ const config: StorybookConfig = {
     getAbsolutePath("@storybook/addon-links"),
     getAbsolutePath("@storybook/addon-essentials"),
   ],
+
   framework: {
     name: getAbsolutePath("@storybook/react-vite"),
     options: {},
   },
+
+  managerHead: (head) =>
+    head?.replace(/<title>.+<\/title>/, "<title>Yamori Design</title>"),
 
   docs: {
     autodocs: true,

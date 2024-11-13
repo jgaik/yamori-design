@@ -7,7 +7,7 @@ import {
 import { bemClassNamesCreator } from "../utilities";
 
 export type ButtonProps = ComponentPropsWithoutRef<"button"> & {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "text";
 };
 
 export const Button = forwardRef<ElementRef<"button">, ButtonProps>(

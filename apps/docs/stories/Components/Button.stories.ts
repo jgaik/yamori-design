@@ -19,7 +19,11 @@ export default {
     },
     variant: {
       control: "radio",
-      options: ["primary", "secondary"] satisfies ButtonProps["variant"][],
+      options: [
+        "primary",
+        "secondary",
+        "text",
+      ] satisfies ButtonProps["variant"][],
     },
   },
   args: {

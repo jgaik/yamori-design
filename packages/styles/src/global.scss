@@ -62,6 +62,8 @@
   }
 
   body {
+    @include mixins.yamori-font-body;
+
     background-color: var(--yamori-surface-page);
     color: var(--yamori-text-body);
 
@@ -72,6 +74,10 @@
         color: var(--yamori-text-heading);
         margin: unset;
       }
+    }
+
+    b {
+      font-weight: #{$font-weight-semibold};
     }
 
     p {

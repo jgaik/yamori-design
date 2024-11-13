@@ -1,0 +1,8 @@
+@use "../mixins";
+
+.yamori-separator {
+  background-color: var(--yamori-border-primary);
+  border: unset;
+  height: var(--yamori-border-width-small);
+  margin: unset;
+}

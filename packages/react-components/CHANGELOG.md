@@ -1,5 +1,16 @@
 # @yamori-design/react-components
 
+## 0.7.0
+
+### Minor Changes
+
+- Add separator and text version of Button
+
+### Patch Changes
+
+- Updated dependencies
+  - @yamori-design/icons@1.0.0
+
 ## 0.6.1
 
 ### Patch Changes

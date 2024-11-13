@@ -57,4 +57,24 @@
       color: var(--yamori-text-on-secondary-action-disabled);
     }
   }
+
+  &--text {
+    padding: 0;
+    background-color: transparent;
+    color: var(--yamori-text-action);
+
+    &:enabled {
+      &:hover {
+        color: var(--yamori-text-action-hover);
+      }
+
+      &:active {
+        color: var(--yamori-text-action-active);
+      }
+    }
+
+    &:disabled {
+      color: var(--yamori-text-action-disabled);
+    }
+  }
 }

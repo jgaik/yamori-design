@@ -1,0 +1,33 @@
+@use "@yamori-design/styles/src/mixins";
+
+.introduction-story {
+  &__home {
+    font-size: 2rem;
+  }
+
+  &__github {
+    width: 2rem;
+  }
+
+  header {
+    display: flex;
+
+    h1 {
+      align-items: center;
+      display: flex;
+      flex: 1;
+    }
+
+    nav {
+      align-items: flex-start;
+      display: flex;
+      column-gap: var(--yamori-spacing-large);
+    }
+  }
+}
+
+@include mixins.within-yamori-theme(dark) {
+  .introduction-story__github {
+    filter: invert(1);
+  }
+}

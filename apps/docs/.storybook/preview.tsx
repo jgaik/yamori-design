@@ -27,12 +27,22 @@ export default {
       useEffect(() => {
         if (selectedTheme === "default") {
           delete document.documentElement.dataset.yamoriTheme;
+          localStorage.removeItem("@yamori-design:theme");
         } else {
           document.documentElement.dataset.yamoriTheme = selectedTheme;
+          localStorage.setItem("@yamori-design:theme", selectedTheme);
         }
       }, [selectedTheme]);
 
       return <Story />;
     },
   ],
+  parameters: {
+    options: {
+      storySort: {
+        method: "alphabetical",
+        order: ["Introduction"],
+      },
+    },
+  },
 } satisfies Preview;

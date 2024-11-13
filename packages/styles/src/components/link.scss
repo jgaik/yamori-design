@@ -3,6 +3,7 @@
 .yamori-link {
   @include mixins.yamori-font-body(medium);
 
+  align-items: center;
   color: var(--yamori-text-action);
   column-gap: var(--yamori-spacing-small);
   cursor: pointer;

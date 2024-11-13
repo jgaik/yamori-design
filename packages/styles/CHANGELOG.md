@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 0.6.0
+
+### Minor Changes
+
+- Add separator, text variant of button and minor styles fixes
+
 ## 0.5.1
 
 ### Patch Changes

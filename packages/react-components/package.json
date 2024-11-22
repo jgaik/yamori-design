@@ -1,6 +1,6 @@
 {
   "name": "@yamori-design/react-components",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "sideEffects": false,
   "license": "MIT",
   "author": "Jakub Gaik",
@@ -20,6 +20,7 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "@yamori-design/icons": "*",
+    "@yamori-shared/react-utilities": "^1.1.1",
     "eslint": "^9.13.0",
     "eslint-plugin-react": "^7.37.1",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -29,6 +30,7 @@
   },
   "peerDependencies": {
     "@yamori-design/icons": "*",
+    "@yamori-shared/react-utilities": "^1.0.0",
     "i18next": "^23.16.4",
     "i18next-browser-languagedetector": "^8.0.0",
     "react": "^18.2.0",

@@ -1,5 +1,16 @@
 # @yamori-design/react-components
 
+## 0.8.0
+
+### Minor Changes
+
+- Update icon and imports
+
+### Patch Changes
+
+- Updated dependencies
+  - @yamori-design/icons@1.1.0
+
 ## 0.7.0
 
 ### Minor Changes

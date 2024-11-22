@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.1.0
+
+### Minor Changes
+
+- Update icon and imports
+
 ## 1.0.0
 
 ### Major Changes

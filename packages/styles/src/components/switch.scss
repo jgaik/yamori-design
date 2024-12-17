@@ -1,0 +1,53 @@
+.yamori-switch {
+  background-color: var(--yamori-surface-primary-2);
+  border-radius: 999px;
+  display: flex;
+  height: 1rem;
+  position: relative;
+  transition: background-color 0.15s;
+  width: 2rem;
+
+  &:has(input:checked) &__handle {
+    left: calc(1rem);
+  }
+
+  &:has(input:enabled:checked) {
+    background-color: var(--yamori-surface-action);
+  }
+
+  &:has(input:disabled) {
+    background-color: var(--yamori-surface-primary-disabled);
+
+    &:has(input:checked) {
+      background-color: var(--yamori-surface-action-disabled);
+    }
+  }
+
+  &__handle {
+    aspect-ratio: 1 / 1;
+    background-color: var(--yamori-surface-primary);
+    border-radius: 999px;
+    box-sizing: border-box;
+    height: calc(1rem - 2 * var(--yamori-border-width-small));
+    left: 0;
+    margin: var(--yamori-border-width-small);
+    position: absolute;
+    transition: left 0.15s;
+  }
+
+  input {
+    appearance: none;
+    height: inherit;
+    margin: 0;
+    position: absolute;
+    width: inherit;
+
+    &:focus-visible {
+      border-radius: inherit;
+    }
+
+    &:enabled {
+      cursor: pointer;
+    }
+  }
+}

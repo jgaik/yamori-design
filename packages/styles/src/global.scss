@@ -39,6 +39,7 @@
 
   --yamori-surface-page: var(--yamori-theme-neutral-lightest);
   --yamori-surface-primary: var(--yamori-theme-neutral-lightest);
+  --yamori-surface-primary-2: var(--yamori-theme-neutral);
   --yamori-surface-primary-disabled: var(--yamori-theme-neutral-lighter);
   --yamori-surface-action: var(--yamori-theme-primary);
   --yamori-surface-action-disabled: var(--yamori-theme-primary-lighter);
@@ -51,6 +52,11 @@
   --yamori-border-primary: var(--yamori-theme-neutral);
   --yamori-border-disabled: var(--yamori-theme-neutral-light);
   --yamori-border-hover: var(--yamori-theme-primary);
+  --yamori-border-active: var(--yamori-theme-primary-dark);
+  --yamori-border-action: var(--yamori-theme-primary);
+  --yamori-border-action-disabled: var(--yamori-theme-primary-lighter);
+  --yamori-border-action-hover: var(--yamori-theme-primary-dark);
+  --yamori-border-action-active: var(--yamori-theme-primary-darker);
 
   color-scheme: light dark;
   font-family: Inter, sans-serif;

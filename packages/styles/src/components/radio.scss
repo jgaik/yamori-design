@@ -1,0 +1,65 @@
+.yamori-radio {
+  background-color: var(--yamori-surface-primary);
+  border-radius: 999px;
+  border-style: solid;
+  border-width: var(--yamori-border-width-small);
+  box-sizing: border-box;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+
+  &:has(input:checked) {
+    border-width: var(--yamori-border-width-large);
+  }
+
+  &:has(input:enabled) {
+    border-color: var(--yamori-border-primary);
+
+    &:hover {
+      border-color: var(--yamori-border-hover);
+    }
+
+    &:active {
+      border-color: var(--yamori-border-active);
+    }
+
+    &:has(input:checked) {
+      border-color: var(--yamori-border-action);
+
+      &:hover {
+        border-color: var(--yamori-border-action-hover);
+      }
+
+      &:active {
+        border-color: var(--yamori-border-action-active);
+      }
+    }
+  }
+
+  &:has(input:disabled) {
+    border-color: var(--yamori-border-disabled);
+
+    &:has(input:checked) {
+      border-color: var(--yamori-border-action-disabled);
+    }
+  }
+
+  input {
+    --shift: calc(-1 * var(--yamori-border-width-small));
+    appearance: none;
+    height: inherit;
+    left: var(--shift);
+    margin: 0;
+    position: absolute;
+    top: var(--shift);
+    width: inherit;
+
+    &:checked {
+      --shift: calc(-1 * var(--yamori-border-width-large));
+    }
+
+    &:focus-visible {
+      border-radius: inherit;
+    }
+  }
+}

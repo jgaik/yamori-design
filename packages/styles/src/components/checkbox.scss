@@ -1,0 +1,64 @@
+.yamori-checkbox {
+  align-items: center;
+  border-radius: var(--yamori-border-radius-small);
+  box-sizing: border-box;
+  color: var(--yamori-text-on-action);
+  display: flex;
+  height: 1rem;
+  position: relative;
+  width: 1rem;
+
+  &:has(input:not(:checked):not(:indeterminate)) {
+    border-style: solid;
+    border-width: var(--yamori-border-width-small);
+  }
+
+  &:has(input:enabled) {
+    background-color: var(--yamori-surface-primary);
+    border-color: var(--yamori-border-primary);
+
+    &:hover {
+      border-color: var(--yamori-border-hover);
+    }
+
+    &:active {
+      border-color: var(--yamori-border-active);
+    }
+
+    &:has(input:checked),
+    &:has(input:indeterminate) {
+      background-color: var(--yamori-surface-action);
+
+      &:hover {
+        background-color: var(--yamori-surface-action-hover);
+      }
+
+      &:active {
+        background-color: var(--yamori-surface-action-active);
+      }
+    }
+  }
+
+  &:has(input:disabled) {
+    border-color: var(--yamori-border-disabled);
+
+    &:has(input:checked),
+    &:has(input:indeterminate) {
+      background-color: var(--yamori-surface-action-disabled);
+    }
+  }
+
+  input {
+    appearance: none;
+    height: inherit;
+    left: calc(-1 * var(--yamori-border-width-small));
+    margin: 0;
+    position: absolute;
+    width: inherit;
+
+    &:checked,
+    &:indeterminate {
+      left: 0;
+    }
+  }
+}

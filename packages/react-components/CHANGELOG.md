@@ -1,5 +1,16 @@
 # @yamori-design/react-components
 
+## 1.0.0
+
+### Major Changes
+
+- Finish basic structure and add control input components
+
+### Patch Changes
+
+- Updated dependencies
+  - @yamori-design/icons@1.2.0
+
 ## 0.8.0
 
 ### Minor Changes

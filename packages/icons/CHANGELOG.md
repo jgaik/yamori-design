@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.2.0
+
+### Minor Changes
+
+- Finish basic structure and add control input components
+
 ## 1.1.0
 
 ### Minor Changes

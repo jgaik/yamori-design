@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.0.0
+
+### Major Changes
+
+- Finish basic structure and add control input components
+
 ## 0.6.0
 
 ### Minor Changes

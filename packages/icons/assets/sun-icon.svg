@@ -3,7 +3,7 @@
 <path d="M3 3L3.70711 3.70711" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12.7071 3L12 3.70711" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 12L12.7071 12.7071" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.70709 12L2.99999 12.7071" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.70711 12L3 12.7071" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8 1V2" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8 14V15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M14 8H15" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

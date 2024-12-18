@@ -49,7 +49,7 @@
     margin: 0;
     padding: var(--yamori-spacing-x-small) 0;
 
-    .yamori-option {
+    .yamori-select-option {
       @include mixins.yamori-font-body(medium);
 
       align-items: center;
@@ -99,7 +99,7 @@
       }
     }
 
-    li:last-child .yamori-option {
+    li:last-child .yamori-select-option {
       border-bottom: unset;
     }
   }

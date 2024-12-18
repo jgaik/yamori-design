@@ -26,6 +26,7 @@
     "@storybook/react": "^8.2.6",
     "@storybook/react-vite": "^8.2.6",
     "@vitejs/plugin-react": "^4.2.1",
+    "@yamori-shared/react-utilities": "^1.2.1",
     "eslint": "^9.13.0",
     "eslint-plugin-storybook": "^0.10.1",
     "globals": "^15.11.0",

@@ -8,14 +8,14 @@ import {
   useRef,
 } from "react";
 import { MinusIcon, CheckIcon } from "@yamori-design/icons";
-import { bemClassNamesCreator } from "../utilities";
+import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 
-export type CheckboxProps = Omit<
-  ComponentPropsWithoutRef<"input">,
-  "checked" | "type"
-> & {
-  checked: boolean | "mixed";
-};
+export type CheckboxProps = OverwriteAndMerge<
+  Omit<ComponentPropsWithoutRef<"input">, "type">,
+  {
+    checked: boolean | "mixed";
+  }
+>;
 
 export const Checkbox = forwardRef<ElementRef<"input">, CheckboxProps>(
   ({ className, checked, ...props }, ref) => {

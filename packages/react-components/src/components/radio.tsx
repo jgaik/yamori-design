@@ -5,13 +5,12 @@ import {
   useMemo,
 } from "react";
 import { bemClassNamesCreator } from "../utilities";
+import { WithRequired } from "@yamori-shared/react-utilities";
 
-export type RadioProps = Omit<
-  ComponentPropsWithoutRef<"input">,
-  "checked" | "type"
-> & {
-  checked: boolean;
-};
+export type RadioProps = WithRequired<
+  Omit<ComponentPropsWithoutRef<"input">, "type">,
+  "checked"
+>;
 
 export const Radio = forwardRef<ElementRef<"input">, RadioProps>(
   ({ className, ...props }, ref) => {

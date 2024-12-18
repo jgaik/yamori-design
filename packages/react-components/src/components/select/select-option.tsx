@@ -3,14 +3,14 @@ import { useSelectContext } from "./select-context";
 import { useListItem } from "@floating-ui/react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../../utilities";
 
-export type OptionProps = OverwriteAndMerge<
+export type SelectOptionProps = OverwriteAndMerge<
   Omit<ComponentPropsWithoutRef<"button">, "tabIndex">,
   {
     value: string;
   }
 >;
 
-export const Option: React.FC<OptionProps> = ({
+export const SelectOption: React.FC<SelectOptionProps> = ({
   className,
   value,
   onClick,
@@ -28,7 +28,7 @@ export const Option: React.FC<OptionProps> = ({
     () =>
       bemClassNamesCreator.create(
         [
-          "option",
+          "select-option",
           {
             selected: isSelected,
           },
@@ -41,7 +41,7 @@ export const Option: React.FC<OptionProps> = ({
   return (
     <li>
       <button
-        className={bemClassNames["option"]}
+        className={bemClassNames["select-option"]}
         ref={ref}
         tabIndex={isActive ? 0 : -1}
         {...getItemProps({
@@ -56,4 +56,4 @@ export const Option: React.FC<OptionProps> = ({
   );
 };
 
-Option.displayName = "Select.Option";
+SelectOption.displayName = "Select.Option";

@@ -1,10 +1,12 @@
 import { Meta, StoryFn } from "@storybook/react";
 import {
   Button,
+  DialogProvider as DialogProviderComponent,
   Dialog as DialogComponent,
   DialogFooterProps,
   DialogHeaderProps,
   DialogProps,
+  useDialog,
 } from "@yamori-design/react-components";
 import { ElementRef, useRef } from "react";
 import "@yamori-design/styles/dist/components/button.css";
@@ -27,22 +29,23 @@ export default {
     withCancel: {
       if: { arg: "includeFooter" },
     },
-    withClose: {
-      if: { arg: "includeHeader" },
-    },
     header: {
       control: "text",
       if: { arg: "includeHeader" },
     },
+    withClose: {
+      if: { arg: "includeHeader" },
+    },
   },
   args: {
+    children: "Content",
+    closeOnOutsideClick: true,
     confirmLabel: "Confirm",
     header: "Header" as unknown as DialogComponentProps["header"],
-    children: "Content",
-    withCancel: true,
-    withClose: true,
     includeFooter: true,
     includeHeader: true,
+    withCancel: true,
+    withClose: true,
   },
 } satisfies Meta<DialogComponentProps>;
 
@@ -64,7 +67,6 @@ export const Dialog: StoryFn<DialogComponentProps> = ({
       <DialogComponent
         {...args}
         ref={dialogRef}
-        onOutsideClick={() => dialogRef.current?.close()}
         header={
           includeHeader ? (
             <DialogComponent.Header withClose={withClose}>
@@ -90,3 +92,51 @@ export const Dialog: StoryFn<DialogComponentProps> = ({
     </>
   );
 };
+
+export const DialogProvider: StoryFn<DialogComponentProps> = ({
+  confirmLabel,
+  children,
+  header,
+  includeFooter,
+  includeHeader,
+  withCancel,
+  withClose,
+  ...args
+}) => {
+  const { showDialog } = useDialog();
+
+  return (
+    <Button
+      onClick={() =>
+        showDialog(children, {
+          header: includeHeader ? (
+            <DialogComponent.Header withClose={withClose}>
+              {header}
+            </DialogComponent.Header>
+          ) : undefined,
+          footer: includeFooter ? (
+            <DialogComponent.Footer
+              withCancel={withCancel}
+              confirmLabel={confirmLabel}
+              onConfirmClick={() => {
+                alert("Confirm button clicked");
+                return true;
+              }}
+            />
+          ) : undefined,
+          ...args,
+        })
+      }
+    >
+      Show
+    </Button>
+  );
+};
+
+DialogProvider.decorators = [
+  (Story) => (
+    <DialogProviderComponent>
+      <Story />
+    </DialogProviderComponent>
+  ),
+];

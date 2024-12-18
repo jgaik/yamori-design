@@ -1,4 +1,3 @@
-import { WithRequired } from "@yamori-shared/react-utilities";
 import {
   ComponentPropsWithoutRef,
   ElementRef,
@@ -15,8 +14,8 @@ import { DialogFooter, DialogFooterProps } from "./dialog-footer";
 
 type HtmlDialogProps = ComponentPropsWithoutRef<"dialog">;
 
-export type DialogProps = WithRequired<HtmlDialogProps, "children"> & {
-  onOutsideClick?: HtmlDialogProps["onClick"];
+export type DialogProps = HtmlDialogProps & {
+  closeOnOutsideClick?: boolean;
   header?: ReactElement<DialogHeaderProps>;
   footer?: ReactElement<DialogFooterProps>;
 };
@@ -32,7 +31,7 @@ export const Dialog = Object.assign(
         footer,
         header,
         onClick,
-        onOutsideClick,
+        closeOnOutsideClick,
         ...props
       },
       ref
@@ -61,10 +60,10 @@ export const Dialog = Object.assign(
           onClick={(event) => {
             onClick?.(event);
             if (
-              onOutsideClick &&
+              closeOnOutsideClick &&
               !sectionRef.current?.contains(event.target as Node)
             ) {
-              onOutsideClick(event);
+              dialogRef.current?.close();
             }
           }}
           ref={dialogRef}

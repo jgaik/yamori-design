@@ -3,14 +3,18 @@
     "translation": {
       "dark": "Dark",
       "default": "Default",
-      "light": "Light"
+      "light": "Light",
+      "cancel": "Cancel",
+      "close": "Close"
     }
   },
   "ja": {
     "translation": {
       "dark": "暗い",
       "default": "デフォルト",
-      "light": "明るい"
+      "light": "明るい",
+      "cancel": "取り消し",
+      "close": "閉じる"
     }
   }
 }

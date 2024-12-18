@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../../utilities";
-import { Option } from "./option";
+import { SelectOption, SelectOptionProps } from "./select-option";
 import {
   autoUpdate,
   flip,
@@ -33,7 +33,7 @@ import { SelectContextProvider, SelectContextValue } from "./select-context";
 export type SelectProps = OverwriteAndMerge<
   Omit<ComponentPropsWithoutRef<"button">, "type">,
   {
-    children: Array<ReactElement<ComponentPropsWithoutRef<typeof Option>>>;
+    children: Array<ReactElement<SelectOptionProps>>;
     clearable?: boolean;
     onChange: (value: string | null) => void;
     placeholder?: string;
@@ -41,6 +41,8 @@ export type SelectProps = OverwriteAndMerge<
     portalProps?: FloatingPortalProps;
   }
 >;
+
+export type { SelectOptionProps };
 
 export const Select = Object.assign(
   forwardRef<ElementRef<"button">, SelectProps>(
@@ -169,5 +171,5 @@ export const Select = Object.assign(
       ];
     }
   ),
-  { Option }
+  { Option: SelectOption }
 );

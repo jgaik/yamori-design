@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { GeckoIcon, HomeIcon } from "@yamori-design/icons";
-import { Button, Link } from "@yamori-design/react-components";
+import { Link } from "@yamori-design/react-components";
 import "@yamori-design/styles/dist/components/link.css";
 import "./introduction.scss";
 

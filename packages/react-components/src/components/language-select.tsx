@@ -1,7 +1,7 @@
 import { usePackageTranslation } from "../i18n";
 import { Select } from "./select";
 
-type LanguageSelectProps = {
+export type LanguageSelectProps = {
   supportedLanguages: string[];
   onChange?: (language: string) => void;
 };

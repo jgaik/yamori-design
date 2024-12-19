@@ -8,3 +8,4 @@ export * from "./select";
 export * from "./separator";
 export * from "./switch";
 export * from "./theme-select";
+export * from "./navigation-bar";

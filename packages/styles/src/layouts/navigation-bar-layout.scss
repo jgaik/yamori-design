@@ -1,0 +1,18 @@
+@use "../components/navigation-bar.scss";
+
+.yamori-navigation-bar-layout {
+  height: 100dvh;
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 100dvw;
+
+  &__content {
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: var(--yamori-spacing-large);
+    position: absolute;
+    right: 0;
+  }
+}

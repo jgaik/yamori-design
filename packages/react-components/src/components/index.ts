@@ -3,6 +3,7 @@ export * from "./checkbox";
 export * from "./dialog";
 export * from "./language-select";
 export * from "./link";
+export * from "./navigation-bar";
 export * from "./radio";
 export * from "./select";
 export * from "./separator";

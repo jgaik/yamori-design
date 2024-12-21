@@ -11,12 +11,13 @@
   position: relative;
   padding: var(--yamori-spacing-large);
 
-  > div {
+  &__links-container {
     flex: 1;
     min-width: 0;
   }
 
-  nav {
+  &__links {
+    box-sizing: border-box;
     align-items: center;
     gap: var(--yamori-spacing-medium);
     display: flex;
@@ -25,35 +26,59 @@
     padding: 0;
     width: 100%;
 
-    > * {
+    > a {
       flex-shrink: 0;
     }
   }
 
-  > hr {
+  &__controls {
+    box-sizing: border-box;
+    align-items: center;
+    display: flex;
+    gap: var(--yamori-spacing-medium);
+    justify-content: flex-end;
+  }
+
+  hr {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
   }
 
-  &:has(dialog[open]) > hr {
+  &:has(&__dialog[open]) > hr {
     display: none;
   }
 
-  dialog[open] {
-    padding: 0;
-    width: 100%;
-    top: 100%;
+  &__dialog[open] {
+    align-items: flex-start;
     background-color: var(--yamori-surface-page);
-    color: inherit;
-    margin: 0;
     border: none;
+    box-sizing: border-box;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    max-height: calc(100dvh - 100%);
+    padding: var(--yamori-spacing-large) 0;
+    row-gap: var(--yamori-spacing-medium);
+    top: 100%;
+    width: 100%;
+    z-index: 1;
 
-    nav {
-      align-items: flex-start;
-      flex-direction: column;
-      padding-bottom: var(--yamori-spacing-medium);
+    > * {
+      padding: 0 var(--yamori-spacing-large);
     }
+  }
+
+  &__dialog &__links {
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  &__dialog &__controls {
+    flex-wrap: wrap;
+    width: 100%;
   }
 }

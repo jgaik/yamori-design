@@ -7,28 +7,32 @@ import "@yamori-design/styles/dist/components/navigation-bar.css";
 
 export default {
   component: NavigationBarComponent,
-  tags: ["!autdocs"],
+  tags: ["!autodocs"],
   args: {
+    languageSelectProps: {
+      supportedLanguages: ["en", "ja"],
+    },
+    homeHref: location.origin,
     links: [
       {
         href: "#1",
-        label: "Link1",
+        children: "Link1",
       },
       {
         href: "#2",
-        label: "Link2",
+        children: "Link2",
       },
       {
         href: "#3",
-        label: "Link3",
+        children: "Link3",
       },
       {
         href: "#4",
-        label: "Link4",
+        children: "Link4",
       },
       {
         href: "#5",
-        label: "Link5",
+        children: "Link5",
       },
     ],
   },

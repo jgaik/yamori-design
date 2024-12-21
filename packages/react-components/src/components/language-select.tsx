@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { usePackageTranslation } from "../i18n";
 import { Select } from "./select";
 
@@ -17,6 +18,18 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
 }) => {
   const { i18n } = usePackageTranslation();
 
+  const options = useMemo(
+    () =>
+      Object.entries(SUPPORTED_LANGUAGES).filter(([lng]) =>
+        supportedLanguages.includes(lng)
+      ),
+    [supportedLanguages]
+  );
+
+  if (options.length === 0) {
+    return null;
+  }
+
   return (
     <Select
       value={i18n.resolvedLanguage ?? null}
@@ -25,13 +38,11 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
         onChange?.(value!);
       }}
     >
-      {Object.entries(SUPPORTED_LANGUAGES)
-        .filter(([lng]) => supportedLanguages.includes(lng))
-        .map(([value, label]) => (
-          <Select.Option key={value} value={value}>
-            {label}
-          </Select.Option>
-        ))}
+      {options.map(([value, label]) => (
+        <Select.Option key={value} value={value}>
+          {label}
+        </Select.Option>
+      ))}
     </Select>
   );
 };

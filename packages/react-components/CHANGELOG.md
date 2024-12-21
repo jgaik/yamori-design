@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.2.0
+
+### Minor Changes
+
+- Add NavigationBar and Layout
+
 ## 1.1.0
 
 ### Minor Changes

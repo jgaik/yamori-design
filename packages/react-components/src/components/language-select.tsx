@@ -1,11 +1,15 @@
 import { useMemo } from "react";
 import { usePackageTranslation } from "../i18n";
-import { Select } from "./select";
+import { Select, SelectProps } from "./select";
+import { OverwriteAndMerge } from "../utilities";
 
-export type LanguageSelectProps = {
-  supportedLanguages: string[];
-  onChange?: (language: string) => void;
-};
+export type LanguageSelectProps = OverwriteAndMerge<
+  Omit<SelectProps, "value" | "onChange" | "children">,
+  {
+    supportedLanguages: string[];
+    onChange?: (language: string) => void;
+  }
+>;
 
 const SUPPORTED_LANGUAGES: Record<string, string> = {
   en: "English",
@@ -15,6 +19,7 @@ const SUPPORTED_LANGUAGES: Record<string, string> = {
 export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   supportedLanguages,
   onChange,
+  ...props
 }) => {
   const { i18n } = usePackageTranslation();
 
@@ -37,6 +42,7 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
         i18n.changeLanguage(value!);
         onChange?.(value!);
       }}
+      {...props}
     >
       {options.map(([value, label]) => (
         <Select.Option key={value} value={value}>

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.2.1
+
+### Patch Changes
+
+- Update styling for NavigatorBar
+
 ## 1.2.0
 
 ### Minor Changes

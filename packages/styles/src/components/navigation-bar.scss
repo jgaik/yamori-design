@@ -51,34 +51,30 @@
   }
 
   &__dialog[open] {
-    align-items: flex-start;
     background-color: var(--yamori-surface-page);
     border: none;
-    box-sizing: border-box;
     color: inherit;
     display: flex;
     flex-direction: column;
     margin: 0;
     max-height: calc(100dvh - 100%);
-    padding: var(--yamori-spacing-large) 0;
-    row-gap: var(--yamori-spacing-medium);
+    padding: 0;
     top: 100%;
     width: 100%;
     z-index: 1;
-
-    > * {
-      padding: 0 var(--yamori-spacing-large);
-    }
   }
 
   &__dialog &__links {
-    align-items: flex-start;
+    align-items: flex-end;
     flex-direction: column;
     overflow-y: auto;
+    padding: var(--yamori-spacing-large);
   }
 
   &__dialog &__controls {
     flex-wrap: wrap;
     width: 100%;
+    padding: 0 var(--yamori-spacing-large);
+    padding-bottom: var(--yamori-spacing-large);
   }
 }

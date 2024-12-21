@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { usePackageTranslation } from "../i18n";
-import { Select } from "./select";
+import { Select, SelectProps } from "./select";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
 import { useMediaQuery } from "usehooks-ts";
 
@@ -14,7 +14,12 @@ const LOCAL_STORAGE_KEY = "@yamori-design:theme";
 
 export type ThemeOption = keyof typeof THEME_OPTIONS_MAP;
 
-export const ThemeSelect: React.FC = () => {
+export type ThemeSelectProps = Omit<
+  SelectProps,
+  "value" | "onChange" | "children"
+>;
+
+export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
   const { t } = usePackageTranslation();
 
   const [value, setValue] = useState<ThemeOption>("default");
@@ -58,6 +63,7 @@ export const ThemeSelect: React.FC = () => {
       onChange={(value) => {
         onThemeChange(value as ThemeOption);
       }}
+      {...props}
     >
       {Object.entries(THEME_OPTIONS_MAP).map(([themeOption, icon]) => (
         <Select.Option key={themeOption} value={themeOption}>

@@ -17,6 +17,7 @@ import { Link, LinkProps } from "./link";
 import { Separator } from "./separator";
 import { ThemeSelect } from "./theme-select";
 import { usePackageTranslation } from "../i18n";
+import { FloatingPortalProps } from "@floating-ui/react";
 
 const Links: React.FC<
   Pick<NavigationBarProps, "className" | "links" | "homeHref"> & {
@@ -57,8 +58,10 @@ const Links: React.FC<
 };
 
 const Controls: React.FC<
-  Pick<NavigationBarProps, "className" | "languageSelectProps">
-> = ({ className, languageSelectProps }) => {
+  Pick<NavigationBarProps, "className" | "languageSelectProps"> & {
+    portalProps?: FloatingPortalProps;
+  }
+> = ({ className, languageSelectProps, portalProps }) => {
   const { i18n } = useTranslation();
 
   return (
@@ -70,9 +73,10 @@ const Controls: React.FC<
             i18n.changeLanguage(lng);
             languageSelectProps.onChange?.(lng);
           }}
+          portalProps={portalProps}
         />
       )}
-      <ThemeSelect />
+      <ThemeSelect portalProps={portalProps} />
     </div>
   );
 };
@@ -83,7 +87,7 @@ export type NavigationBarProps = Omit<
 > & {
   links: Array<LinkProps>;
   homeHref?: string;
-  languageSelectProps?: LanguageSelectProps;
+  languageSelectProps?: Omit<LanguageSelectProps, "portalProps">;
 };
 
 export const NavigationBar = forwardRef<
@@ -164,21 +168,6 @@ export const NavigationBar = forwardRef<
       ref={headerRef}
       {...props}
     >
-      {isCollapsed && (
-        <Button
-          aria-haspopup="menu"
-          variant="primary"
-          onClick={() => {
-            if (dialogRef.current?.open) {
-              dialogRef.current.close();
-            } else {
-              dialogRef.current?.show();
-            }
-          }}
-        >
-          <BurgerIcon />
-        </Button>
-      )}
       <div className={bemClassNames["links-container"]} ref={navContainerRef}>
         {!isCollapsed && (
           <Links
@@ -194,8 +183,27 @@ export const NavigationBar = forwardRef<
           languageSelectProps={languageSelectProps}
         />
       )}
+      {isCollapsed && (
+        <Button
+          aria-haspopup="menu"
+          variant="primary"
+          onClick={() => {
+            if (dialogRef.current?.open) {
+              dialogRef.current.close();
+            } else {
+              dialogRef.current?.show();
+            }
+          }}
+        >
+          <BurgerIcon />
+        </Button>
+      )}
       <Separator />
-      <dialog className={bemClassNames["dialog"]} ref={dialogRef}>
+      <dialog
+        id="navigation-bar-dialog"
+        className={bemClassNames["dialog"]}
+        ref={dialogRef}
+      >
         <Links
           className={bemClassNames["links"]}
           homeHref={homeHref}
@@ -206,6 +214,7 @@ export const NavigationBar = forwardRef<
         <Controls
           className={bemClassNames["controls"]}
           languageSelectProps={languageSelectProps}
+          portalProps={{ id: "navigation-bar-dialog" }}
         />
         <Separator />
       </dialog>

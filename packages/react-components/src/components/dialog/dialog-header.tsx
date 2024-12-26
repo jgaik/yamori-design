@@ -47,3 +47,5 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({
     </header>
   );
 };
+
+DialogHeader.displayName = "Dialog.Header";

@@ -1,0 +1,16 @@
+.yamori-list {
+  margin: 0;
+  padding-left: var(--yamori-spacing-large);
+
+  &--first {
+    padding: 0;
+  }
+
+  .yamori-list-item {
+    display: block;
+
+    &__marker {
+      margin-right: var(--yamori-spacing-medium);
+    }
+  }
+}

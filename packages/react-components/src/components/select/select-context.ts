@@ -11,15 +11,15 @@ export type SelectContextValue = {
 const SelectContext = createContext<SelectContextValue | null>(null);
 
 export function useSelectContext() {
-  const selectContext = useContext(SelectContext);
+  const selectContextValue = useContext(SelectContext);
 
-  if (!selectContext) {
+  if (!selectContextValue) {
     throw new Error(
       "[@yamori-design/react-components][Select] The Option component must be a child of the Select component."
     );
   }
 
-  return selectContext;
+  return selectContextValue;
 }
 
 export const SelectContextProvider = SelectContext.Provider;

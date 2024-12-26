@@ -51,3 +51,5 @@ export const DialogFooter: React.FC<DialogFooterProps> = ({
     </footer>
   );
 };
+
+DialogFooter.displayName = "Dialog.Footer";

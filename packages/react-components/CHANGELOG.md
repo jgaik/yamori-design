@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.3.0
+
+### Minor Changes
+
+- Add List and Details components
+
 ## 1.2.1
 
 ### Patch Changes

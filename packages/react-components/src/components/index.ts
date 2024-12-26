@@ -1,5 +1,6 @@
 export * from "./button";
 export * from "./checkbox";
+export * from "./details";
 export * from "./dialog";
 export * from "./language-select";
 export * from "./link";

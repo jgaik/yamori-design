@@ -28,7 +28,7 @@ export const Details = forwardRef<ElementRef<"details">, DetailsProps>(
 
     return (
       <details className={bemClassNames["details"]} ref={ref} {...props}>
-        <summary className={bemClassNames["summary"]} {...props}>
+        <summary className={bemClassNames["summary"]}>
           {<ArrowDownIcon className={bemClassNames["arrow"]} />}
           {summary}
         </summary>

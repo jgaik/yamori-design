@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.3.1
+
+### Patch Changes
+
+- Update summary props
+
 ## 1.3.0
 
 ### Minor Changes

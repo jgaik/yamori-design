@@ -1,9 +1,10 @@
 .yamori-list {
-  margin: 0;
-  padding-left: var(--yamori-spacing-large);
+  margin: var(--yamori-spacing-large) 0;
+  padding: 0;
 
-  &--first {
-    padding: 0;
+  & & {
+    margin: var(--yamori-spacing-medium) 0;
+    padding-left: var(--yamori-spacing-large);
   }
 
   .yamori-list-item {

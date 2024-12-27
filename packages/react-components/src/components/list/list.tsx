@@ -27,12 +27,8 @@ export const List = Object.assign(
       const ListTag = ordered ? "ol" : "ul";
 
       const bemClassNames = useMemo(
-        () =>
-          bemClassNamesCreator.create(
-            ["list", { first: level < 0 }],
-            className
-          ),
-        [className, level]
+        () => bemClassNamesCreator.create("list", className),
+        [className]
       );
 
       const listContextValue = useMemo<ListContextValue>(

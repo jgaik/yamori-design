@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.3.4
+
+### Patch Changes
+
+- Add margin and remove unnecessary class modifier for List
+
 ## 1.3.3
 
 ### Patch Changes

@@ -9,7 +9,7 @@
   .yamori-list-item {
     display: block;
 
-    &__marker {
+    &__label > :first-child {
       margin-right: var(--yamori-spacing-medium);
     }
   }

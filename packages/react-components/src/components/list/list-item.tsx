@@ -1,6 +1,7 @@
 import {
   ComponentPropsWithoutRef,
   ElementRef,
+  ReactNode,
   useLayoutEffect,
   useMemo,
   useRef,
@@ -15,15 +16,20 @@ import {
 import { bemClassNamesCreator } from "../../utilities";
 import { assertNonNullable } from "@yamori-shared/react-utilities";
 
-export type ListItemProps = ComponentPropsWithoutRef<"li">;
+export type ListItemProps = ComponentPropsWithoutRef<"li"> & {
+  label: NonNullable<ReactNode>;
+  labelTag?: keyof JSX.IntrinsicElements;
+};
 
 export const ListItem: React.FC<ListItemProps> = ({
   children,
   className,
+  label,
+  labelTag: LabelTag = "div",
   ...props
 }) => {
   const bemClassNames = useMemo(
-    () => bemClassNamesCreator.create("list-item", className, "marker"),
+    () => bemClassNamesCreator.create("list-item", className, "label"),
     [className]
   );
 
@@ -56,9 +62,10 @@ export const ListItem: React.FC<ListItemProps> = ({
   return (
     <li ref={liRef} className={bemClassNames["list-item"]} {...props}>
       <ListItemContextProvider value={listItemContextValue}>
-        <span className={bemClassNames["marker"]}>
-          {ordered ? `${levelMarker}${order}.` : "•"}
-        </span>
+        <LabelTag className={bemClassNames["label"]}>
+          <span>{ordered ? `${levelMarker}${order}.` : "•"}</span>
+          {label}
+        </LabelTag>
         {children}
       </ListItemContextProvider>
     </li>

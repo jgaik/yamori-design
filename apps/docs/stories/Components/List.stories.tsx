@@ -25,11 +25,10 @@ export const List: StoryFn<ListProps> = ({ children, ...args }) => {
   return (
     <ListComponent {...args}>
       {items.map((item, index) => (
-        <ListComponent.Item key={index}>
-          {item.trim()}
+        <ListComponent.Item key={index} label={item.trim()} labelTag="h6">
           <ListComponent {...args}>
             {items.slice(index).map((item, index) => (
-              <ListComponent.Item key={index}>{item.trim()}</ListComponent.Item>
+              <ListComponent.Item key={index} label={item.trim()} />
             ))}
           </ListComponent>
         </ListComponent.Item>

@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.3.2
+
+### Patch Changes
+
+- Update List.Item structure to simplify usage
+
 ## 1.3.1
 
 ### Patch Changes

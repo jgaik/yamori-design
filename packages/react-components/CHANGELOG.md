@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.3.3
+
+### Patch Changes
+
+- Update List.Item structure to simplify usage
+
 ## 1.3.2
 
 ### Patch Changes

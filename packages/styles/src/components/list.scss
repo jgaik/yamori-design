@@ -10,8 +10,9 @@
   .yamori-list-item {
     display: block;
 
-    &__label > :first-child {
-      margin-right: var(--yamori-spacing-medium);
+    &__label {
+      display: flex;
+      column-gap: var(--yamori-spacing-medium);
     }
   }
 }

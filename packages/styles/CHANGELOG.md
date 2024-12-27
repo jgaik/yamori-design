@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.3.4
+
+### Patch Changes
+
+- Change List.Item label to flex
+
 ## 1.3.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.3.5
+
+### Patch Changes
+
+- Make Details summary sticky
+
 ## 1.3.4
 
 ### Patch Changes

@@ -3,9 +3,11 @@ import {
   ElementRef,
   forwardRef,
   ReactNode,
+  useCallback,
   useMemo,
+  useRef,
 } from "react";
-import { bemClassNamesCreator } from "../../utilities";
+import { bemClassNamesCreator } from "../utilities";
 import { ArrowDownIcon } from "@yamori-design/icons";
 
 export type DetailsProps = ComponentPropsWithoutRef<"details"> & {
@@ -26,13 +28,23 @@ export const Details = forwardRef<ElementRef<"details">, DetailsProps>(
       [className]
     );
 
+    const summaryRef = useRef<ElementRef<"summary">>(null);
+
+    const contentCallbackRef = useCallback((node: HTMLElement | null) => {
+      if (node && summaryRef.current) {
+        node.style.top = `${summaryRef.current.offsetHeight}px`;
+      }
+    }, []);
+
     return (
       <details className={bemClassNames["details"]} ref={ref} {...props}>
-        <summary className={bemClassNames["summary"]}>
+        <summary ref={summaryRef} className={bemClassNames["summary"]}>
           {<ArrowDownIcon className={bemClassNames["arrow"]} />}
           {summary}
         </summary>
-        <div className={bemClassNames["content"]}>{children}</div>
+        <div ref={contentCallbackRef} className={bemClassNames["content"]}>
+          {children}
+        </div>
       </details>
     );
   }

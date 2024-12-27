@@ -1,19 +1,23 @@
 .yamori-details {
   border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
   border-radius: var(--yamori-border-radius-small);
+  overflow-y: auto;
+  position: relative;
 
   &__content {
     padding: var(--yamori-spacing-large);
-    overflow-y: auto;
   }
 
   &__summary {
     align-items: center;
+    background-color: var(--yamori-surface-primary);
+    color: var(--yamori-text-action);
     cursor: pointer;
     display: flex;
     gap: var(--yamori-spacing-medium);
     padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
-    color: var(--yamori-text-action);
+    position: sticky;
+    top: calc(-1 * var(--yamori-border-width-small));
 
     &:hover {
       color: var(--yamori-text-action-hover);

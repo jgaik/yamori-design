@@ -1,6 +1,5 @@
 @use "../mixins";
 @use "./button.scss";
-@use "./separator.scss";
 
 .yamori-dialog {
   background-color: var(--yamori-surface-primary);
@@ -27,6 +26,8 @@
     @include mixins.yamori-font-body(medium, bold);
 
     align-items: center;
+    border-bottom: var(--yamori-border-width-small) solid
+      var(--yamori-border-primary);
     box-sizing: border-box;
     column-gap: var(--yamori-spacing-large);
     display: flex;
@@ -38,13 +39,6 @@
     &__content {
       flex-grow: 1;
       text-align: center;
-    }
-
-    &__separator {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
     }
   }
 

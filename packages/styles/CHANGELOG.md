@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.3.1
+
+### Patch Changes
+
+- Replace Separators with borders and add githubHref prop
+
 ## 1.3.0
 
 ### Minor Changes

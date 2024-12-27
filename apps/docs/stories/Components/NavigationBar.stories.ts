@@ -13,6 +13,7 @@ export default {
       supportedLanguages: ["en", "ja"],
     },
     homeHref: location.origin,
+    githubHref: "https://github.com/jgaik/yamori-design",
     links: [
       {
         href: "#1",

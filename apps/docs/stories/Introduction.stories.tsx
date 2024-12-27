@@ -30,7 +30,7 @@ const IntroductionComponent: React.FC = () => (
         <Link href={location.origin}>
           <HomeIcon className="introduction-story__home" />
         </Link>
-        <Link href="https://github.com/jgaik/yamori-design">
+        <Link href="https://github.com/jgaik/yamori-design" target="_blank">
           <img
             className="introduction-story__github"
             src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"

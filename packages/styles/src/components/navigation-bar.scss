@@ -1,11 +1,13 @@
 @use "./button.scss";
 @use "./link.scss";
 @use "./select.scss";
-@use "./separator.scss";
+@use "../mixins";
 
 .yamori-navigation-bar {
   align-items: center;
   background-color: var(--yamori-surface-page);
+  border-bottom: var(--yamori-border-width-small) solid
+    var(--yamori-border-primary);
   column-gap: var(--yamori-spacing-medium);
   display: flex;
   position: relative;
@@ -37,22 +39,21 @@
     display: flex;
     gap: var(--yamori-spacing-medium);
     justify-content: flex-end;
+
+    a img.github {
+      width: 1.5rem;
+    }
   }
 
-  hr {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-
-  &:has(&__dialog[open]) > hr {
-    display: none;
+  &:has(&__dialog[open]) {
+    border: none;
   }
 
   &__dialog[open] {
     background-color: var(--yamori-surface-page);
     border: none;
+    border-bottom: var(--yamori-border-width-small) solid
+      var(--yamori-border-primary);
     color: inherit;
     display: flex;
     flex-direction: column;
@@ -76,5 +77,11 @@
     width: 100%;
     padding: 0 var(--yamori-spacing-large);
     padding-bottom: var(--yamori-spacing-large);
+  }
+}
+
+@include mixins.within-yamori-theme(dark) {
+  .yamori-navigation-bar__controls a img.github {
+    filter: invert(1);
   }
 }

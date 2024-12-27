@@ -3,7 +3,6 @@ import { CloseIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator } from "../../utilities";
 import { Button } from "../button";
 import { useDialogContext } from "./dialog-context";
-import { Separator } from "../separator";
 import { usePackageTranslation } from "../../i18n";
 
 export type DialogHeaderProps = ComponentPropsWithoutRef<"header"> & {
@@ -17,13 +16,7 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({
   ...props
 }) => {
   const bemClassNames = useMemo(
-    () =>
-      bemClassNamesCreator.create(
-        "dialog-header",
-        className,
-        "content",
-        "separator"
-      ),
+    () => bemClassNamesCreator.create("dialog-header", className, "content"),
     [className]
   );
 
@@ -43,7 +36,6 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({
           <CloseIcon />
         </Button>
       )}
-      <Separator className={bemClassNames["separator"]} />
     </header>
   );
 };

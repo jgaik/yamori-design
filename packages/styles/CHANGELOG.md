@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.4.0
+
+### Minor Changes
+
+- Add Table base
+
 ## 1.3.6
 
 ### Patch Changes

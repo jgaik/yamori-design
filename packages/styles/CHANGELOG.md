@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 1.3.6
+
+### Patch Changes
+
+- Remove unnecessary code
+
 ## 1.3.5
 
 ### Patch Changes

@@ -1,7 +1,6 @@
 .yamori-details {
   border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
   border-radius: var(--yamori-border-radius-small);
-  overflow-y: auto;
   position: relative;
 
   &__content {
@@ -30,6 +29,10 @@
     &:focus-visible {
       outline-offset: 0;
     }
+  }
+
+  &[open] {
+    overflow-y: auto;
   }
 
   &:not([open]) {

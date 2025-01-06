@@ -1,5 +1,5 @@
 import React, {
-  ElementRef,
+  ComponentRef,
   PropsWithChildren,
   useLayoutEffect,
   useMemo,
@@ -26,8 +26,8 @@ export const NavigationBarLayout: React.FC<NavigationBarLayoutProps> = ({
     [className]
   );
 
-  const navBarRef = useRef<ElementRef<typeof NavigationBar>>(null);
-  const contentRef = useRef<ElementRef<"div">>(null);
+  const navBarRef = useRef<ComponentRef<typeof NavigationBar>>(null);
+  const contentRef = useRef<ComponentRef<"div">>(null);
 
   useLayoutEffect(() => {
     if (!navBarRef.current || !contentRef.current) return;

@@ -1,6 +1,8 @@
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 
+type TypeOrArrayOfType<T> = T | T[];
+
 export type TableColumnValueGetterProps<RowData extends object> = {
   data: RowData;
 };
@@ -17,10 +19,15 @@ export type TableColumnHeaderRendererProps = {
 export type TableColumn<RowData extends object> = {
   id: string;
   header: string;
-  valueGetter: (props: TableColumnValueGetterProps<RowData>) => string;
+  valueGetter?: (
+    props: TableColumnValueGetterProps<RowData>
+  ) => TypeOrArrayOfType<string>;
   align?: "left" | "center";
-  cellRenderer?: (props: TableColumnCellRendererProps<RowData>) => ReactNode;
+  cellRenderer?: TypeOrArrayOfType<
+    (props: TableColumnCellRendererProps<RowData>) => ReactNode
+  >;
   headerRenderer?: (props: TableColumnHeaderRendererProps) => ReactNode;
+  span?: number;
 };
 
 export type TableProps<RowData extends object> = OverwriteAndMerge<
@@ -44,16 +51,21 @@ export const Table = <RowData extends object>({
     [className]
   );
 
-  const headers = columns.map(({ id, header, headerRenderer }) => (
-    <th scope="col" key={id}>
+  const headers = columns.map(({ id, header, headerRenderer, span }) => (
+    <th scope="col" key={id} colSpan={span}>
       {headerRenderer?.({ header }) ?? header}
     </th>
   ));
   const rows = rowData.map((data) => (
     <tr key={getRowId(data)}>
-      {columns.map(({ id, valueGetter, cellRenderer }) => {
-        const value = valueGetter({ data });
-        return <td key={id}>{cellRenderer?.({ data, value }) ?? value}</td>;
+      {columns.flatMap(({ id, valueGetter, cellRenderer }) => {
+        const values = [valueGetter?.({ data }) ?? ""].flat();
+        const renderers = [cellRenderer].flat();
+        return values.map((value, index) => (
+          <td key={`${id}_${index}`}>
+            {renderers[index]?.({ data, value }) ?? value}
+          </td>
+        ));
       })}
     </tr>
   ));

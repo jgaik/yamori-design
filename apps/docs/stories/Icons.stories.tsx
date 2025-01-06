@@ -1,25 +1,26 @@
 import { Meta, StoryObj } from "@storybook/react";
 import * as IconComponents from "@yamori-design/icons";
+import { Table } from "@yamori-design/react-components";
 
 const IconsComponent: React.FC = () => (
-  <table>
-    <thead>
-      <tr>
-        <th scope="col">Icon</th>
-        <th scope="col">Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      {Object.entries(IconComponents).map(([displayName, IconComponent]) => (
-        <tr key={displayName}>
-          <td>
-            <IconComponent />
-          </td>
-          <td>{displayName}</td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  <Table
+    rowData={Object.entries(IconComponents).map(
+      ([displayName, IconComponent]) => ({ displayName, IconComponent })
+    )}
+    columns={[
+      {
+        id: "component",
+        header: "Icon",
+        cellRenderer: ({ data: { IconComponent } }) => <IconComponent />,
+      },
+      {
+        id: "name",
+        header: "Name",
+        valueGetter: ({ data }) => data.displayName,
+      },
+    ]}
+    getRowId={(data) => data.displayName}
+  />
 );
 
 IconsComponent.displayName = "Icons";

@@ -31,14 +31,6 @@
     }
   }
 
-  &[open] {
-    overflow-y: auto;
-  }
-
-  &:not([open]) {
-    width: fit-content;
-  }
-
   &:not([open]) &__arrow {
     transform: rotate(-90deg);
   }

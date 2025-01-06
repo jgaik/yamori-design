@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 1.4.1
+
+### Patch Changes
+
+- Remove overflow styling and update table typing
+
 ## 1.4.0
 
 ### Minor Changes

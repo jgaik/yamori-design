@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { GeckoIcon, HomeIcon } from "@yamori-design/icons";
-import { Link } from "@yamori-design/react-components";
+import { Link, Table } from "@yamori-design/react-components";
 import "@yamori-design/styles/dist/components/link.css";
 import "./introduction.scss";
 
@@ -49,31 +49,32 @@ const IntroductionComponent: React.FC = () => (
       The implementation consists of {Object.keys(packagesDescriptions).length}{" "}
       node packages distributed under <b>@yamori-design</b> scope.
     </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Package Name</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {Object.entries(packagesDescriptions).map(
-          ([packageName, description]) => (
-            <tr key={packageName}>
-              <td>
-                <Link
-                  target="_blank"
-                  href={`https://www.npmjs.com/package/@yamori-design/${packageName}`}
-                >
-                  @yamori-design/{packageName}
-                </Link>
-              </td>
-              <td>{description}</td>
-            </tr>
-          )
-        )}
-      </tbody>
-    </table>
+    <Table
+      rowData={Object.entries(packagesDescriptions).map(
+        ([packageName, description]) => ({ packageName, description })
+      )}
+      columns={[
+        {
+          id: "packageName",
+          header: "Package Name",
+          valueGetter: ({ data }) => data.packageName,
+          cellRenderer: ({ value }) => (
+            <Link
+              target="_blank"
+              href={`https://www.npmjs.com/package/@yamori-design/${value}`}
+            >
+              @yamori-design/{value}
+            </Link>
+          ),
+        },
+        {
+          id: "description",
+          header: "Description",
+          valueGetter: ({ data }) => data.description,
+        },
+      ]}
+      getRowId={(data) => data.packageName}
+    />
   </div>
 );
 

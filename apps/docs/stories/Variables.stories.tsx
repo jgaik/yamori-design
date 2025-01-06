@@ -1,5 +1,8 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { Details, Table } from "@yamori-design/react-components";
 import { useMemo } from "react";
+import "@yamori-design/styles/dist/components/details.css";
+import "@yamori-design/styles/dist/components/table.css";
 
 const NON_COLOR_CATEGORIES = [
   "border-radius",
@@ -8,210 +11,76 @@ const NON_COLOR_CATEGORIES = [
 ] as const;
 
 function getAllVariables() {
-  return Array.from(document.styleSheets)
-    .filter(
-      (sheet) =>
-        sheet.href === null || sheet.href.startsWith(window.location.origin)
+  return Array.from(
+    new Set(
+      Array.from(document.styleSheets)
+        .filter(
+          (sheet) =>
+            sheet.href === null || sheet.href.startsWith(window.location.origin)
+        )
+        .reduce<string[]>((acc, sheet) => {
+          const newAcc = [...acc];
+
+          for (let rulesIdx = 0; rulesIdx < sheet.cssRules.length; rulesIdx++) {
+            const rule = sheet.cssRules[rulesIdx];
+
+            if (
+              rule instanceof CSSStyleRule &&
+              /^:root(\[.*])?$/.test(rule.selectorText)
+            ) {
+              newAcc.push(
+                ...Array.from(rule.style).filter((style) =>
+                  style.startsWith("--yamori")
+                )
+              );
+            }
+          }
+
+          return newAcc;
+        }, [])
     )
-    .reduce<string[]>((acc, sheet) => {
-      const newAcc = [...acc];
-
-      for (let rulesIdx = 0; rulesIdx < sheet.cssRules.length; rulesIdx++) {
-        const rule = sheet.cssRules[rulesIdx];
-
-        if (
-          rule instanceof CSSStyleRule &&
-          /^:root(\[.*])?$/.test(rule.selectorText)
-        ) {
-          newAcc.push(
-            ...Array.from(rule.style).filter((style) =>
-              style.startsWith("--yamori")
-            )
-          );
-        }
-      }
-
-      return newAcc;
-    }, []);
+  );
 }
 
-type VariablesProps = { variables: string[] };
+type VariablesProps = {
+  summary: string;
+  variables: string[];
+  cellRenderer: (props: { value: string }) => React.ReactNode;
+};
 
-const ColorVariables: React.FC<VariablesProps> = ({ variables }) => (
-  <details open>
-    <summary>Colors</summary>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" colSpan={2}>
-            Value
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {variables.map((colorVariable) => (
-          <tr key={colorVariable}>
-            <td>{colorVariable}</td>
-            <td>
-              <div
-                style={{
-                  backgroundColor: `var(${colorVariable})`,
-                  width: "1rem",
-                  borderStyle: "solid",
-                  borderColor: "lightgrey",
-                  borderWidth: 1,
-                  height: "1rem",
-                  boxSizing: "border-box",
-                }}
-              />
-            </td>
-            <td>
-              {getComputedStyle(document.documentElement).getPropertyValue(
-                colorVariable
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </details>
+const VariablesTable: React.FC<VariablesProps> = ({
+  summary,
+  variables,
+  cellRenderer,
+}) => (
+  <Details summary={summary}>
+    <Table
+      columns={[
+        {
+          id: "name",
+          header: "Name",
+          valueGetter: ({ data }) => data.name,
+        },
+        {
+          id: "value",
+          header: "Value",
+          valueGetter: ({ data }) => [data.name, data.value],
+          cellRenderer: [cellRenderer],
+          span: 2,
+        },
+      ]}
+      rowData={variables.map((variable) => ({
+        name: variable,
+        value: getComputedStyle(document.documentElement).getPropertyValue(
+          variable
+        ),
+      }))}
+      getRowId={(data) => data.name}
+    />
+  </Details>
 );
 
-const SpacingVariables: React.FC<VariablesProps> = ({ variables }) => (
-  <details open>
-    <summary>Spacing</summary>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" colSpan={2}>
-            Value
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {variables.map((spacingVariable) => (
-          <tr key={spacingVariable}>
-            <td>{spacingVariable}</td>
-            <td>
-              <div
-                style={{
-                  display: "flex",
-                  columnGap: `var(${spacingVariable})`,
-                  alignItems: "center",
-                }}
-              >
-                <div
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    backgroundColor: "var(--yamori-theme-primary)",
-                  }}
-                />
-                <div
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    backgroundColor: "var(--yamori-theme-primary)",
-                  }}
-                />
-              </div>
-            </td>
-            <td>
-              {getComputedStyle(document.documentElement).getPropertyValue(
-                spacingVariable
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </details>
-);
-
-const BorderWidthVariables: React.FC<VariablesProps> = ({ variables }) => (
-  <details open>
-    <summary>Border Width</summary>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" colSpan={2}>
-            Value
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {variables.map((borderWidthVariable) => (
-          <tr key={borderWidthVariable}>
-            <td>{borderWidthVariable}</td>
-            <td>
-              <div
-                style={{
-                  boxSizing: "border-box",
-                  borderColor: "var(--yamori-theme-primary)",
-                  borderWidth: `var(${borderWidthVariable})`,
-                  borderStyle: "solid",
-                  width: "1rem",
-                  height: "1rem",
-                }}
-              />
-            </td>
-            <td>
-              {getComputedStyle(document.documentElement).getPropertyValue(
-                borderWidthVariable
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </details>
-);
-
-const BorderRadiusVariables: React.FC<VariablesProps> = ({ variables }) => (
-  <details open>
-    <summary>Border Radius</summary>
-    <table>
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col" colSpan={2}>
-            Value
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {variables.map((borderRadiusVariable) => (
-          <tr key={borderRadiusVariable}>
-            <td>{borderRadiusVariable}</td>
-            <td>
-              <div
-                style={{
-                  boxSizing: "border-box",
-                  borderColor: "var(--yamori-theme-primary)",
-                  borderRadius: `var(${borderRadiusVariable})`,
-                  borderStyle: "solid",
-                  borderWidth: 1,
-                  width: "1rem",
-                  height: "1rem",
-                }}
-              />
-            </td>
-            <td>
-              {getComputedStyle(document.documentElement).getPropertyValue(
-                borderRadiusVariable
-              )}
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </details>
-);
-
-const IconsComponent: React.FC = () => {
+const VariablesComponent: React.FC = () => {
   const cssVariables = useMemo(() => getAllVariables(), []);
 
   const groupedVariables = cssVariables.reduce<Record<string, string[]>>(
@@ -235,18 +104,92 @@ const IconsComponent: React.FC = () => {
 
   return (
     <>
-      <BorderRadiusVariables variables={groupedVariables["border-radius"]} />
-      <BorderWidthVariables variables={groupedVariables["border-width"]} />
-      <SpacingVariables variables={groupedVariables["spacing"]} />
-      <ColorVariables variables={groupedVariables["color"]} />
+      <VariablesTable
+        summary="Border Radius"
+        variables={groupedVariables["border-radius"]}
+        cellRenderer={({ value }) => (
+          <div
+            style={{
+              boxSizing: "border-box",
+              borderColor: "var(--yamori-theme-primary)",
+              borderRadius: `var(${value})`,
+              borderStyle: "solid",
+              borderWidth: 1,
+              width: "1rem",
+              height: "1rem",
+            }}
+          />
+        )}
+      />
+      <VariablesTable
+        summary="Border Width"
+        variables={groupedVariables["border-width"]}
+        cellRenderer={({ value }) => (
+          <div
+            style={{
+              boxSizing: "border-box",
+              borderColor: "var(--yamori-theme-primary)",
+              borderWidth: `var(${value})`,
+              borderStyle: "solid",
+              width: "1rem",
+              height: "1rem",
+            }}
+          />
+        )}
+      />
+      <VariablesTable
+        summary="Spacing"
+        variables={groupedVariables["spacing"]}
+        cellRenderer={({ value }) => (
+          <div
+            style={{
+              display: "flex",
+              columnGap: `var(${value})`,
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "1rem",
+                height: "1rem",
+                backgroundColor: "var(--yamori-theme-primary)",
+              }}
+            />
+            <div
+              style={{
+                width: "1rem",
+                height: "1rem",
+                backgroundColor: "var(--yamori-theme-primary)",
+              }}
+            />
+          </div>
+        )}
+      />
+      <VariablesTable
+        summary="Color"
+        variables={groupedVariables["color"]}
+        cellRenderer={({ value }) => (
+          <div
+            style={{
+              backgroundColor: `var(${value})`,
+              width: "1rem",
+              borderStyle: "solid",
+              borderColor: "lightgrey",
+              borderWidth: 1,
+              height: "1rem",
+              boxSizing: "border-box",
+            }}
+          />
+        )}
+      />
     </>
   );
 };
 
-IconsComponent.displayName = "Variables";
+VariablesComponent.displayName = "Variables";
 
 export default {
-  component: IconsComponent,
+  component: VariablesComponent,
   tags: ["!autodocs"],
   parameters: { actions: { disable: true }, controls: { disable: true } },
 } satisfies Meta;

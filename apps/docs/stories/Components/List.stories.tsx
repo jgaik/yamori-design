@@ -3,7 +3,6 @@ import {
   List as ListComponent,
   ListProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/list.css";
 
 export default {
   component: ListComponent,

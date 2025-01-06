@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.0.0
+
+### Major Changes
+
+- Simplify css imports and match major
+
 ## 1.4.1
 
 ### Patch Changes

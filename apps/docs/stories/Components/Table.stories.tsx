@@ -3,7 +3,6 @@ import {
   Table as TableComponent,
   TableProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/table.css";
 
 type RowData = {
   id: number;

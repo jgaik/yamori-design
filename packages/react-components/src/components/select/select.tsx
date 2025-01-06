@@ -28,6 +28,7 @@ import {
 } from "@floating-ui/react";
 import { ArrowDownIcon } from "@yamori-design/icons";
 import { SelectContextProvider, SelectContextValue } from "./select-context";
+import "@yamori-design/styles/dist/components/select.css";
 
 export type SelectProps = OverwriteAndMerge<
   Omit<ComponentPropsWithRef<"button">, "type">,

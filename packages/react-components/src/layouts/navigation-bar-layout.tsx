@@ -7,6 +7,7 @@ import React, {
 } from "react";
 import { NavigationBar, NavigationBarProps } from "../components";
 import { bemClassNamesCreator } from "../utilities";
+import "@yamori-design/styles/dist/layouts/navigation-bar-layout.css";
 
 export type NavigationBarLayoutProps = PropsWithChildren<NavigationBarProps>;
 

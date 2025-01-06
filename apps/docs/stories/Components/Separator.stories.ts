@@ -3,7 +3,6 @@ import {
   Separator as SeparatorComponent,
   SeparatorProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/separator.css";
 
 export default {
   component: SeparatorComponent,

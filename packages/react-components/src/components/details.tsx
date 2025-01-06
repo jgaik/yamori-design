@@ -1,6 +1,7 @@
 import React, { ComponentPropsWithRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { ArrowDownIcon } from "@yamori-design/icons";
+import "@yamori-design/styles/dist/components/details.css";
 
 export type DetailsProps = ComponentPropsWithRef<"details"> & {
   summary: NonNullable<ReactNode>;

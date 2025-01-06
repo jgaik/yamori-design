@@ -4,7 +4,6 @@ import {
   Checkbox as CheckboxComponent,
   CheckboxProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/checkbox.css";
 
 export default {
   component: CheckboxComponent,

@@ -4,7 +4,6 @@ import {
   Switch as SwitchComponent,
   SwitchProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/switch.css";
 
 export default {
   component: SwitchComponent,

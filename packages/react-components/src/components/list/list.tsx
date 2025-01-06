@@ -6,6 +6,7 @@ import {
   useListContext,
 } from "./list-context";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../../utilities";
+import "@yamori-design/styles/dist/components/list.css";
 
 export type { ListItemProps };
 

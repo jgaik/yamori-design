@@ -4,7 +4,6 @@ import {
   Radio as RadioComponent,
   RadioProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/radio.css";
 
 export default {
   component: RadioComponent,

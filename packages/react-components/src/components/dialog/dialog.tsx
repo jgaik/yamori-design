@@ -10,6 +10,7 @@ import { bemClassNamesCreator } from "../../utilities";
 import { DialogContextProvider, DialogContextValue } from "./dialog-context";
 import { DialogHeader, DialogHeaderProps } from "./dialog-header";
 import { DialogFooter, DialogFooterProps } from "./dialog-footer";
+import "@yamori-design/styles/dist/components/dialog.css";
 
 type HtmlDialogProps = ComponentPropsWithRef<"dialog">;
 

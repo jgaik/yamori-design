@@ -3,7 +3,6 @@ import {
   Button as ButtonComponent,
   ButtonProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/button.css";
 
 export default {
   component: ButtonComponent,

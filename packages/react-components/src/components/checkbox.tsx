@@ -8,6 +8,7 @@ import React, {
 } from "react";
 import { MinusIcon, CheckIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
+import "@yamori-design/styles/dist/components/checkbox.css";
 
 export type CheckboxProps = OverwriteAndMerge<
   Omit<ComponentPropsWithRef<"input">, "type">,

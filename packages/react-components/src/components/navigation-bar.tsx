@@ -16,6 +16,7 @@ import { Link, LinkProps } from "./link";
 import { ThemeSelect } from "./theme-select";
 import { usePackageTranslation } from "../i18n";
 import { FloatingPortalProps } from "@floating-ui/react";
+import "@yamori-design/styles/dist/components/navigation-bar.css";
 
 const Links: React.FC<
   Pick<NavigationBarProps, "className" | "links" | "homeHref"> & {

@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
+import "@yamori-design/styles/dist/components/table.css";
 
 type TypeOrArrayOfType<T> = T | T[];
 

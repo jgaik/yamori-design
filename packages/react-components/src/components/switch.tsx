@@ -1,6 +1,7 @@
 import { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { WithRequired } from "@yamori-shared/react-utilities";
+import "@yamori-design/styles/dist/components/switch.css";
 
 export type SwitchProps = WithRequired<
   Omit<ComponentPropsWithRef<"input">, "type">,

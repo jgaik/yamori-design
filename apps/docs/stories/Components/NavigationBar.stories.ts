@@ -3,7 +3,6 @@ import {
   NavigationBar as NavigationBarComponent,
   NavigationBarProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/navigation-bar.css";
 
 export default {
   component: NavigationBarComponent,

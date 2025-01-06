@@ -9,8 +9,6 @@ import {
   useDialog,
 } from "@yamori-design/react-components";
 import { ElementRef, useRef } from "react";
-import "@yamori-design/styles/dist/components/button.css";
-import "@yamori-design/styles/dist/components/dialog.css";
 
 type DialogComponentProps = DialogProps &
   Pick<DialogHeaderProps, "withClose"> &

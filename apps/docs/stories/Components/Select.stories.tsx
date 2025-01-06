@@ -5,7 +5,6 @@ import {
 } from "@yamori-design/react-components";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
 import { useState } from "react";
-import "@yamori-design/styles/dist/components/select.css";
 
 export default {
   component: SelectComponent,

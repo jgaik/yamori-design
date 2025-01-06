@@ -4,7 +4,6 @@ import {
   NavigationBarLayoutProps,
 } from "@yamori-design/react-components";
 import NavigationBarStories from "../Components/NavigationBar.stories";
-import "@yamori-design/styles/dist/layouts/navigation-bar-layout.css";
 
 export default {
   component: NavigationBarLayoutComponent,

@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { Details, Table } from "@yamori-design/react-components";
 import { useMemo } from "react";
-import "@yamori-design/styles/dist/components/details.css";
-import "@yamori-design/styles/dist/components/table.css";
 
 const NON_COLOR_CATEGORIES = [
   "border-radius",

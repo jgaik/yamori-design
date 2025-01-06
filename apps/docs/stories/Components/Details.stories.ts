@@ -3,7 +3,6 @@ import {
   Details as DetailsComponent,
   DetailsProps,
 } from "@yamori-design/react-components";
-import "@yamori-design/styles/dist/components/details.css";
 
 export default {
   component: DetailsComponent,

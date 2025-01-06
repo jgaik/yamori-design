@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
+import "@yamori-design/styles/dist/components/button.css";
 
 export type ButtonProps = ComponentPropsWithRef<"button"> & {
   variant?: "primary" | "secondary" | "text";

@@ -2,7 +2,6 @@ import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { usePackageTranslation } from "../i18n";
 import { Select, SelectProps } from "./select";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
-import { useMediaQuery } from "usehooks-ts";
 
 const THEME_OPTIONS_MAP = {
   light: <SunIcon />,
@@ -24,9 +23,9 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
 
   const [value, setValue] = useState<ThemeOption>("default");
 
-  const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)", {
-    initializeWithValue: false,
-  });
+  const [isDarkMode, setIsDarkMode] = useState(
+    () => window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 
   const defaultIcon = useMemo(
     () => THEME_OPTIONS_MAP[isDarkMode ? "dark" : "light"],
@@ -56,6 +55,20 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
       onThemeChange(savedTheme);
     }
   }, [onThemeChange]);
+
+  useLayoutEffect(() => {
+    const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const listener = (event: MediaQueryListEvent) => {
+      setIsDarkMode(event.matches);
+    };
+
+    mediaQueryList.addEventListener("change", listener);
+
+    return () => {
+      mediaQueryList.removeEventListener("change", listener);
+    };
+  }, []);
 
   return (
     <Select

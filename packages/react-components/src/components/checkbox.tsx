@@ -1,7 +1,6 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
+import React, {
+  ComponentPropsWithRef,
+  ComponentRef,
   useCallback,
   useImperativeHandle,
   useMemo,
@@ -11,45 +10,48 @@ import { MinusIcon, CheckIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 
 export type CheckboxProps = OverwriteAndMerge<
-  Omit<ComponentPropsWithoutRef<"input">, "type">,
+  Omit<ComponentPropsWithRef<"input">, "type">,
   {
     checked: boolean | "mixed";
   }
 >;
 
-export const Checkbox = forwardRef<ElementRef<"input">, CheckboxProps>(
-  ({ className, checked, ...props }, ref) => {
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("checkbox", className),
-      [className]
-    );
+export const Checkbox: React.FC<CheckboxProps> = ({
+  className,
+  checked,
+  ref,
+  ...props
+}) => {
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("checkbox", className),
+    [className]
+  );
 
-    const inputRef = useRef<ElementRef<"input"> | null>(null);
+  const inputRef = useRef<ComponentRef<"input"> | null>(null);
 
-    useImperativeHandle(ref, () => inputRef.current!);
+  useImperativeHandle(ref, () => inputRef.current!);
 
-    const callbackRef = useCallback(
-      (node: ElementRef<"input"> | null) => {
-        if (node) {
-          node.indeterminate = checked === "mixed";
-        }
-        inputRef.current = node;
-      },
-      [checked]
-    );
+  const callbackRef = useCallback(
+    (node: ComponentRef<"input"> | null) => {
+      if (node) {
+        node.indeterminate = checked === "mixed";
+      }
+      inputRef.current = node;
+    },
+    [checked]
+  );
 
-    return (
-      <div className={bemClassNames["checkbox"]}>
-        {checked === "mixed" && <MinusIcon />}
-        {checked === true && <CheckIcon />}
-        <input
-          ref={callbackRef}
-          type="checkbox"
-          checked={checked === true}
-          readOnly={!props.onChange}
-          {...props}
-        />
-      </div>
-    );
-  }
-);
+  return (
+    <div className={bemClassNames["checkbox"]}>
+      {checked === "mixed" && <MinusIcon />}
+      {checked === true && <CheckIcon />}
+      <input
+        ref={callbackRef}
+        type="checkbox"
+        checked={checked === true}
+        readOnly={!props.onChange}
+        {...props}
+      />
+    </div>
+  );
+};

@@ -1,11 +1,12 @@
 import {
   ComponentPropsWithoutRef,
-  ElementRef,
   ReactNode,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
+  JSX,
+  ComponentRef,
 } from "react";
 import {
   ListItemContextProvider,
@@ -38,7 +39,7 @@ export const ListItem: React.FC<ListItemProps> = ({
 
   const [order, setOrder] = useState(0);
 
-  const liRef = useRef<ElementRef<"li">>(null);
+  const liRef = useRef<ComponentRef<"li">>(null);
 
   const levelMarker = parentItemContextValue
     ? `${parentItemContextValue.order}.`

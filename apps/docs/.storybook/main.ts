@@ -1,3 +1,4 @@
+/* eslint-disable storybook/story-exports */
 import { dirname, join } from "path";
 import type { StorybookConfig } from "@storybook/react-vite";
 
@@ -21,8 +22,10 @@ const config: StorybookConfig = {
   managerHead: (head) =>
     head?.replace(/<title>.+<\/title>/, "<title>Yamori Design</title>"),
 
-  docs: {
-    autodocs: true,
+  docs: {},
+
+  typescript: {
+    reactDocgen: "react-docgen-typescript",
   },
 };
 

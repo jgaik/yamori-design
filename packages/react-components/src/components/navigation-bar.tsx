@@ -1,7 +1,6 @@
-import React, {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
+import {
+  ComponentPropsWithRef,
+  ComponentRef,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -93,7 +92,7 @@ const Controls: React.FC<
 };
 
 export type NavigationBarProps = Omit<
-  ComponentPropsWithoutRef<"header">,
+  ComponentPropsWithRef<"header">,
   "children"
 > & {
   links: Array<LinkProps>;
@@ -102,137 +101,137 @@ export type NavigationBarProps = Omit<
   githubHref?: string;
 };
 
-export const NavigationBar = forwardRef<
-  ElementRef<"header">,
-  NavigationBarProps
->(
-  (
-    { className, homeHref, languageSelectProps, links, githubHref, ...props },
-    ref
-  ) => {
-    const headerRef = useRef<ElementRef<"header">>(null);
-    const navContainerRef = useRef<ElementRef<"div">>(null);
-    const dialogRef = useRef<ElementRef<"dialog">>(null);
-    const lastChecked = useRef<number>(0);
+export const NavigationBar: React.FC<NavigationBarProps> = ({
+  className,
+  homeHref,
+  languageSelectProps,
+  links,
+  githubHref,
+  ref,
+  ...props
+}) => {
+  const headerRef = useRef<ComponentRef<"header">>(null);
+  const navContainerRef = useRef<ComponentRef<"div">>(null);
+  const dialogRef = useRef<ComponentRef<"dialog">>(null);
+  const lastChecked = useRef<number>(0);
 
-    const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
 
-    useImperativeHandle(ref, () => headerRef.current as ElementRef<"header">);
+  useImperativeHandle(ref, () => headerRef.current as ComponentRef<"header">);
 
-    const bemClassNames = useMemo(
-      () =>
-        bemClassNamesCreator.create(
-          "navigation-bar",
-          className,
-          "links-container",
-          "controls",
-          "links",
-          "dialog"
-        ),
-      [className]
-    );
+  const bemClassNames = useMemo(
+    () =>
+      bemClassNamesCreator.create(
+        "navigation-bar",
+        className,
+        "links-container",
+        "controls",
+        "links",
+        "dialog"
+      ),
+    [className]
+  );
 
-    const controlsProps = {
-      languageSelectProps,
-      githubHref,
-      className: bemClassNames["controls"],
+  const controlsProps = {
+    languageSelectProps,
+    githubHref,
+    className: bemClassNames["controls"],
+  };
+
+  useLayoutEffect(() => {
+    if (!headerRef.current || !navContainerRef.current) return;
+
+    const navContainerNode = navContainerRef.current;
+
+    const resizeObserver = new ResizeObserver(([entry]) => {
+      if (isCollapsed) {
+        if (entry.contentRect.width - lastChecked.current > 20) {
+          lastChecked.current = 0;
+          setIsCollapsed(false);
+        }
+      } else {
+        if (lastChecked.current > entry.contentRect.width) return;
+        if (navContainerNode.scrollWidth > navContainerNode.clientWidth) {
+          lastChecked.current = entry.contentRect.width;
+          setIsCollapsed(true);
+        }
+      }
+    });
+
+    resizeObserver.observe(headerRef.current);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [isCollapsed]);
+
+  useLayoutEffect(() => {
+    if (!isCollapsed) return;
+
+    const dialogNode = dialogRef.current;
+
+    const documentClickListener = (event: Event) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        dialogNode?.close();
+      }
     };
 
-    useLayoutEffect(() => {
-      if (!headerRef.current || !navContainerRef.current) return;
+    document.addEventListener("click", documentClickListener);
 
-      const navContainerNode = navContainerRef.current;
+    return () => {
+      dialogNode?.close();
+      document.removeEventListener("click", documentClickListener);
+    };
+  }, [isCollapsed]);
 
-      const resizeObserver = new ResizeObserver(([entry]) => {
-        if (isCollapsed) {
-          if (entry.contentRect.width - lastChecked.current > 20) {
-            lastChecked.current = 0;
-            setIsCollapsed(false);
-          }
-        } else {
-          if (lastChecked.current > entry.contentRect.width) return;
-          if (navContainerNode.scrollWidth > navContainerNode.clientWidth) {
-            lastChecked.current = entry.contentRect.width;
-            setIsCollapsed(true);
-          }
-        }
-      });
-
-      resizeObserver.observe(headerRef.current);
-
-      return () => {
-        resizeObserver.disconnect();
-      };
-    }, [isCollapsed]);
-
-    useLayoutEffect(() => {
-      if (!isCollapsed) return;
-
-      const dialogNode = dialogRef.current;
-
-      const documentClickListener = (event: Event) => {
-        if (!headerRef.current?.contains(event.target as Node)) {
-          dialogNode?.close();
-        }
-      };
-
-      document.addEventListener("click", documentClickListener);
-
-      return () => {
-        dialogNode?.close();
-        document.removeEventListener("click", documentClickListener);
-      };
-    }, [isCollapsed]);
-
-    return (
-      <header
-        className={bemClassNames["navigation-bar"]}
-        ref={headerRef}
-        {...props}
-      >
-        <div className={bemClassNames["links-container"]} ref={navContainerRef}>
-          {!isCollapsed && (
-            <Links
-              className={bemClassNames["links"]}
-              homeHref={homeHref}
-              links={links}
-            />
-          )}
-        </div>
-        {!isCollapsed && <Controls {...controlsProps} />}
-        {isCollapsed && (
-          <Button
-            aria-haspopup="menu"
-            variant="primary"
-            onClick={() => {
-              if (dialogRef.current?.open) {
-                dialogRef.current.close();
-              } else {
-                dialogRef.current?.show();
-              }
-            }}
-          >
-            <BurgerIcon />
-          </Button>
-        )}
-        <dialog
-          id="navigation-bar-dialog"
-          className={bemClassNames["dialog"]}
-          ref={dialogRef}
-        >
+  return (
+    <header
+      className={bemClassNames["navigation-bar"]}
+      ref={headerRef}
+      {...props}
+    >
+      <div className={bemClassNames["links-container"]} ref={navContainerRef}>
+        {!isCollapsed && (
           <Links
             className={bemClassNames["links"]}
             homeHref={homeHref}
             links={links}
-            onLinkClick={() => dialogRef.current?.close()}
-            isCollapsed
           />
-          <Controls
-            {...controlsProps}
-            portalProps={{ id: "navigation-bar-dialog" }}
-          />
-        </dialog>
-      </header>
-    );
-  }
-);
+        )}
+      </div>
+      {!isCollapsed && <Controls {...controlsProps} />}
+      {isCollapsed && (
+        <Button
+          aria-haspopup="menu"
+          variant="primary"
+          onClick={() => {
+            if (dialogRef.current?.open) {
+              dialogRef.current.close();
+            } else {
+              dialogRef.current?.show();
+            }
+          }}
+        >
+          <BurgerIcon />
+        </Button>
+      )}
+      <dialog
+        id="navigation-bar-dialog"
+        className={bemClassNames["dialog"]}
+        ref={dialogRef}
+      >
+        <Links
+          className={bemClassNames["links"]}
+          homeHref={homeHref}
+          links={links}
+          onLinkClick={() => dialogRef.current?.close()}
+          isCollapsed
+        />
+        <Controls
+          {...controlsProps}
+          portalProps={{ id: "navigation-bar-dialog" }}
+        />
+      </dialog>
+    </header>
+  );
+};

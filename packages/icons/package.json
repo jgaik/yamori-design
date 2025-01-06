@@ -1,6 +1,6 @@
 {
   "name": "@yamori-design/icons",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "sideEffects": false,
   "license": "MIT",
   "author": "Jakub Gaik",
@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "npm run build:icons && tsc",
-    "build:icons": "npx @svgr/cli --silent --typescript --ref --filename-case kebab --icon --replace-attr-values '#000'=currentColor --template template.js --out-dir src -- assets",
+    "build:icons": "npx @svgr/cli --silent --typescript --filename-case kebab --icon --replace-attr-values '#000'=currentColor --out-dir src -- assets",
     "dev": "chokidar --silent 'assets/*.svg' -c 'npm run clean && npm run build'",
     "clean": "rimraf .turbo dist src"
   },
@@ -22,8 +22,8 @@
     "typescript": "latest"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0"
   },
   "publishConfig": {
     "access": "public"

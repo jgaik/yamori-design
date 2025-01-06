@@ -1,5 +1,16 @@
 # @yamori-design/react-components
 
+## 2.0.0
+
+### Minor Changes
+
+- Make changes to support React 19
+
+### Patch Changes
+
+- Updated dependencies
+  - @yamori-design/icons@1.3.0
+
 ## 1.4.1
 
 ### Patch Changes

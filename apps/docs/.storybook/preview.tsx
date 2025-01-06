@@ -1,3 +1,4 @@
+/* eslint-disable storybook/story-exports */
 import React, { useEffect } from "react";
 import { Preview } from "@storybook/react";
 import { ThemeOption } from "@yamori-design/react-components";
@@ -17,9 +18,11 @@ export default {
       },
     },
   },
+
   initialGlobals: {
     theme: localStorage.getItem("@yamori-design:theme") ?? "default",
   },
+
   decorators: [
     (Story, context) => {
       const selectedTheme = (context.globals.theme as ThemeOption) || "default";
@@ -37,6 +40,7 @@ export default {
       return <Story />;
     },
   ],
+
   parameters: {
     options: {
       storySort: {
@@ -45,4 +49,6 @@ export default {
       },
     },
   },
+
+  tags: ["autodocs"],
 } satisfies Preview;

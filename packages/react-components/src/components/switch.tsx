@@ -1,35 +1,27 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  useMemo,
-} from "react";
+import { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { WithRequired } from "@yamori-shared/react-utilities";
 
 export type SwitchProps = WithRequired<
-  Omit<ComponentPropsWithoutRef<"input">, "type">,
+  Omit<ComponentPropsWithRef<"input">, "type">,
   "checked"
 >;
 
-export const Switch = forwardRef<ElementRef<"input">, SwitchProps>(
-  ({ className, ...props }, ref) => {
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("switch", className, "handle"),
-      [className]
-    );
+export const Switch: React.FC<SwitchProps> = ({ className, ...props }) => {
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("switch", className, "handle"),
+    [className]
+  );
 
-    return (
-      <div className={bemClassNames["switch"]}>
-        <div className={bemClassNames["handle"]} />
-        <input
-          ref={ref}
-          type="checkbox"
-          role="switch"
-          readOnly={!props.onChange}
-          {...props}
-        />
-      </div>
-    );
-  }
-);
+  return (
+    <div className={bemClassNames["switch"]}>
+      <div className={bemClassNames["handle"]} />
+      <input
+        type="checkbox"
+        role="switch"
+        readOnly={!props.onChange}
+        {...props}
+      />
+    </div>
+  );
+};

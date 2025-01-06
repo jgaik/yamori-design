@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.3.0
+
+### Minor Changes
+
+- Make changes to support React 19
+
 ## 1.2.0
 
 ### Minor Changes

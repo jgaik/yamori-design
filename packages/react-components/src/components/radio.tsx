@@ -1,28 +1,21 @@
-import {
-  ComponentPropsWithoutRef,
-  ElementRef,
-  forwardRef,
-  useMemo,
-} from "react";
+import { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { WithRequired } from "@yamori-shared/react-utilities";
 
 export type RadioProps = WithRequired<
-  Omit<ComponentPropsWithoutRef<"input">, "type">,
+  Omit<ComponentPropsWithRef<"input">, "type">,
   "checked"
 >;
 
-export const Radio = forwardRef<ElementRef<"input">, RadioProps>(
-  ({ className, ...props }, ref) => {
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("radio", className),
-      [className]
-    );
+export const Radio: React.FC<RadioProps> = ({ className, ...props }) => {
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("radio", className),
+    [className]
+  );
 
-    return (
-      <div className={bemClassNames["radio"]}>
-        <input ref={ref} type="radio" readOnly={!props.onChange} {...props} />
-      </div>
-    );
-  }
-);
+  return (
+    <div className={bemClassNames["radio"]}>
+      <input type="radio" readOnly={!props.onChange} {...props} />
+    </div>
+  );
+};

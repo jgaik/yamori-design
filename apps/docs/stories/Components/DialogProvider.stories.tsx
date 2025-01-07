@@ -29,13 +29,20 @@ export const DialogProvider: StoryFn<DialogComponentProps> = ({
   withClose,
   ...args
 }) => {
-  const { showDialog, showConfirmationDialog } = useDialog();
+  const { showDialog, showConfirmationDialog, closeDialog } = useDialog();
+
+  const dialogChildren = (
+    <>
+      {children}
+      <Button onClick={closeDialog}>Close Dialog</Button>
+    </>
+  );
 
   return (
     <div style={{ display: "flex", gap: "1rem" }}>
       <Button
         onClick={() =>
-          showDialog(children, {
+          showDialog(dialogChildren, {
             header: includeHeader ? (
               <Dialog.Header withClose={withClose}>{header}</Dialog.Header>
             ) : undefined,
@@ -58,7 +65,7 @@ export const DialogProvider: StoryFn<DialogComponentProps> = ({
       <Button
         onClick={() =>
           showConfirmationDialog(
-            children,
+            dialogChildren,
             {
               withCancel,
               confirmLabel: confirmLabel || "Confirm",

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.2.1
+
+### Patch Changes
+
+- Expose closeDialog method
+
 ## 2.2.0
 
 ### Minor Changes

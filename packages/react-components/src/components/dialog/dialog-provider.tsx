@@ -19,6 +19,7 @@ type DialogProviderValue = {
     footer: Omit<DialogFooterProps, "onConfirmClick">,
     props?: Omit<DialogProps, "children" | "footer">
   ) => Promise<boolean>;
+  closeDialog: () => void;
 };
 
 const DialogContext = createContext<DialogProviderValue | null>(null);
@@ -63,6 +64,10 @@ export const DialogProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
           dialogRef.current?.showModal();
         }),
+
+      closeDialog: () => {
+        dialogRef.current?.close();
+      },
     }),
     []
   );

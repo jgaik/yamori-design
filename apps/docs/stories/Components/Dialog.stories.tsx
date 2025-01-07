@@ -1,16 +1,14 @@
 import { Meta, StoryFn } from "@storybook/react";
 import {
   Button,
-  DialogProvider as DialogProviderComponent,
   Dialog as DialogComponent,
   DialogFooterProps,
   DialogHeaderProps,
   DialogProps,
-  useDialog,
 } from "@yamori-design/react-components";
-import { ElementRef, useRef } from "react";
+import { ComponentRef, useRef } from "react";
 
-type DialogComponentProps = DialogProps &
+export type DialogComponentProps = Omit<DialogProps, "footer"> &
   Pick<DialogHeaderProps, "withClose"> &
   Pick<DialogFooterProps, "withCancel" | "confirmLabel"> & {
     includeFooter: boolean;
@@ -57,7 +55,7 @@ export const Dialog: StoryFn<DialogComponentProps> = ({
   withClose,
   ...args
 }) => {
-  const dialogRef = useRef<ElementRef<typeof DialogComponent>>(null);
+  const dialogRef = useRef<ComponentRef<typeof DialogComponent>>(null);
 
   return (
     <>
@@ -90,51 +88,3 @@ export const Dialog: StoryFn<DialogComponentProps> = ({
     </>
   );
 };
-
-export const DialogProvider: StoryFn<DialogComponentProps> = ({
-  confirmLabel,
-  children,
-  header,
-  includeFooter,
-  includeHeader,
-  withCancel,
-  withClose,
-  ...args
-}) => {
-  const { showDialog } = useDialog();
-
-  return (
-    <Button
-      onClick={() =>
-        showDialog(children, {
-          header: includeHeader ? (
-            <DialogComponent.Header withClose={withClose}>
-              {header}
-            </DialogComponent.Header>
-          ) : undefined,
-          footer: includeFooter ? (
-            <DialogComponent.Footer
-              withCancel={withCancel}
-              confirmLabel={confirmLabel}
-              onConfirmClick={() => {
-                alert("Confirm button clicked");
-                return true;
-              }}
-            />
-          ) : undefined,
-          ...args,
-        })
-      }
-    >
-      Show
-    </Button>
-  );
-};
-
-DialogProvider.decorators = [
-  (Story) => (
-    <DialogProviderComponent>
-      <Story />
-    </DialogProviderComponent>
-  ),
-];

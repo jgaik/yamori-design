@@ -1,19 +1,24 @@
 import {
+  ComponentRef,
   createContext,
-  ElementRef,
   PropsWithChildren,
   useContext,
   useMemo,
   useRef,
   useState,
 } from "react";
-import { Dialog, DialogProps } from "./dialog";
+import { Dialog, DialogFooterProps, DialogProps } from "./dialog";
 
 type DialogProviderValue = {
   showDialog: (
     content: DialogProps["children"],
     props?: Omit<DialogProps, "children">
   ) => void;
+  showConfirmationDialog: (
+    content: DialogProps["children"],
+    footer: Omit<DialogFooterProps, "onConfirmClick">,
+    props?: Omit<DialogProps, "children" | "footer">
+  ) => Promise<boolean>;
 };
 
 const DialogContext = createContext<DialogProviderValue | null>(null);
@@ -25,7 +30,7 @@ export const DialogProvider: React.FC<PropsWithChildren> = ({ children }) => {
     Omit<DialogProps, "children">
   >({});
 
-  const dialogRef = useRef<ElementRef<typeof Dialog>>(null);
+  const dialogRef = useRef<ComponentRef<typeof Dialog>>(null);
 
   const dialogContextValue = useMemo<DialogProviderValue>(
     () => ({
@@ -35,6 +40,29 @@ export const DialogProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
         dialogRef.current?.showModal();
       },
+
+      showConfirmationDialog: (content, footer, props = {}) =>
+        new Promise<boolean>((resolve) => {
+          setDialogContent(content);
+          setDialogProps({
+            ...props,
+            footer: (
+              <Dialog.Footer
+                {...footer}
+                onConfirmClick={() => {
+                  resolve(true);
+                  return true;
+                }}
+              />
+            ),
+            onClose: (event) => {
+              props.onClose?.(event);
+              resolve(false);
+            },
+          });
+
+          dialogRef.current?.showModal();
+        }),
     }),
     []
   );

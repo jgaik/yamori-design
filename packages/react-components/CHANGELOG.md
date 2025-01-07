@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.2.0
+
+### Minor Changes
+
+- Add showConfirmationDialog and update stories
+
 ## 2.1.0
 
 ### Minor Changes

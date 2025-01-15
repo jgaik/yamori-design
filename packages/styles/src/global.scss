@@ -20,7 +20,7 @@
 
   --yamori-shadow-drop-small: 1px 2px 4px 0
     color-mix(in srgb, var(--yamori-theme-neutral-darkest) 25%, transparent);
-  --yamori-shadow-inset-small: inset 1px 2px 4px 0
+  --yamori-shadow-inner-small: inset 1px 2px 4px 0
     color-mix(in srgb, var(--yamori-theme-neutral-darkest) 25%, transparent);
 
   --yamori-spacing-x-small: #{$scale-50};

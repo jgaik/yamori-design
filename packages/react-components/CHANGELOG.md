@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.3.0
+
+### Minor Changes
+
+- Add Card component
+
 ## 2.2.1
 
 ### Patch Changes

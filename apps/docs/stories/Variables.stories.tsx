@@ -6,6 +6,7 @@ const NON_COLOR_CATEGORIES = [
   "border-radius",
   "border-width",
   "spacing",
+  "shadow",
 ] as const;
 
 function getAllVariables() {
@@ -81,7 +82,9 @@ const VariablesTable: React.FC<VariablesProps> = ({
 const VariablesComponent: React.FC = () => {
   const cssVariables = useMemo(() => getAllVariables(), []);
 
-  const groupedVariables = cssVariables.reduce<Record<string, string[]>>(
+  const groupedVariables = cssVariables.reduce<
+    Record<(typeof NON_COLOR_CATEGORIES)[number] | "color", string[]>
+  >(
     (acc, variable) => {
       const newAcc = { ...acc };
 
@@ -97,7 +100,13 @@ const VariablesComponent: React.FC = () => {
 
       return newAcc;
     },
-    { color: [], spacing: [], "border-radius": [], "border-width": [] }
+    {
+      color: [],
+      spacing: [],
+      "border-radius": [],
+      "border-width": [],
+      shadow: [],
+    }
   );
 
   return (
@@ -161,6 +170,19 @@ const VariablesComponent: React.FC = () => {
               }}
             />
           </div>
+        )}
+      />
+      <VariablesTable
+        summary="Shadow"
+        variables={groupedVariables["shadow"]}
+        cellRenderer={({ value }) => (
+          <div
+            style={{
+              boxShadow: `var(${value})`,
+              width: "1rem",
+              height: "1rem",
+            }}
+          />
         )}
       />
       <VariablesTable

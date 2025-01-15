@@ -18,6 +18,11 @@
   --yamori-border-width-medium: #{$scale-50};
   --yamori-border-width-large: #{$scale-100};
 
+  --yamori-shadow-drop-small: 1px 2px 4px 0
+    color-mix(in srgb, var(--yamori-theme-neutral-darkest) 25%, transparent);
+  --yamori-shadow-inset-small: inset 1px 2px 4px 0
+    color-mix(in srgb, var(--yamori-theme-neutral-darkest) 25%, transparent);
+
   --yamori-spacing-x-small: #{$scale-50};
   --yamori-spacing-small: #{$scale-100};
   --yamori-spacing-medium: #{$scale-200};

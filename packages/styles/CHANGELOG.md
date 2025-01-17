@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.1.2
+
+### Patch Changes
+
+- Fix dialog display issue
+
 ## 2.1.1
 
 ### Patch Changes

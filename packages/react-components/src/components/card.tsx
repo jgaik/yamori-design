@@ -8,11 +8,12 @@ import {
   useMemo,
   useRef,
 } from "react";
+import { Nullable } from "@yamori-shared/react-utilities";
 import { bemClassNamesCreator } from "../utilities";
 import "@yamori-design/styles/dist/components/card.css";
 
 export type CardProps = ComponentPropsWithRef<"article"> & {
-  image?: ReactElement<ComponentPropsWithRef<"img">>;
+  image?: Nullable<ReactElement<ComponentPropsWithRef<"img">>>;
   header: ReactNode;
 };
 

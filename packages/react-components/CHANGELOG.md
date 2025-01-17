@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.3.1
+
+### Patch Changes
+
+- Fix typing issue in Card
+
 ## 2.3.0
 
 ### Minor Changes

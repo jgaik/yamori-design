@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.1.1
+
+### Patch Changes
+
+- Remove details marker in all browsers
+
 ## 2.1.0
 
 ### Minor Changes

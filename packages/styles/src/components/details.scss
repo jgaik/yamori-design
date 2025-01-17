@@ -18,6 +18,11 @@
     position: sticky;
     top: calc(-1 * var(--yamori-border-width-small));
 
+    &::marker,
+    &::-webkit-details-marker {
+      display: none;
+    }
+
     &:hover {
       color: var(--yamori-text-action-hover);
     }

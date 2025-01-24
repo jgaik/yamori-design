@@ -6,7 +6,6 @@
 
 - Add Input, NumberInput and SearchInput
 
-
 ## 2.3.1
 
 ### Patch Changes

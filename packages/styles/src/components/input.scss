@@ -1,0 +1,46 @@
+@use "../mixins";
+
+.yamori-input {
+  align-items: center;
+  background-color: var(--yamori-surface-primary);
+  border-radius: var(--yamori-border-radius-medium);
+  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
+  box-sizing: border-box;
+  color: var(--yamori-text-primary);
+  column-gap: var(--yamori-spacing-small);
+  display: flex;
+  padding: var(--yamori-spacing-medium);
+
+  input {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    flex-grow: 1;
+    font: inherit;
+    min-width: 0;
+    padding: unset;
+    text-overflow: ellipsis;
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: var(--yamori-text-disabled);
+    }
+  }
+
+  &:has(input:focus-visible) {
+    @include mixins.yamori-focus-visible-outline(0);
+    border-color: transparent;
+  }
+
+  &:has(input:disabled) {
+    background-color: var(--yamori-surface-primary-disabled);
+    color: var(--yamori-text-disabled);
+  }
+
+  &:has(input:enabled):hover:not(:focus-within) {
+    border-color: var(--yamori-border-hover);
+  }
+}

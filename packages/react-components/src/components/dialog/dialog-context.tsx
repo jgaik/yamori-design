@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 export type DialogContextValue = {
   closeDialog: () => void;
@@ -7,7 +7,7 @@ export type DialogContextValue = {
 const DialogContext = createContext<DialogContextValue | null>(null);
 
 export function useDialogContext() {
-  const dialogContext = useContext(DialogContext);
+  const dialogContext = use(DialogContext);
 
   if (!dialogContext) {
     throw new Error(

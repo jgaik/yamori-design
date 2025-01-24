@@ -2,7 +2,7 @@ import {
   ComponentRef,
   createContext,
   PropsWithChildren,
-  useContext,
+  use,
   useMemo,
   useRef,
   useState,
@@ -91,7 +91,7 @@ export const DialogProvider: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 export function useDialog() {
-  const dialogContext = useContext(DialogContext);
+  const dialogContext = use(DialogContext);
 
   if (!dialogContext) {
     throw new Error(

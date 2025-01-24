@@ -141,6 +141,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         }
       }}
       disabled={disabled}
+      role="spinbutton"
       {...props}
     />
   );

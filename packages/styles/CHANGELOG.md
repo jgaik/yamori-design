@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.2.0
+
+### Minor Changes
+
+- Add Input, NumberInput and SearchInput
+
 ## 2.1.2
 
 ### Patch Changes

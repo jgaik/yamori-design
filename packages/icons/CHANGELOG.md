@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.4.0
+
+### Minor Changes
+
+- Add Input, NumberInput and SearchInput
+
 ## 1.3.0
 
 ### Minor Changes

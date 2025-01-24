@@ -82,3 +82,8 @@
     @content;
   }
 }
+
+@mixin yamori-focus-visible-outline($offset: $scale-50) {
+  outline: var(--yamori-border-focus) solid #{$scale-50};
+  outline-offset: #{$offset};
+}

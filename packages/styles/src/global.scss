@@ -68,9 +68,14 @@
   font-family: Inter, sans-serif;
 
   :focus-visible {
-    outline: var(--yamori-border-focus) solid #{$scale-50};
-    outline-offset: #{$scale-50};
+    @include mixins.yamori-focus-visible-outline;
+
     border-radius: var(--yamori-border-radius-small);
+  }
+
+  ::selection {
+    background-color: var(--yamori-theme-primary-darker);
+    color: var(--yamori-theme-neutral-lightest);
   }
 
   body {
@@ -94,6 +99,10 @@
 
     p {
       margin-block: #{$paragraph-spacing};
+    }
+
+    svg {
+      flex-shrink: 0;
     }
   }
 }

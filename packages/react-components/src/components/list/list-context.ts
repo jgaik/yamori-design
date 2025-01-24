@@ -1,4 +1,4 @@
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 export type ListContextValue = {
   level: number;
@@ -14,7 +14,7 @@ const ListContext = createContext<ListContextValue>({ level: -1 });
 const ListItemContext = createContext<ListItemContextValue | null>(null);
 
 export function useListContext(isItem = false) {
-  const listContextValue = useContext(ListContext);
+  const listContextValue = use(ListContext);
 
   if (isItem && listContextValue.level < 0) {
     throw new Error(
@@ -26,7 +26,7 @@ export function useListContext(isItem = false) {
 }
 
 export function useListItemContext() {
-  return useContext(ListItemContext);
+  return use(ListItemContext);
 }
 
 export const ListContextProvider = ListContext.Provider;

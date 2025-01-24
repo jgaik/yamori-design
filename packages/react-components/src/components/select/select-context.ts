@@ -1,5 +1,5 @@
 import { useInteractions } from "@floating-ui/react";
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 export type SelectContextValue = {
   activeIndex: number | null;
@@ -11,7 +11,7 @@ export type SelectContextValue = {
 const SelectContext = createContext<SelectContextValue | null>(null);
 
 export function useSelectContext() {
-  const selectContextValue = useContext(SelectContext);
+  const selectContextValue = use(SelectContext);
 
   if (!selectContextValue) {
     throw new Error(

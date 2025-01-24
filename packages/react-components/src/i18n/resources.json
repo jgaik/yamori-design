@@ -2,21 +2,27 @@
   "en": {
     "translation": {
       "cancel": "Cancel",
+      "clear": "Clear",
       "close": "Close",
       "dark": "Dark",
       "default": "Default",
+      "down": "Down",
       "home": "Home",
-      "light": "Light"
+      "light": "Light",
+      "up": "Up"
     }
   },
   "ja": {
     "translation": {
       "cancel": "取り消し",
+      "clear": "クリア",
       "close": "閉じる",
       "dark": "暗い",
       "default": "デフォルト",
+      "down": "下",
       "home": "ホーム",
-      "light": "明るい"
+      "light": "明るい",
+      "up": "上"
     }
   }
 }

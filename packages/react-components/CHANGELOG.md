@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.4.0
+
+### Minor Changes
+
+- Add Input, NumberInput and SearchInput
+
 ## 2.3.1
 
 ### Patch Changes

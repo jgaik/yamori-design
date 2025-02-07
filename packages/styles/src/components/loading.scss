@@ -4,13 +4,21 @@
 
   svg {
     margin-right: var(--yamori-spacing-small);
-    animation: spin 1s linear infinite;
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
 
   &::after {
     overflow: hidden;
-    animation: dots 1.5s steps(4, end) infinite;
+    animation-name: dots;
+    animation-duration: 1.5s;
+    animation-delay: 0.5s;
+    animation-timing-function: steps(4, end);
+    animation-iteration-count: infinite;
     content: "...";
+    width: 1em;
   }
 }
 

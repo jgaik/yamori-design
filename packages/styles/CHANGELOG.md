@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.1
+
+### Patch Changes
+
+- Fix loading for fast api
+
 ## 2.4.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.5.0
+
+### Minor Changes
+
+- Add MultiSelect
+
 ## 2.4.0
 
 ### Minor Changes

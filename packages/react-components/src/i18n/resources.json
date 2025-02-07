@@ -1,6 +1,7 @@
 {
   "en": {
     "translation": {
+      "all": "All",
       "cancel": "Cancel",
       "clear": "Clear",
       "close": "Close",
@@ -14,6 +15,7 @@
   },
   "ja": {
     "translation": {
+      "all": "全て",
       "cancel": "取り消し",
       "clear": "クリア",
       "close": "閉じる",

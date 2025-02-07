@@ -104,6 +104,7 @@
 
         &:enabled {
           &:hover {
+            background-color: var(--yamori-surface-secondary-action);
             color: var(--yamori-text-on-secondary-action-hover);
           }
         }

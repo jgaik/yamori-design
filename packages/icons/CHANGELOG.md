@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.5.0
+
+### Minor Changes
+
+- Add Loading and fix MultiSelect styles
+
 ## 1.4.0
 
 ### Minor Changes

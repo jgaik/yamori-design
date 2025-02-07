@@ -1,0 +1,33 @@
+.yamori-loading {
+  display: inline-flex;
+  align-items: center;
+
+  svg {
+    margin-right: var(--yamori-spacing-small);
+    animation: spin 1s linear infinite;
+  }
+
+  &::after {
+    overflow: hidden;
+    animation: dots 1.5s steps(4, end) infinite;
+    content: "...";
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dots {
+  from {
+    width: 0;
+  }
+  to {
+    width: 1em;
+  }
+}

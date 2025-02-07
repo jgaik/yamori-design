@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.6.0
+
+### Minor Changes
+
+- Add Loading and fix MultiSelect styles
+
 ## 2.5.0
 
 ### Minor Changes

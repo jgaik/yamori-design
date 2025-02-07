@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.0
+
+### Minor Changes
+
+- Add Loading and fix MultiSelect styles
+
 ## 2.3.0
 
 ### Minor Changes

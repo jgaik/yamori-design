@@ -101,6 +101,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       className={bemClassNames["number-input"]}
       suffix={inputSuffix}
       value={internalValue ?? value?.toString() ?? ""}
+      inputMode="numeric"
       onChange={(e) => {
         const newValue = e.currentTarget.value;
 

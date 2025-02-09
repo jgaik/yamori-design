@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.6.1
+
+### Patch Changes
+
+- Fix Children.map in MultiSelect
+
 ## 2.6.0
 
 ### Minor Changes

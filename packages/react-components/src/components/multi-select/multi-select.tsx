@@ -83,7 +83,7 @@ export const MultiSelect = Object.assign(
           value: child.props.value,
           disabled: child.props.disabled,
           children: child.props.children,
-        })),
+        })) ?? [],
       [children]
     );
 

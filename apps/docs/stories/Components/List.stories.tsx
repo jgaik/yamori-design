@@ -14,6 +14,7 @@ export default {
   },
   args: {
     ordered: false,
+    bulleted: false,
     children: "Item 1, Item 2, Item 3",
   },
 } satisfies Meta<ListProps>;

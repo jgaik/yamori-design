@@ -1,5 +1,13 @@
 # @yamori-design/react-components
 
+## 2.6.2
+
+### Patch Changes
+
+- Add FilterIcon and add List bulleted option
+- Updated dependencies
+  - @yamori-design/icons@1.5.1
+
 ## 2.6.1
 
 ### Patch Changes

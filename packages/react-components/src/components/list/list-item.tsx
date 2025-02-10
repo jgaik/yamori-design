@@ -34,7 +34,7 @@ export const ListItem: React.FC<ListItemProps> = ({
     [className]
   );
 
-  const { ordered } = useListContext(true);
+  const { bulleted, ordered } = useListContext(true);
   const parentItemContextValue = useListItemContext();
 
   const [order, setOrder] = useState(0);
@@ -64,7 +64,9 @@ export const ListItem: React.FC<ListItemProps> = ({
     <li ref={liRef} className={bemClassNames["list-item"]} {...props}>
       <ListItemContextProvider value={listItemContextValue}>
         <LabelTag className={bemClassNames["label"]}>
-          <span>{ordered ? `${levelMarker}${order}.` : "•"}</span>
+          {(ordered || bulleted) && (
+            <span>{ordered ? `${levelMarker}${order}.` : "•"}</span>
+          )}
           {label}
         </LabelTag>
         {children}

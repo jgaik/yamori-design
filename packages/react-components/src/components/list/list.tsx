@@ -12,11 +12,11 @@ export type { ListItemProps };
 
 export type ListProps = OverwriteAndMerge<
   ComponentPropsWithRef<"ol"> & ComponentPropsWithRef<"ul">,
-  { ordered?: boolean }
+  { ordered?: boolean; bulleted?: boolean }
 >;
 
 export const List = Object.assign(
-  ({ children, className, ordered, ...props }: ListProps) => {
+  ({ children, className, bulleted, ordered, ...props }: ListProps) => {
     const { level } = useListContext();
 
     const ListTag = ordered ? "ol" : "ul";
@@ -30,8 +30,9 @@ export const List = Object.assign(
       () => ({
         level: level < 0 ? 0 : level + 1,
         ordered,
+        bulleted,
       }),
-      [level, ordered]
+      [bulleted, level, ordered]
     );
 
     return (

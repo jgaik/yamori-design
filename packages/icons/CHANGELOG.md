@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.5.1
+
+### Patch Changes
+
+- Add FilterIcon and add List bulleted option
+
 ## 1.5.0
 
 ### Minor Changes

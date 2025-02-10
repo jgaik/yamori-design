@@ -3,6 +3,7 @@ import { createContext, use } from "react";
 export type ListContextValue = {
   level: number;
   ordered?: boolean;
+  bulleted?: boolean;
 };
 
 export type ListItemContextValue = {

@@ -1,6 +1,6 @@
 {
   "name": "@yamori-design/styles",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "description": "Yamori Design stylesheets files",
   "files": [
     "dist",

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.6.3
+
+### Patch Changes
+
+- Fix MultiSelect issues
+
 ## 2.6.2
 
 ### Patch Changes

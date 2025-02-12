@@ -72,9 +72,6 @@ export const MultiSelectOption: React.FC<MultiSelectOptionProps> = ({
           disabled={disabled}
           readOnly
           tabIndex={-1}
-          onChange={(e) => {
-            e.preventDefault();
-          }}
         />
         {children}
       </button>

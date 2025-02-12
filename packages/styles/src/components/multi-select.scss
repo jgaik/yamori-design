@@ -62,7 +62,6 @@
     list-style: none;
     margin: 0;
     padding: var(--yamori-spacing-x-small) 0;
-    position: relative;
 
     .yamori-multi-select-option {
       @include mixins.yamori-font-body(medium);
@@ -109,11 +108,6 @@
           }
         }
       }
-    }
-
-    li:first-child {
-      top: 0;
-      position: sticky;
     }
 
     li:last-child .yamori-multi-select-option {

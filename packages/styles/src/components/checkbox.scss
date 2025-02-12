@@ -49,6 +49,7 @@
   }
 
   input {
+    all: unset;
     appearance: none;
     height: inherit;
     left: calc(-1 * var(--yamori-border-width-small));

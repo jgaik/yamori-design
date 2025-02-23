@@ -1,0 +1,89 @@
+@use "./mixins";
+
+button:not(.default) {
+  @include mixins.yamori-font-body(medium, bold);
+
+  align-items: center;
+  background-color: var(--yamori-surface-action);
+  border: none;
+  box-sizing: border-box;
+  color: var(--yamori-text-on-action);
+  column-gap: var(--yamori-spacing-small);
+  display: flex;
+  justify-content: center;
+  padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
+
+  &:enabled {
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--yamori-surface-action-hover);
+    }
+
+    &:active {
+      background-color: var(--yamori-surface-action-active);
+    }
+  }
+
+  &,
+  &:focus-visible {
+    border-radius: var(--yamori-border-radius-medium);
+  }
+
+    
+
+  &:disabled {
+    background-color: var(--yamori-surface-action-disabled);
+  }
+}
+
+a:not(.default) {
+  @include mixins.yamori-font-body(medium);
+
+  align-items: center;
+  color: var(--yamori-text-action);
+  column-gap: var(--yamori-spacing-small);
+  cursor: pointer;
+  display: inline-flex;
+
+  &:not(:hover) {
+    @include mixins.yamori-font-body(medium, link);
+  }
+
+  &:hover {
+    color: var(--yamori-text-action-hover);
+  }
+
+  &:visited,
+  &:active {
+    color: var(--yamori-text-action-active);
+  }
+}
+
+input[type="checkbox"]:not(.default) {
+  accent-color: var(--yamori-theme-primary);
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+input[type="radio"]:not(.default) {
+  accent-color: var(--yamori-theme-primary);
+  margin: 0;
+  width: 1rem;
+  height: 1rem;
+}
+
+ul:not(.default) {
+  margin: var(--yamori-spacing-large) 0;
+  padding-left: 0;
+
+  & & {
+    margin: var(--yamori-spacing-medium) 0;
+    padding-left: var(--yamori-spacing-large);
+  }
+
+  li {
+    display: block;
+  }
+}

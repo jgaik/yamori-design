@@ -98,7 +98,11 @@
     }
 
     p {
-      margin-block: #{$paragraph-spacing};
+      margin-block: 0;
+
+      & + p {
+        margin-block-start: #{$paragraph-spacing};
+      }
     }
 
     svg {

@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.4
+
+### Patch Changes
+
+- Add support for vanilla html
+
 ## 2.4.3
 
 ### Patch Changes

@@ -45,7 +45,7 @@ export default {
     options: {
       storySort: {
         method: "alphabetical",
-        order: ["Introduction"],
+        order: ["Introduction", "*", "VanillaHTML"],
       },
     },
   },

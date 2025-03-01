@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.6
+
+### Patch Changes
+
+- Remove margin-top from first heading
+
 ## 2.4.5
 
 ### Patch Changes

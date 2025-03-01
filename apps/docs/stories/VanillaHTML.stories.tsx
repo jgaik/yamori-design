@@ -7,6 +7,10 @@ const VanillaHTMLComponent: React.FC = () => {
   const rowData: { tag: string; preview: (className?: string) => ReactNode }[] =
     [
       {
+        tag: "hr",
+        preview: (className) => <hr className={className} />,
+      },
+      {
         tag: "button",
         preview: (className) => (
           <button className={className} onClick={() => alert("Button clicked")}>
@@ -37,7 +41,7 @@ const VanillaHTMLComponent: React.FC = () => {
             <li>Item 1</li>
             <li>
               Item 2
-              <ul>
+              <ul className={className}>
                 <li>SubItem 2.1</li>
                 <li>SubIem 2.2</li>
               </ul>

@@ -30,8 +30,6 @@ button:not(.default) {
     border-radius: var(--yamori-border-radius-medium);
   }
 
-    
-
   &:disabled {
     background-color: var(--yamori-surface-action-disabled);
   }
@@ -86,4 +84,11 @@ ul:not(.default) {
   li {
     display: block;
   }
+}
+
+hr:not(.default) {
+  background-color: var(--yamori-border-primary);
+  border: unset;
+  height: var(--yamori-border-width-small);
+  margin: unset;
 }

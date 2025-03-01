@@ -90,7 +90,13 @@
 
         color: var(--yamori-text-heading);
         margin: unset;
+        margin-bottom: 0.5rem;
+        margin-top: 1.5rem;
       }
+    }
+
+    h1 {
+      margin-top: unset;
     }
 
     b {

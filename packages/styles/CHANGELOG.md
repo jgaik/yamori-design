@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.5
+
+### Patch Changes
+
+- Update styles for headings and vanilla hr
+
 ## 2.4.4
 
 ### Patch Changes

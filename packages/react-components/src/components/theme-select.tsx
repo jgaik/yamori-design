@@ -4,14 +4,13 @@ import { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import { usePackageTranslation } from "../i18n";
 import { Select, SelectProps } from "./select";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
+import { YAMORI_THEME_LOCAL_STORAGE_KEY } from "../utilities";
 
 const THEME_OPTIONS_MAP = {
   light: <SunIcon />,
   dark: <MoonIcon />,
   default: null,
 };
-
-const LOCAL_STORAGE_KEY = "@yamori-design:theme";
 
 export type ThemeOption = keyof typeof THEME_OPTIONS_MAP;
 
@@ -39,18 +38,18 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
 
     if (themeOption === "default") {
       delete document.documentElement.dataset.yamoriTheme;
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
+      localStorage.removeItem(YAMORI_THEME_LOCAL_STORAGE_KEY);
     } else {
       setValue(themeOption);
       document.documentElement.dataset.yamoriTheme = themeOption;
 
-      localStorage.setItem(LOCAL_STORAGE_KEY, themeOption);
+      localStorage.setItem(YAMORI_THEME_LOCAL_STORAGE_KEY, themeOption);
     }
   }, []);
 
   useLayoutEffect(() => {
     const savedTheme = localStorage.getItem(
-      LOCAL_STORAGE_KEY
+      YAMORI_THEME_LOCAL_STORAGE_KEY
     ) as ThemeOption | null;
 
     if (savedTheme) {

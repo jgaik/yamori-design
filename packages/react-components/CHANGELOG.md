@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.0
+
+### Minor Changes
+
+- Add useYamoriTheme
+
 ## 2.7.1
 
 ### Patch Changes

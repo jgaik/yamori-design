@@ -14,6 +14,7 @@ import {
 } from "react";
 import { useTranslation } from "react-i18next";
 import { BurgerIcon, HomeIcon } from "@yamori-design/icons";
+import { useIsClient } from "@yamori-shared/react-utilities";
 import { bemClassNamesCreator } from "../utilities";
 import { Button } from "./button";
 import { LanguageSelect, LanguageSelectProps } from "./language-select";
@@ -22,26 +23,20 @@ import { ThemeSelect } from "./theme-select";
 import { usePackageTranslation } from "../i18n";
 import { FloatingPortalProps } from "@floating-ui/react";
 import "@yamori-design/styles/dist/components/navigation-bar.css";
-import { isNil } from "@yamori-shared/react-utilities";
 
 const Links: React.FC<
   Pick<NavigationBarProps, "className" | "links" | "homeHref"> & {
     onLinkClick?: () => void;
     isCollapsed?: boolean;
   }
-> = ({
-  className,
-  links,
-  homeHref = window?.location.origin,
-  isCollapsed,
-  onLinkClick,
-}) => {
+> = ({ className, links, homeHref, isCollapsed, onLinkClick }) => {
   const { t } = usePackageTranslation();
+  const isClient = useIsClient();
 
   return (
     <nav className={className}>
       <Link
-        href={homeHref}
+        href={homeHref ?? (isClient ? window.location.origin : undefined)}
         onClick={onLinkClick}
         title={!isCollapsed ? t("home") : undefined}
       >

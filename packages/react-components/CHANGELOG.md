@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.7.1
+
+### Patch Changes
+
+- Fix server build
+
 ## 2.7.0
 
 ### Minor Changes

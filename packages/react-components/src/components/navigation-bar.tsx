@@ -22,6 +22,7 @@ import { ThemeSelect } from "./theme-select";
 import { usePackageTranslation } from "../i18n";
 import { FloatingPortalProps } from "@floating-ui/react";
 import "@yamori-design/styles/dist/components/navigation-bar.css";
+import { isNil } from "@yamori-shared/react-utilities";
 
 const Links: React.FC<
   Pick<NavigationBarProps, "className" | "links" | "homeHref"> & {
@@ -31,7 +32,7 @@ const Links: React.FC<
 > = ({
   className,
   links,
-  homeHref = location.origin,
+  homeHref = window?.location.origin,
   isCollapsed,
   onLinkClick,
 }) => {

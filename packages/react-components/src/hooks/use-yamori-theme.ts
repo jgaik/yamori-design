@@ -5,9 +5,7 @@ import { useLayoutEffect, useState } from "react";
 import { YAMORI_THEME_LOCAL_STORAGE_KEY } from "../utilities";
 
 export function useYamoriTheme() {
-  const [isDarkMode, setIsDarkMode] = useState(
-    () => window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const [localTheme] = useLocalStorage<"dark" | "light">(
     YAMORI_THEME_LOCAL_STORAGE_KEY
@@ -20,6 +18,7 @@ export function useYamoriTheme() {
       setIsDarkMode(event.matches);
     };
 
+    setIsDarkMode(mediaQueryList.matches);
     mediaQueryList.addEventListener("change", listener);
 
     return () => {

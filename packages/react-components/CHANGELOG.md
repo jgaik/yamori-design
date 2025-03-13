@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.1
+
+### Patch Changes
+
+- Fix darkmode media
+
 ## 2.8.0
 
 ### Minor Changes

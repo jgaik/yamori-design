@@ -24,9 +24,7 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
 
   const [value, setValue] = useState<ThemeOption>("default");
 
-  const [isDarkMode, setIsDarkMode] = useState(
-    () => window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const defaultIcon = useMemo(
     () => THEME_OPTIONS_MAP[isDarkMode ? "dark" : "light"],
@@ -63,7 +61,7 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
     const listener = (event: MediaQueryListEvent) => {
       setIsDarkMode(event.matches);
     };
-
+    setIsDarkMode(mediaQueryList.matches);
     mediaQueryList.addEventListener("change", listener);
 
     return () => {

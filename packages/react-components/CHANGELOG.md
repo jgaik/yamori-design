@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.7.0
+
+### Minor Changes
+
+- Add "use client" declarations
+
 ## 2.6.3
 
 ### Patch Changes

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentPropsWithoutRef, MouseEvent, useMemo } from "react";
 import { bemClassNamesCreator } from "../../utilities";
 import { useDialogContext } from "./dialog-context";

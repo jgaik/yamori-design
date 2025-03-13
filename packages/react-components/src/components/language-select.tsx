@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { usePackageTranslation } from "../i18n";
 import { Select, SelectProps } from "./select";

@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { WithRequired } from "@yamori-shared/react-utilities";

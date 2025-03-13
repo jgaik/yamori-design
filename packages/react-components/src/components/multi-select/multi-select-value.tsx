@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentRef, useLayoutEffect, useRef, useState } from "react";
 import {
   MULTI_SELECT_OPTION_ALL,

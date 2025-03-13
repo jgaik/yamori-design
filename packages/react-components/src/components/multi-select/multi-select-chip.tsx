@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithoutRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../../utilities";
 

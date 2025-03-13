@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentPropsWithRef, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import "@yamori-design/styles/dist/components/button.css";

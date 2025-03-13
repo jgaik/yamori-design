@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithRef, useMemo } from "react";
 import { ListItem, ListItemProps } from "./list-item";
 import {

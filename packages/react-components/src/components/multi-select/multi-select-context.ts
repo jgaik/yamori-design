@@ -1,3 +1,5 @@
+"use client";
+
 import { useInteractions } from "@floating-ui/react";
 import { createContext, use } from "react";
 

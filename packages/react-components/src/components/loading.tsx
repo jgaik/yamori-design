@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithRef, useMemo } from "react";
 import { usePackageTranslation } from "../i18n";
 import { SpinnerIcon } from "@yamori-design/icons";

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentPropsWithoutRef, useMemo } from "react";
 import { CloseIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator } from "../../utilities";

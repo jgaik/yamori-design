@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import "@yamori-design/styles/dist/components/input.css";

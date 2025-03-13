@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentPropsWithRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { ArrowDownIcon } from "@yamori-design/icons";

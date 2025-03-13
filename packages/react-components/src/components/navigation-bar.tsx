@@ -1,6 +1,11 @@
+"use client";
+
 import {
   ComponentPropsWithRef,
   ComponentRef,
+  isValidElement,
+  ReactElement,
+  ReactNode,
   useImperativeHandle,
   useLayoutEffect,
   useMemo,
@@ -42,16 +47,20 @@ const Links: React.FC<
         <HomeIcon />
         {isCollapsed && t("home")}
       </Link>
-      {links.map(({ onClick, ...props }) => (
-        <Link
-          key={props.href}
-          onClick={(e) => {
-            onLinkClick?.();
-            onClick?.(e);
-          }}
-          {...props}
-        />
-      ))}
+      {links?.map((link) =>
+        isValidElement(link) ? (
+          link
+        ) : (
+          <Link
+            {...link}
+            key={link.href}
+            onClick={(e) => {
+              onLinkClick?.();
+              link.onClick?.(e);
+            }}
+          />
+        )
+      )}
     </nav>
   );
 };
@@ -59,15 +68,16 @@ const Links: React.FC<
 const Controls: React.FC<
   Pick<
     NavigationBarProps,
-    "className" | "languageSelectProps" | "githubHref"
+    "className" | "controls" | "languageSelectProps" | "githubHref"
   > & {
     portalProps?: FloatingPortalProps;
   }
-> = ({ className, languageSelectProps, portalProps, githubHref }) => {
+> = ({ className, controls, languageSelectProps, portalProps, githubHref }) => {
   const { i18n } = useTranslation();
 
   return (
     <div className={className}>
+      {controls}
       {githubHref && (
         <Link href={githubHref} target="_blank">
           <img
@@ -96,7 +106,8 @@ export type NavigationBarProps = Omit<
   ComponentPropsWithRef<"header">,
   "children"
 > & {
-  links: Array<LinkProps>;
+  controls?: ReactNode;
+  links?: Array<LinkProps | ReactElement>;
   homeHref?: string;
   languageSelectProps?: Omit<LanguageSelectProps, "portalProps">;
   githubHref?: string;
@@ -104,6 +115,7 @@ export type NavigationBarProps = Omit<
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({
   className,
+  controls,
   homeHref,
   languageSelectProps,
   links,
@@ -137,6 +149,7 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
     languageSelectProps,
     githubHref,
     className: bemClassNames["controls"],
+    controls,
   };
 
   useLayoutEffect(() => {

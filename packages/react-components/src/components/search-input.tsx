@@ -1,3 +1,5 @@
+"use client";
+
 import { useMemo } from "react";
 import { SearchIcon, CloseIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";

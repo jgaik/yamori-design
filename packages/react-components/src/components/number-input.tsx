@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useMemo, useState } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import { Input, InputProps } from "./input";

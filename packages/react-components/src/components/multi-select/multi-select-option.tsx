@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithoutRef, useMemo } from "react";
 import {
   MULTI_SELECT_OPTION_ALL,

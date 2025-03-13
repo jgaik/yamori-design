@@ -20,7 +20,9 @@ export default {
   },
 
   initialGlobals: {
-    theme: localStorage.getItem("@yamori-design:theme") ?? "default",
+    theme: JSON.parse(
+      localStorage.getItem("@yamori-design:theme") ?? JSON.stringify("default")
+    ),
   },
 
   decorators: [
@@ -33,7 +35,10 @@ export default {
           localStorage.removeItem("@yamori-design:theme");
         } else {
           document.documentElement.dataset.yamoriTheme = selectedTheme;
-          localStorage.setItem("@yamori-design:theme", selectedTheme);
+          localStorage.setItem(
+            "@yamori-design:theme",
+            JSON.stringify(selectedTheme)
+          );
         }
       }, [selectedTheme]);
 

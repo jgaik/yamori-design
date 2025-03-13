@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.2
+
+### Patch Changes
+
+- Fix ThemeSelect using useLocalStorage hook
+
 ## 2.8.1
 
 ### Patch Changes

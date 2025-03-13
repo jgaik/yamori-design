@@ -5,6 +5,7 @@ import { usePackageTranslation } from "../i18n";
 import { Select, SelectProps } from "./select";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
 import { YAMORI_THEME_LOCAL_STORAGE_KEY } from "../utilities";
+import { useLocalStorage } from "@yamori-shared/react-utilities";
 
 const THEME_OPTIONS_MAP = {
   light: <SunIcon />,
@@ -22,38 +23,29 @@ export type ThemeSelectProps = Omit<
 export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
   const { t } = usePackageTranslation();
 
-  const [value, setValue] = useState<ThemeOption>("default");
-
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [savedTheme, setSavedTheme, removeSavedTheme] = useLocalStorage<
+    "light" | "dark"
+  >(YAMORI_THEME_LOCAL_STORAGE_KEY);
 
   const defaultIcon = useMemo(
     () => THEME_OPTIONS_MAP[isDarkMode ? "dark" : "light"],
     [isDarkMode]
   );
 
-  const onThemeChange = useCallback((themeOption: ThemeOption) => {
-    setValue(themeOption);
+  const onThemeChange = useCallback(
+    (themeOption: ThemeOption) => {
+      if (themeOption === "default") {
+        delete document.documentElement.dataset.yamoriTheme;
+        removeSavedTheme();
+      } else {
+        document.documentElement.dataset.yamoriTheme = themeOption;
 
-    if (themeOption === "default") {
-      delete document.documentElement.dataset.yamoriTheme;
-      localStorage.removeItem(YAMORI_THEME_LOCAL_STORAGE_KEY);
-    } else {
-      setValue(themeOption);
-      document.documentElement.dataset.yamoriTheme = themeOption;
-
-      localStorage.setItem(YAMORI_THEME_LOCAL_STORAGE_KEY, themeOption);
-    }
-  }, []);
-
-  useLayoutEffect(() => {
-    const savedTheme = localStorage.getItem(
-      YAMORI_THEME_LOCAL_STORAGE_KEY
-    ) as ThemeOption | null;
-
-    if (savedTheme) {
-      onThemeChange(savedTheme);
-    }
-  }, [onThemeChange]);
+        setSavedTheme(themeOption);
+      }
+    },
+    [setSavedTheme, removeSavedTheme]
+  );
 
   useLayoutEffect(() => {
     const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");
@@ -71,7 +63,7 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
 
   return (
     <Select
-      value={value}
+      value={savedTheme ?? "default"}
       onChange={(value) => {
         onThemeChange(value as ThemeOption);
       }}

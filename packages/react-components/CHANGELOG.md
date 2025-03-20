@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.3
+
+### Minor Changes
+
+- Update NumberInput
+
 ## 2.8.2
 
 ### Patch Changes

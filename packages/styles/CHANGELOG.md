@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.4.7
+
+### Patch Changes
+
+- Update NumberInput and inputs display properties
+
 ## 2.4.6
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.6.0
+
+### Minor Changes
+
+- Add PlusIcon and update MinusIcon
+
 ## 1.5.1
 
 ### Patch Changes

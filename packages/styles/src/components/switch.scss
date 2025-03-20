@@ -1,7 +1,7 @@
 .yamori-switch {
   background-color: var(--yamori-surface-primary-2);
   border-radius: 999px;
-  display: flex;
+  display: inline-block;
   height: 1rem;
   position: relative;
   transition: background-color 0.15s;

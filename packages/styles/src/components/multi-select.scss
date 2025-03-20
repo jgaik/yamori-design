@@ -10,7 +10,7 @@
   border-radius: var(--yamori-border-radius-medium);
   color: var(--yamori-text-primary);
   column-gap: var(--yamori-spacing-small);
-  display: flex;
+  display: inline-flex;
   padding: var(--yamori-spacing-medium);
 
   &:has(.yamori-multi-select-chip) {

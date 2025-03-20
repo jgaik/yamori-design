@@ -5,9 +5,8 @@ import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import { Input, InputProps } from "./input";
 import { Button } from "./button";
 import { usePackageTranslation } from "../i18n";
-import { ArrowDownIcon } from "@yamori-design/icons";
+import { MinusIcon, PlusIcon } from "@yamori-design/icons";
 import { isNil, useHoldClick } from "@yamori-shared/react-utilities";
-import "@yamori-design/styles/dist/components/number-input.css";
 
 const NUMBER_REG_EXP = /^-?[0-9]*\.?[0-9]*$/;
 
@@ -30,6 +29,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   onBlur,
   onChange,
   onKeyDown,
+  prefix,
   step = 1,
   max,
   min,
@@ -70,37 +70,47 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 
     if (!disabled) {
       suffixList.push(
-        <div key="arrows" className={bemClassNames["arrows"]}>
-          <Button
-            aria-label={t("up")}
-            variant="text"
-            tabIndex={-1}
-            onClick={() => stepValue(1)}
-            title={t("up")}
-            {...events}
-          >
-            <ArrowDownIcon />
-          </Button>
-          <Button
-            aria-label={t("down")}
-            variant="text"
-            tabIndex={-1}
-            onClick={() => stepValue(-1)}
-            title={t("down")}
-            {...events}
-          >
-            <ArrowDownIcon />
-          </Button>
-        </div>
+        <Button
+          aria-label={t("up")}
+          variant="text"
+          tabIndex={-1}
+          onClick={() => stepValue(1)}
+          title={t("up")}
+          {...events}
+        >
+          <PlusIcon />
+        </Button>
       );
     }
 
     return suffixList;
-  }, [bemClassNames, disabled, events, stepValue, suffix, t]);
+  }, [disabled, events, stepValue, suffix, t]);
+
+  const inputPrefix = useMemo(() => {
+    const prefixList = [prefix];
+
+    if (!disabled) {
+      prefixList.push(
+        <Button
+          aria-label={t("down")}
+          variant="text"
+          tabIndex={-1}
+          onClick={() => stepValue(-1)}
+          title={t("down")}
+          {...events}
+        >
+          <MinusIcon />
+        </Button>
+      );
+    }
+
+    return prefixList;
+  }, [disabled, events, prefix, stepValue, t]);
 
   return (
     <Input
       className={bemClassNames["number-input"]}
+      prefix={inputPrefix}
       suffix={inputSuffix}
       value={internalValue ?? value?.toString() ?? ""}
       inputMode="numeric"

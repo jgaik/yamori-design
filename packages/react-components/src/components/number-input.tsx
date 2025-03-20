@@ -71,6 +71,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     if (!disabled) {
       suffixList.push(
         <Button
+          key="up"
           aria-label={t("up")}
           variant="text"
           tabIndex={-1}
@@ -92,6 +93,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     if (!disabled) {
       prefixList.push(
         <Button
+          key="down"
           aria-label={t("down")}
           variant="text"
           tabIndex={-1}

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.4
+
+### Patch Changes
+
+- Add keys to NumberInput
+
 ## 2.8.3
 
 ### Patch Changes

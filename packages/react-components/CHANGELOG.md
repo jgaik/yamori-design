@@ -2,7 +2,7 @@
 
 ## 2.8.3
 
-### Minor Changes
+### Patch Changes
 
 - Update NumberInput
 

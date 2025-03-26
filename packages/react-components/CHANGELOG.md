@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.8.5
+
+### Patch Changes
+
+- Fix ThemeSelect issue with saved theme
+
 ## 2.8.4
 
 ### Patch Changes

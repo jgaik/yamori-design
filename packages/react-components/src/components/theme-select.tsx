@@ -36,16 +36,21 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
   const onThemeChange = useCallback(
     (themeOption: ThemeOption) => {
       if (themeOption === "default") {
-        delete document.documentElement.dataset.yamoriTheme;
         removeSavedTheme();
       } else {
-        document.documentElement.dataset.yamoriTheme = themeOption;
-
         setSavedTheme(themeOption);
       }
     },
     [setSavedTheme, removeSavedTheme]
   );
+
+  useLayoutEffect(() => {
+    if (!savedTheme) {
+      delete document.documentElement.dataset.yamoriTheme;
+    } else {
+      document.documentElement.dataset.yamoriTheme = savedTheme;
+    }
+  }, [savedTheme]);
 
   useLayoutEffect(() => {
     const mediaQueryList = window.matchMedia("(prefers-color-scheme: dark)");

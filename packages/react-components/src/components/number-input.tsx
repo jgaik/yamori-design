@@ -37,7 +37,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
 }) => {
   const { t } = usePackageTranslation();
   const bemClassNames = useMemo(
-    () => bemClassNamesCreator.create("number-input", className, "arrows"),
+    () => bemClassNamesCreator.create("number-input", className),
     [className]
   );
 
@@ -73,7 +73,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         <Button
           key="up"
           aria-label={t("up")}
-          variant="text"
+          variant="icon"
           tabIndex={-1}
           onClick={() => stepValue(1)}
           title={t("up")}
@@ -95,7 +95,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
         <Button
           key="down"
           aria-label={t("down")}
-          variant="text"
+          variant="icon"
           tabIndex={-1}
           onClick={() => stepValue(-1)}
           title={t("down")}

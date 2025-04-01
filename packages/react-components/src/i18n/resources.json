@@ -11,7 +11,9 @@
       "home": "Home",
       "light": "Light",
       "loading": "Loading",
-      "up": "Up"
+      "up": "Up",
+      "showPassword": "Show Password",
+      "hidePassword": "Hide Password"
     }
   },
   "ja": {
@@ -26,7 +28,9 @@
       "home": "ホーム",
       "light": "明るい",
       "loading": "読み込み中",
-      "up": "上"
+      "up": "上",
+      "showPassword": "パスワードを表示",
+      "hidePassword": "パスワードを非表示"
     }
   }
 }

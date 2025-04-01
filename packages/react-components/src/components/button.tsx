@@ -5,7 +5,7 @@ import { bemClassNamesCreator } from "../utilities";
 import "@yamori-design/styles/dist/components/button.css";
 
 export type ButtonProps = ComponentPropsWithRef<"button"> & {
-  variant?: "primary" | "secondary" | "text";
+  variant?: "primary" | "secondary" | "text" | "icon";
 };
 
 export const Button: React.FC<ButtonProps> = ({

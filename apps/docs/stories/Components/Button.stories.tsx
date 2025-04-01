@@ -1,4 +1,5 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react";
+import { GeckoIcon } from "@yamori-design/icons";
 import {
   Button as ButtonComponent,
   ButtonProps,
@@ -22,6 +23,7 @@ export default {
         "primary",
         "secondary",
         "text",
+        "icon",
       ] satisfies ButtonProps["variant"][],
     },
   },
@@ -33,4 +35,8 @@ export default {
   },
 } satisfies Meta<ButtonProps>;
 
-export const Button: StoryObj<ButtonProps> = {};
+export const Button: StoryFn<ButtonProps> = ({ children, ...args }) => (
+  <ButtonComponent {...args}>
+    {args.variant === "icon" ? <GeckoIcon /> : children}
+  </ButtonComponent>
+);

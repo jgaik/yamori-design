@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.7.0
+
+### Minor Changes
+
+- Add PasswordIcon, Textarea and Button type='icon'
+
 ## 1.6.0
 
 ### Minor Changes

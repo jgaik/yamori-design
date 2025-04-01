@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.5.0
+
+### Minor Changes
+
+- Add PasswordIcon, Textarea and Button type='icon'
+
 ## 2.4.7
 
 ### Patch Changes

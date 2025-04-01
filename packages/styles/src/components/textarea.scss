@@ -1,0 +1,34 @@
+@use "../mixins";
+
+.yamori-textarea {
+  font: inherit;
+  background-color: var(--yamori-surface-primary);
+  border-radius: var(--yamori-border-radius-medium);
+  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
+  color: var(--yamori-text-body);
+  column-gap: var(--yamori-spacing-small);
+  padding: var(--yamori-spacing-medium);
+  resize: none;
+
+  &::placeholder {
+    color: var(--yamori-text-disabled);
+  }
+
+  &:focus-visible {
+    @include mixins.yamori-focus-visible-outline(0);
+    border-color: transparent;
+  }
+
+  &:disabled {
+    background-color: var(--yamori-surface-primary-disabled);
+    color: var(--yamori-text-disabled);
+  }
+
+  &:enabled:hover:not(:focus-visible) {
+    border-color: var(--yamori-border-hover);
+  }
+
+  &--resizable {
+    resize: vertical;
+  }
+}

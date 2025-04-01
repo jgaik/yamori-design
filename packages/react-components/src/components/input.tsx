@@ -7,7 +7,7 @@ import "@yamori-design/styles/dist/components/input.css";
 export type InputProps = OverwriteAndMerge<
   ComponentPropsWithRef<"input">,
   {
-    type?: "text";
+    type?: "text" | "password";
     prefix?: ReactNode;
     suffix?: ReactNode;
     value?: string;

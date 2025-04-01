@@ -35,8 +35,6 @@ export const NumberInput: StoryFn<NumberInputProps> = ({
 }) => {
   const [{ value = null }, updateArgs] = useArgs();
 
-  console.log(value);
-
   return (
     <NumberInputComponent
       {...args}

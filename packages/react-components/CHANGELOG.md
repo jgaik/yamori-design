@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.9.0
+
+### Minor Changes
+
+- Add PasswordIcon, Textarea and Button type='icon'
+
 ## 2.8.5
 
 ### Patch Changes

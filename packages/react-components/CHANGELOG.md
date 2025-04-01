@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.9.2
+
+### Patch Changes
+
+- Add use client to Select to fix error
+
 ## 2.9.1
 
 ### Patch Changes

@@ -1,3 +1,5 @@
+"use client";
+
 import { ComponentPropsWithoutRef, useMemo } from "react";
 import { useSelectContext } from "./select-context";
 import { useListItem } from "@floating-ui/react";

@@ -1,5 +1,13 @@
 # @yamori-design/react-components
 
+## 2.9.1
+
+### Patch Changes
+
+- Update configs
+- Updated dependencies
+  - @yamori-design/icons@1.7.1
+
 ## 2.9.0
 
 ### Minor Changes

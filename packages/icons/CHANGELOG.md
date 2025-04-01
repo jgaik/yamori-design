@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.7.1
+
+### Patch Changes
+
+- Update configs
+
 ## 1.7.0
 
 ### Minor Changes

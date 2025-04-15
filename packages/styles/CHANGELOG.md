@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.6.0
+
+### Minor Changes
+
+- Add Form layout
+
 ## 2.5.0
 
 ### Minor Changes

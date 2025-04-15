@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.10.0
+
+### Minor Changes
+
+- Add Form layout
+
 ## 2.9.2
 
 ### Patch Changes

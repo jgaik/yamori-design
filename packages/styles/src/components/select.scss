@@ -13,6 +13,10 @@
   display: inline-flex;
   padding: var(--yamori-spacing-medium);
 
+  &[hidden] {
+    display: none;
+  }
+
   svg:last-child {
     margin-left: auto;
   }

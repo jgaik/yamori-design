@@ -2,6 +2,10 @@
   display: inline-flex;
   align-items: center;
 
+  &[hidden] {
+    display: none;
+  }
+
   svg {
     margin-right: var(--yamori-spacing-small);
     animation-name: spin;

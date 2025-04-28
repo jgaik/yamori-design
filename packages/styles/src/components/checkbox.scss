@@ -8,6 +8,10 @@
   position: relative;
   width: 1rem;
 
+  &:has(input[hidden]) {
+    display: none;
+  }
+
   &:has(input:not(:checked):not(:indeterminate)) {
     border-style: solid;
     border-width: var(--yamori-border-width-small);

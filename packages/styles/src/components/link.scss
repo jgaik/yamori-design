@@ -9,6 +9,10 @@
   cursor: pointer;
   display: inline-flex;
 
+  &[hidden] {
+    display: none;
+  }
+
   &:not(:hover) {
     @include mixins.yamori-font-body(medium, link);
   }

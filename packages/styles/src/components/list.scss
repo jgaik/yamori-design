@@ -10,6 +10,10 @@
   .yamori-list-item {
     display: block;
 
+    &[hidden] {
+      display: none;
+    }
+
     &__label {
       display: flex;
       column-gap: var(--yamori-spacing-medium);

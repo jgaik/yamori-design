@@ -9,6 +9,10 @@
   padding: var(--yamori-spacing-medium);
   column-gap: var(--yamori-spacing-large);
 
+  &[hidden] {
+    display: none;
+  }
+
   &__section {
     display: flex;
     flex-direction: column;

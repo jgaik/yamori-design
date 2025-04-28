@@ -30,6 +30,10 @@
     }
   }
 
+  &:has(input[hidden]) {
+    display: none;
+  }
+
   &:has(input:focus-visible) {
     @include mixins.yamori-focus-visible-outline(0);
     border-color: transparent;

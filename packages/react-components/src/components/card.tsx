@@ -1,21 +1,11 @@
 "use client";
 
-import {
-  cloneElement,
-  ComponentPropsWithRef,
-  ComponentRef,
-  ReactElement,
-  ReactNode,
-  useLayoutEffect,
-  useMemo,
-  useRef,
-} from "react";
-import { Nullable } from "@yamori-shared/react-utilities";
+import { ComponentPropsWithRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import "@yamori-design/styles/dist/components/card.css";
 
 export type CardProps = ComponentPropsWithRef<"article"> & {
-  image?: Nullable<ReactElement<ComponentPropsWithRef<"img">>>;
+  image?: ReactNode;
   header: ReactNode;
 };
 
@@ -27,42 +17,28 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   ...props
 }) => {
-  const sectionRef = useRef<ComponentRef<"section">>(null);
-  const imgRef = useRef<ComponentRef<"img">>(null);
-
-  useLayoutEffect(() => {
-    if (!image || !sectionRef.current || !imgRef.current) return;
-
-    const img = imgRef.current;
-
-    const observer = new ResizeObserver(([entry]) => {
-      img.style.height = `${entry.contentRect.height}px`;
-    });
-
-    observer.observe(sectionRef.current);
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [image]);
-
   const bemClassNames = useMemo(
     () =>
       bemClassNamesCreator.create(
         ["card", { clickable: !!onClick }],
         className,
-        "section"
+        "section",
+        "image"
       ),
     [className, onClick]
   );
 
   return (
     <article className={bemClassNames["card"]} onClick={onClick} {...props}>
-      <section className={bemClassNames["section"]} ref={sectionRef}>
+      {image && (
+        <div role="presentation" className={bemClassNames["image"]}>
+          {image}
+        </div>
+      )}
+      <section className={bemClassNames["section"]}>
         <h5>{header}</h5>
-        <p>{children}</p>
+        {children}
       </section>
-      {image && cloneElement(image, { ref: imgRef })}
     </article>
   );
 };

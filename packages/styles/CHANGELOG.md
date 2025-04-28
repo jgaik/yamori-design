@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.6.2
+
+### Patch Changes
+
+- Update structure of the card
+
 ## 2.6.1
 
 ### Patch Changes

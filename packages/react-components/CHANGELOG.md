@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.10.1
+
+### Patch Changes
+
+- Update structure of the card
+
 ## 2.10.0
 
 ### Minor Changes

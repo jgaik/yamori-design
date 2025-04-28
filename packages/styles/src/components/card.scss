@@ -2,22 +2,27 @@
 
 .yamori-card {
   align-items: flex-start;
-  display: flex;
-  flex-direction: row-reverse;
-  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
   border-radius: var(--yamori-border-radius-medium);
-  padding: var(--yamori-spacing-medium);
+  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
   column-gap: var(--yamori-spacing-large);
+  display: flex;
+  padding: var(--yamori-spacing-medium);
 
   &[hidden] {
     display: none;
   }
 
+  &__image {
+    flex: 1;
+    min-width: 0;
+  }
+
   &__section {
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    flex: 2;
     height: fit-content;
+    min-width: 0;
     row-gap: var(--yamori-spacing-medium);
   }
 

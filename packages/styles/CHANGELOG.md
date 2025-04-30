@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.7.0
+
+### Minor Changes
+
+- Add Tooltip and Popover
+
 ## 2.6.2
 
 ### Patch Changes

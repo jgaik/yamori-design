@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.11.0
+
+### Minor Changes
+
+- Add Tooltip and Popover
+
 ## 2.10.1
 
 ### Patch Changes

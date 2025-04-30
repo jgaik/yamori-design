@@ -8,3 +8,5 @@ export type OverwriteAndMerge<
 export const bemClassNamesCreator = new BemClassNamesCreator("yamori");
 
 export const YAMORI_THEME_LOCAL_STORAGE_KEY = "@yamori-design:theme";
+
+export const YAMORI_THEME_SPACING_SMALL = 4;

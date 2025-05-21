@@ -35,7 +35,7 @@ export const Card: StoryFn<CardComponentProps> = ({
 }) => (
   <CardComponent
     onClick={clickable ? () => alert("Card clicked!") : undefined}
-    image={showImage ? <img src="https://picsum.photos/200" /> : undefined}
+    image={showImage ? <img style={{ width: '100%' }} src="https://picsum.photos/200" /> : undefined}
     {...args}
   />
 );

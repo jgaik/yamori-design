@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.12.0
+
+### Minor Changes
+
+- Add Progress component and update Tooltip/Popover structure
+
 ## 2.11.0
 
 ### Minor Changes

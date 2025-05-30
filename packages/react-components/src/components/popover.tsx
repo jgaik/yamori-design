@@ -13,29 +13,28 @@ import {
   bemClassNamesCreator,
   OverwriteAndMerge,
   YAMORI_THEME_SPACING_SMALL,
-} from "../../utilities";
+} from "../utilities";
 import {
   arrow,
   autoUpdate,
   flip,
   FloatingArrow,
+  FloatingFocusManager,
   FloatingPortal,
   offset,
   Placement,
-  safePolygon,
   shift,
+  useClick,
   useDismiss,
   useFloating,
-  useFocus,
-  useHover,
   useInteractions,
   useMergeRefs,
   useRole,
 } from "@floating-ui/react";
-import { TooltipSource } from "./tooltip-source";
-import "@yamori-design/styles/dist/components/tooltip.css";
+import { FloatingSource } from "./shared";
+import "@yamori-design/styles/dist/components/popover.css";
 
-export type TooltipProps = OverwriteAndMerge<
+export type PopoverProps = OverwriteAndMerge<
   ComponentProps<"div">,
   {
     content: ReactNode;
@@ -43,25 +42,23 @@ export type TooltipProps = OverwriteAndMerge<
     children: ReactElement<{ ref: Ref<any> }>;
     placement?: Placement;
     defaultOpen?: boolean;
-    role?: "label" | "tooltip";
     disabled?: boolean;
   }
 >;
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Popover: React.FC<PopoverProps> = ({
   children,
   className,
   content,
   defaultOpen,
   disabled,
   placement = "top",
-  role = "tooltip",
   ref,
   style,
   ...props
 }) => {
   const bemClassNames = useMemo(
-    () => bemClassNamesCreator.create("tooltip", className, "arrow"),
+    () => bemClassNamesCreator.create("popover", className, "arrow"),
     [className]
   );
   const enabled = !disabled;
@@ -88,13 +85,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   });
 
   const { getFloatingProps, getReferenceProps } = useInteractions([
-    useHover(context, {
-      move: false,
-      enabled,
-      handleClose: safePolygon(),
-    }),
-    useFocus(context, { enabled }),
-    useRole(context, { role, enabled }),
+    useClick(context, { enabled }),
+    useRole(context, { enabled }),
     useDismiss(context),
   ]);
 
@@ -102,37 +94,39 @@ export const Tooltip: React.FC<TooltipProps> = ({
     context.refs.setReference,
     children.props.ref,
   ]);
-  const tooltipRef = useMergeRefs([context.refs.setFloating, ref]);
+  const popoverRef = useMergeRefs([context.refs.setFloating, ref]);
 
   return [
     open && (
-      <FloatingPortal key="tooltip-portal">
-        <div
-          className={bemClassNames["tooltip"]}
-          ref={tooltipRef}
-          style={{
-            ...context.floatingStyles,
-            ...style,
-          }}
-          {...getFloatingProps(props)}
-        >
-          {content}
-          <FloatingArrow
-            className={bemClassNames["arrow"]}
-            ref={arrowRef}
-            context={context}
-            strokeWidth={0.5}
-            stroke="currentColor"
-          />
-        </div>
+      <FloatingPortal key="popover-portal">
+        <FloatingFocusManager context={context}>
+          <div
+            className={bemClassNames["popover"]}
+            ref={popoverRef}
+            style={{
+              ...context.floatingStyles,
+              ...style,
+            }}
+            {...getFloatingProps(props)}
+          >
+            {content}
+            <FloatingArrow
+              className={bemClassNames["arrow"]}
+              ref={arrowRef}
+              context={context}
+              strokeWidth={0.5}
+              stroke="currentColor"
+            />
+          </div>
+        </FloatingFocusManager>
       </FloatingPortal>
     ),
-    <TooltipSource
-      key="tooltip-source"
+    <FloatingSource
+      key="popover-source"
       ref={sourceRef}
       getSourceProps={getReferenceProps}
     >
       {children}
-    </TooltipSource>,
+    </FloatingSource>,
   ];
 };

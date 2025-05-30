@@ -1,0 +1,77 @@
+.yamori-progress {
+  border-radius: 999px;
+  border: var(--yamori-border-width-small) solid var(--yamori-border-action);
+  display: grid;
+  position: relative;
+
+  &:has(progress[hidden]) {
+    display: none;
+  }
+
+  &:has(progress:indeterminate) &__bar {
+    animation-direction: alternate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: move;
+    animation-timing-function: linear;
+    border-radius: inherit;
+    justify-self: center;
+    width: 20%;
+  }
+
+  &__bar {
+    background-color: var(--yamori-surface-action);
+    border-bottom-left-radius: inherit;
+    border-top-left-radius: inherit;
+    grid-column: 1;
+    grid-row: 1;
+    width: var(--percentage);
+  }
+
+  &__labels {
+    display: grid;
+    grid-column: 1;
+    grid-row: 1;
+    padding: var(--yamori-spacing-x-small);
+
+    &:empty::before {
+      content: "\200b";
+    }
+
+    & > * {
+      grid-column: 1;
+      grid-row: 1;
+      text-align: center;
+    }
+  }
+
+  &__label-light {
+    clip-path: inset(0 calc(100% - var(--percentage)) 0 0);
+    color: var(--yamori-text-on-action);
+  }
+
+  &__label-dark {
+    clip-path: inset(0 0 0 var(--percentage));
+  }
+
+  progress {
+    &,
+    &::-webkit-progress-bar,
+    &::-webkit-progress-value {
+      all: unset;
+    }
+
+    appearance: none;
+    inset: 0;
+    position: absolute;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}

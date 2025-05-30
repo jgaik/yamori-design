@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.8.0
+
+### Minor Changes
+
+- Add Progress component
+
 ## 2.7.0
 
 ### Minor Changes

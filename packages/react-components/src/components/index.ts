@@ -13,6 +13,7 @@ export * from "./navigation-bar";
 export * from "./number-input";
 export * from "./password-input";
 export * from "./popover";
+export * from "./progress";
 export * from "./radio";
 export * from "./search-input";
 export * from "./select";

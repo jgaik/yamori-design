@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import * as IconComponents from "@yamori-design/icons";
 import { Table } from "@yamori-design/react-components";
 

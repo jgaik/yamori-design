@@ -55,15 +55,15 @@
   }
 
   progress {
+    appearance: none;
+    inset: 0;
+    position: absolute;
+
     &,
     &::-webkit-progress-bar,
     &::-webkit-progress-value {
       all: unset;
     }
-
-    appearance: none;
-    inset: 0;
-    position: absolute;
   }
 }
 

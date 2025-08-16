@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from "@storybook/react";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { GeckoIcon } from "@yamori-design/icons";
 import {
   Button as ButtonComponent,

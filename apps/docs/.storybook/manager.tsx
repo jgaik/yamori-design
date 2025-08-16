@@ -1,6 +1,6 @@
 /* eslint-disable storybook/default-exports */
-import { addons } from "@storybook/manager-api";
-import { STORY_RENDERED } from "@storybook/core-events";
+import { addons } from "storybook/manager-api";
+import { STORY_RENDERED } from "storybook/internal/core-events";
 
 addons.register("custom", (api) => {
   // Disable until storybook fixes the issue with React 19

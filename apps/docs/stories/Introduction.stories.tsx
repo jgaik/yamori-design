@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import { GeckoIcon, HomeIcon } from "@yamori-design/icons";
 import { Link, Table } from "@yamori-design/react-components";
 

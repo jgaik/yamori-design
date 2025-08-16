@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/react-vite";
 import { Details, Table } from "@yamori-design/react-components";
 import { useMemo } from "react";
 

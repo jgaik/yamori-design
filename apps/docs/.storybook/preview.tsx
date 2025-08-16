@@ -1,6 +1,6 @@
 /* eslint-disable storybook/story-exports */
 import React, { useEffect } from "react";
-import { Preview } from "@storybook/react";
+import { Preview } from "@storybook/react-vite";
 import { ThemeOption } from "@yamori-design/react-components";
 
 import "@yamori-design/styles/dist/global.css";

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react-vite";
 import "./body.scss";
 
 const BODY_SIZES = ["small", "medium", "large"] as const;

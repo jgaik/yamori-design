@@ -1,5 +1,5 @@
-import { useArgs } from "@storybook/preview-api";
-import type { Meta, StoryFn } from "@storybook/react";
+import { useArgs } from "storybook/preview-api";
+import type { Meta, StoryFn } from "@storybook/react-vite";
 import { GeckoIcon } from "@yamori-design/icons";
 import {
   Input as InputComponent,

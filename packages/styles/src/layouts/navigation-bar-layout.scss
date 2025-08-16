@@ -1,3 +1,5 @@
+@use "../mixins";
+
 .yamori-navigation-bar-layout {
   height: 100dvh;
   inset: 0;
@@ -6,11 +8,36 @@
   width: 100dvw;
 
   &__content {
-    bottom: 0;
     left: 0;
     overflow-y: auto;
     padding: var(--yamori-spacing-large);
     position: absolute;
     right: 0;
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    width: 100%;
+    padding: var(--yamori-spacing-medium);
+    box-sizing: border-box;
+    border-top: var(--yamori-border-width-small) solid
+      var(--yamori-border-primary);
+
+    address {
+      flex: 1;
+      min-width: 0;
+    }
+
+    a img.github {
+      width: 1.5rem;
+    }
+  }
+}
+
+@include mixins.within-yamori-theme(dark) {
+  .yamori-navigation-bar-layout__footer a img.github {
+    filter: invert(1);
   }
 }

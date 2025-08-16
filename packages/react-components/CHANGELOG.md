@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.13.0
+
+### Minor Changes
+
+- Update NavigationBarLayout
+
 ## 2.12.0
 
 ### Minor Changes

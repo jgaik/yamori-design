@@ -99,6 +99,10 @@
       }
     }
 
+    small {
+      font-size: #{$font-size-body-small};
+    }
+
     b {
       font-weight: #{$font-weight-semibold};
     }

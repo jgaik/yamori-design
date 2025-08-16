@@ -1,7 +1,7 @@
 @use "../mixins";
 
 .yamori-link {
-  @include mixins.yamori-font-body(medium);
+  @include mixins.yamori-font-body(inherit);
 
   align-items: center;
   color: var(--yamori-text-action);
@@ -14,7 +14,7 @@
   }
 
   &:not(:hover) {
-    @include mixins.yamori-font-body(medium, link);
+    @include mixins.yamori-font-body(inherit, link);
   }
 
   &:hover {

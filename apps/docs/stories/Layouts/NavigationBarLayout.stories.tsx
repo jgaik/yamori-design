@@ -10,7 +10,7 @@ export default {
   tags: ["!autodocs"],
   args: {
     ...NavigationBarStories.args,
-    children: "Content",
+    children: <div style={{ height: 1000 }}>Content</div>,
   },
 } satisfies Meta<NavigationBarLayoutProps>;
 

@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.9.0
+
+### Minor Changes
+
+- Update NavigationBarLayout
+
 ## 2.8.0
 
 ### Minor Changes

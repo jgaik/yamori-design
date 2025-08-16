@@ -62,27 +62,15 @@ const Links: React.FC<
 };
 
 const Controls: React.FC<
-  Pick<
-    NavigationBarProps,
-    "className" | "controls" | "languageSelectProps" | "githubHref"
-  > & {
+  Pick<NavigationBarProps, "className" | "controls" | "languageSelectProps"> & {
     portalProps?: FloatingPortalProps;
   }
-> = ({ className, controls, languageSelectProps, portalProps, githubHref }) => {
+> = ({ className, controls, languageSelectProps, portalProps }) => {
   const { i18n } = useTranslation();
 
   return (
     <div className={className}>
       {controls}
-      {githubHref && (
-        <Link href={githubHref} target="_blank">
-          <img
-            className="github"
-            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-            alt="GitHub"
-          />
-        </Link>
-      )}
       {languageSelectProps && (
         <LanguageSelect
           {...languageSelectProps}
@@ -106,7 +94,6 @@ export type NavigationBarProps = Omit<
   links?: Array<LinkProps | ReactElement>;
   homeHref?: string;
   languageSelectProps?: Omit<LanguageSelectProps, "portalProps">;
-  githubHref?: string;
 };
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({
@@ -115,7 +102,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
   homeHref,
   languageSelectProps,
   links,
-  githubHref,
   ref,
   ...props
 }) => {
@@ -143,7 +129,6 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
 
   const controlsProps = {
     languageSelectProps,
-    githubHref,
     className: bemClassNames["controls"],
     controls,
   };

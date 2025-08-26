@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.8.0
+
+### Minor Changes
+
+- Update layout padding and add new icons
+
 ## 1.7.1
 
 ### Patch Changes

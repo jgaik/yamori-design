@@ -6,7 +6,7 @@
   column-gap: var(--yamori-spacing-medium);
   display: flex;
   position: relative;
-  padding: var(--yamori-spacing-medium);
+  padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
 
   &__links-container {
     flex: 1;
@@ -60,13 +60,13 @@
     align-items: flex-end;
     flex-direction: column;
     overflow-y: auto;
-    padding: var(--yamori-spacing-large);
+    padding: var(--yamori-spacing-medium) var(--yamori-spacing-large);
   }
 
   &__dialog &__controls {
     flex-wrap: wrap;
     width: 100%;
     padding: 0 var(--yamori-spacing-large);
-    padding-bottom: var(--yamori-spacing-large);
+    padding-bottom: var(--yamori-spacing-medium);
   }
 }

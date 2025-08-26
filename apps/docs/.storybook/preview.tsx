@@ -6,6 +6,8 @@ import { ThemeOption } from "@yamori-design/react-components";
 import "@yamori-design/styles/dist/global.css";
 import "./preview.scss";
 
+let previousStoryId: string;
+
 export default {
   globalTypes: {
     theme: {
@@ -28,6 +30,16 @@ export default {
   decorators: [
     (Story, context) => {
       const selectedTheme = (context.globals.theme as ThemeOption) || "default";
+
+      if (
+        previousStoryId &&
+        context.id !== previousStoryId &&
+        [context.id, previousStoryId].some((id) => id.includes("vanilla"))
+      ) {
+        document.location.reload();
+      }
+
+      previousStoryId = context.id;
 
       useEffect(() => {
         if (selectedTheme === "default") {

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import {
+  Button,
   NavigationBar as NavigationBarComponent,
   NavigationBarProps,
 } from "@yamori-design/react-components";
@@ -12,7 +13,6 @@ export default {
       supportedLanguages: ["en", "ja"],
     },
     homeHref: location.origin,
-    githubHref: "https://github.com/jgaik/yamori-design",
     links: [
       {
         href: "#1",
@@ -35,6 +35,7 @@ export default {
         children: "Link5",
       },
     ],
+    controls: <Button onClick={() => alert("Button1 clicked")}>Button1</Button>,
   },
 } satisfies Meta<NavigationBarProps>;
 

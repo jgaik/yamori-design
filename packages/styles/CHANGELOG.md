@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.9.1
+
+### Patch Changes
+
+- Update layout padding and add new icons
+
 ## 2.9.0
 
 ### Minor Changes

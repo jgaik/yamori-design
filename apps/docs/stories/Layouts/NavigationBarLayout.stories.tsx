@@ -11,6 +11,7 @@ export default {
   args: {
     ...NavigationBarStories.args,
     children: <div style={{ height: 1000 }}>Content</div>,
+    githubHref: "https://github.com/jgaik/yamori-design",
   },
 } satisfies Meta<NavigationBarLayoutProps>;
 

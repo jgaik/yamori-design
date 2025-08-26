@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.9.0
+
+### Minor Changes
+
+- Add DeleteIcon
+
 ## 1.8.0
 
 ### Minor Changes

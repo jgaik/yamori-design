@@ -3,19 +3,17 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
+const ORG = "jgaik"; // Change if your org is different
 const REPOS = ["qr", "local-chess", "jgaik.github.io", "issued-recipes"];
 
-const ORG = "jgaik"; // Change if your org is different
-
-// Read versions from package.jsons
+const PACKAGES = ["styles", "react-components", "icons"];
 const packagesDir = path.resolve("packages");
-const yamoriPackages = ["styles", "react-components", "icons"];
 
 const versions = {};
-yamoriPackages.forEach((pkg) => {
+PACKAGES.forEach((pkg) => {
   const pkgJsonPath = path.join(packagesDir, pkg, "package.json");
   const pkgJson = JSON.parse(fs.readFileSync(pkgJsonPath, "utf8"));
-  versions[`@yamori-design/${pkg}`] = pkgJson.version;
+  versions[`@yamori-design/${pkg}`] = `^${pkgJson.version}`;
 });
 
 console.log("Detected versions:", versions);

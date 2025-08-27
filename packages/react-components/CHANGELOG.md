@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.1
+
+### Patch Changes
+
+- Update table types
+
 ## 2.14.0
 
 ### Minor Changes

@@ -21,6 +21,7 @@ import {
   FloatingArrow,
   FloatingFocusManager,
   FloatingPortal,
+  FloatingPortalProps,
   offset,
   Placement,
   shift,
@@ -39,10 +40,11 @@ export type PopoverProps = OverwriteAndMerge<
   {
     content: ReactNode;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    children: ReactElement<{ ref: Ref<any> }>;
+    children: ReactElement<{ ref?: Ref<any> }>;
     placement?: Placement;
     defaultOpen?: boolean;
     disabled?: boolean;
+    portalProps?: FloatingPortalProps;
   }
 >;
 
@@ -55,6 +57,7 @@ export const Popover: React.FC<PopoverProps> = ({
   placement = "top",
   ref,
   style,
+  portalProps,
   ...props
 }) => {
   const bemClassNames = useMemo(
@@ -98,7 +101,7 @@ export const Popover: React.FC<PopoverProps> = ({
 
   return [
     open && (
-      <FloatingPortal key="popover-portal">
+      <FloatingPortal key="popover-portal" {...portalProps}>
         <FloatingFocusManager context={context}>
           <div
             className={bemClassNames["popover"]}

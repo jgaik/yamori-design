@@ -20,6 +20,7 @@ import {
   flip,
   FloatingArrow,
   FloatingPortal,
+  FloatingPortalProps,
   offset,
   Placement,
   safePolygon,
@@ -40,11 +41,12 @@ export type TooltipProps = OverwriteAndMerge<
   {
     content: ReactNode;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    children: ReactElement<{ ref: Ref<any> }>;
+    children: ReactElement<{ ref?: Ref<any> }>;
     placement?: Placement;
     defaultOpen?: boolean;
     role?: "label" | "tooltip";
     disabled?: boolean;
+    portalProps?: FloatingPortalProps;
   }
 >;
 
@@ -58,6 +60,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
   role = "tooltip",
   ref,
   style,
+  portalProps,
   ...props
 }) => {
   const bemClassNames = useMemo(
@@ -106,7 +109,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
 
   return [
     open && (
-      <FloatingPortal key="tooltip-portal">
+      <FloatingPortal key="tooltip-portal" {...portalProps}>
         <div
           className={bemClassNames["tooltip"]}
           ref={tooltipRef}

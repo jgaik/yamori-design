@@ -3,7 +3,7 @@ import { UseInteractionsReturn } from "@floating-ui/react";
 import { cloneElement, isValidElement, ReactElement, Ref } from "react";
 
 type FloatingSourceProps = {
-  children: ReactElement<{ ref: Ref<any> }>;
+  children: ReactElement<{ ref?: Ref<any> }>;
   ref: Ref<any>;
   getSourceProps: UseInteractionsReturn["getReferenceProps"];
 };

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.2
+
+### Patch Changes
+
+- Fix Tooltip in dialog by exposing portal props
+
 ## 2.14.1
 
 ### Patch Changes

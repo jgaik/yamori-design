@@ -21,46 +21,50 @@ console.log("Detected versions:", versions);
 REPOS.forEach((repo) => {
   console.log(`\n🔄 Updating ${repo}...`);
   const repoUrl = `https://${process.env.GH_PAT}@github.com/${ORG}/${repo}.git`;
-  const tempDir = path.resolve(`tmp/${repo}`);
+  const tempDir = path.join(os.tmpdir(), `update-${repo}-${Date.now()}`);
 
-  // Clean up and clone
-  execSync(`rm -rf ${tempDir}`);
+  // Clone to a fresh temp directory
   execSync(`git clone --depth 1 ${repoUrl} ${tempDir}`);
   process.chdir(tempDir);
 
-  // Install deps and update versions
   const pkgPath = path.join(tempDir, "package.json");
   const pkgJson = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
-
   let changed = false;
+
   for (const dep of Object.keys(versions)) {
-    if (pkgJson.dependencies?.[dep]) {
+    if (
+      pkgJson.dependencies?.[dep] &&
+      pkgJson.dependencies[dep] !== versions[dep]
+    ) {
       pkgJson.dependencies[dep] = versions[dep];
       changed = true;
     }
-    if (pkgJson.devDependencies?.[dep]) {
+    if (
+      pkgJson.devDependencies?.[dep] &&
+      pkgJson.devDependencies[dep] !== versions[dep]
+    ) {
       pkgJson.devDependencies[dep] = versions[dep];
       changed = true;
     }
   }
 
   if (!changed) {
-    console.log(`No yamori-design packages found in ${repo}. Skipping.`);
-    process.chdir("../../");
+    console.log(`No updates needed for ${repo}. Skipping.`);
     return;
   }
 
-  fs.writeFileSync(pkgPath, JSON.stringify(pkgJson, null, 2));
-  console.log("📦 Updated package.json");
-
-  // Install & push
+  fs.writeFileSync(pkgPath, JSON.stringify(pkgJson, null, 2) + "\n");
   execSync("npm install --package-lock-only");
+
   execSync("git add package.json package-lock.json || true");
   execSync(`git commit -m "chore: bump @yamori-design packages" || true`);
   execSync("git push origin main");
 
   console.log(`✅ Updated ${repo}`);
-  process.chdir("../../");
+
+  // Cleanup temp directory safely
+  process.chdir(os.tmpdir());
+  execSync(`rm -rf ${tempDir}`);
 });
 
 console.log("\n🎉 All done!");

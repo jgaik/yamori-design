@@ -28,4 +28,4 @@ jobs:
       - name: Run update script
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
-        run: node scripts/update-repos.ts
+        run: npm run update-repos

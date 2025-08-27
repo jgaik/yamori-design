@@ -8,7 +8,8 @@
     "clean": "turbo run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset && changeset version && npm install",
-    "release": "turbo run build --filter=@yamori-design/docs^... && changeset publish"
+    "release": "turbo run build --filter=@yamori-design/docs^... && changeset publish",
+    "update-repos": "node scripts/update-repos.js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.6",

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.0
+
+### Minor Changes
+
+- Update Table styles
+
 ## 2.13.0
 
 ### Minor Changes

@@ -1,0 +1,29 @@
+@use "../mixins";
+
+.yamori-table {
+  border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
+  border-collapse: collapse;
+
+  thead {
+    background-color: var(--yamori-surface-secondary);
+    th {
+      padding: var(--yamori-spacing-medium);
+      border: var(--yamori-border-width-small) solid
+        var(--yamori-border-primary);
+      @include mixins.yamori-font-body(medium, bold);
+    }
+  }
+
+  tbody {
+    td {
+      padding: var(--yamori-spacing-medium);
+      border: var(--yamori-border-width-small) solid
+        var(--yamori-border-primary);
+      text-align: left;
+
+      &[data-align="center"] {
+        text-align: center;
+      }
+    }
+  }
+}

@@ -36,6 +36,7 @@ export default {
         id: "age",
         header: "Age",
         valueGetter: ({ data }) => data.age.toString(),
+        align: "center",
       },
     ],
     getRowId: (data) => data.id.toString(),

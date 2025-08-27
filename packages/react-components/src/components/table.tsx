@@ -2,6 +2,7 @@
 
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
+import "@yamori-design/styles/dist/components/table.css";
 
 type TypeOrArrayOfType<T> = T | T[];
 
@@ -60,11 +61,11 @@ export const Table = <RowData extends object>({
   ));
   const rows = rowData.map((data) => (
     <tr key={getRowId(data)}>
-      {columns.flatMap(({ id, valueGetter, cellRenderer }) => {
+      {columns.flatMap(({ id, valueGetter, cellRenderer, align = "left" }) => {
         const values = [valueGetter?.({ data }) ?? ""].flat();
         const renderers = [cellRenderer].flat();
         return values.map((value, index) => (
-          <td key={`${id}_${index}`}>
+          <td key={`${id}_${index}`} data-align={align}>
             {renderers[index]?.({ data, value }) ?? value}
           </td>
         ));

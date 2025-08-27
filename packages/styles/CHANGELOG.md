@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.10.0
+
+### Minor Changes
+
+- Update Table styles
+
 ## 2.9.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.3
+
+### Patch Changes
+
+- Bump versions
+
 ## 2.14.2
 
 ### Patch Changes

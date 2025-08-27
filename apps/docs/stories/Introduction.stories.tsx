@@ -15,8 +15,8 @@ const figmaLink = (
 
 const packagesDescriptions = {
   "react-components": "Collection of React components",
-  styles: "Collection of global and component stylesheets and utility mixins",
-  icons: "Collection of SVG Icon components and assets",
+  "styles": "Collection of global and component stylesheets and utility mixins",
+  "icons": "Collection of SVG Icon components and assets",
 };
 
 const IntroductionComponent: React.FC = () => (
@@ -57,7 +57,6 @@ const IntroductionComponent: React.FC = () => (
         {
           id: "packageName",
           header: "Package Name",
-          valueGetter: ({ data }) => data.packageName,
           cellRenderer: ({ value }) => (
             <Link
               target="_blank"
@@ -70,7 +69,6 @@ const IntroductionComponent: React.FC = () => (
         {
           id: "description",
           header: "Description",
-          valueGetter: ({ data }) => data.description,
         },
       ]}
       getRowId={(data) => data.packageName}

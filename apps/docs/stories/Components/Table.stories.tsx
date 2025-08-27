@@ -30,12 +30,10 @@ export default {
       {
         id: "name",
         header: "Name",
-        valueGetter: ({ data }) => data.name,
       },
       {
         id: "age",
         header: "Age",
-        valueGetter: ({ data }) => data.age.toString(),
         align: "center",
       },
     ],

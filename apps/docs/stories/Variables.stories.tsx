@@ -58,7 +58,6 @@ const VariablesTable: React.FC<VariablesProps> = ({
         {
           id: "name",
           header: "Name",
-          valueGetter: ({ data }) => data.name,
         },
         {
           id: "value",
@@ -101,11 +100,11 @@ const VariablesComponent: React.FC = () => {
       return newAcc;
     },
     {
-      color: [],
-      spacing: [],
+      "color": [],
+      "spacing": [],
       "border-radius": [],
       "border-width": [],
-      shadow: [],
+      "shadow": [],
     }
   );
 

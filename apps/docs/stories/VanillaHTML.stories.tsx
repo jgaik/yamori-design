@@ -58,7 +58,6 @@ const VanillaHTMLComponent: React.FC = () => {
         {
           id: "tag",
           header: "Tag",
-          valueGetter: ({ data }) => data.tag,
         },
         {
           id: "preview",

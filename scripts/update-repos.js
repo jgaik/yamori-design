@@ -2,6 +2,7 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import os from "node:os";
 
 const ORG = "jgaik"; // Change if your org is different
 const REPOS = ["qr", "local-chess", "jgaik.github.io", "issued-recipes"];

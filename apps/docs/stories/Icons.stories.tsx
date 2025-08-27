@@ -12,6 +12,7 @@ const IconsComponent: React.FC = () => (
         id: "component",
         header: "Icon",
         cellRenderer: ({ data: { IconComponent } }) => <IconComponent />,
+        align: "center",
       },
       {
         id: "name",

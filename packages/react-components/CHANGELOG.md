@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.4
+
+### Patch Changes
+
+- Update peer deps
+
 ## 2.14.3
 
 ### Patch Changes

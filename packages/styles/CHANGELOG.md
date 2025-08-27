@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.10.1
+
+### Patch Changes
+
+- Update button to inline-flex
+
 ## 2.10.0
 
 ### Minor Changes

@@ -3,6 +3,7 @@
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import "@yamori-design/styles/dist/components/table.css";
+import { usePackageTranslation } from "../i18n";
 
 type TypeOrArrayOfType<T> = T | T[];
 
@@ -30,7 +31,7 @@ export type TableColumn<RowData extends BaseRecord> = {
   valueGetter?: (
     props: TableColumnValueGetterProps<RowData>
   ) => TypeOrArrayOfType<string>;
-  align?: "left" | "center";
+  align?: "left" | "center" | "right";
   cellRenderer?: TypeOrArrayOfType<
     (props: TableColumnCellRendererProps<RowData>) => ReactNode
   >;
@@ -54,6 +55,7 @@ export const Table = <RowData extends BaseRecord>({
   getRowId,
   ...props
 }: TableProps<RowData>) => {
+  const { t } = usePackageTranslation();
   const bemClassNames = useMemo(
     () => bemClassNamesCreator.create("table", className),
     [className]
@@ -73,22 +75,25 @@ export const Table = <RowData extends BaseRecord>({
     () =>
       rowData.map((data, index) => (
         <tr key={getRowId(data)}>
-          {columns.flatMap(
-            ({ id, valueGetter, cellRenderer, align = "left" }) => {
-              const values = [
-                valueGetter?.({ data, index }) ?? data[id] ?? "",
-              ].flat();
-              const renderers = [cellRenderer].flat();
-              return values.map((value, valueIndex) => (
-                <td key={`${id}_${valueIndex}`} data-align={align}>
-                  {renderers[valueIndex]?.({ data, value, index }) ?? value}
-                </td>
-              ));
-            }
-          )}
+          {columns.flatMap(({ id, valueGetter, cellRenderer, align }) => {
+            const values = [
+              valueGetter?.({ data, index }) ?? data[id] ?? "",
+            ].flat();
+            const renderers = [cellRenderer].flat();
+            return values.map((value, valueIndex) => (
+              <td key={`${id}_${valueIndex}`} data-align={align}>
+                {renderers[valueIndex]?.({ data, value, index }) ?? value}
+              </td>
+            ));
+          })}
         </tr>
       )),
     [columns, getRowId, rowData]
+  );
+
+  const totalSpan = useMemo(
+    () => columns.reduce((acc, column) => acc + (column.span ?? 1), 0),
+    [columns]
   );
 
   return (
@@ -96,7 +101,14 @@ export const Table = <RowData extends BaseRecord>({
       <thead>
         <tr>{headers}</tr>
       </thead>
-      <tbody>{rows}</tbody>
+      <tbody>
+        {rows}
+        {rows.length === 0 && (
+          <tr>
+            <td colSpan={totalSpan}>{t("noData")}</td>
+          </tr>
+        )}
+      </tbody>
     </table>
   );
 };

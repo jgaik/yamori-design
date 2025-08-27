@@ -34,7 +34,7 @@ export default {
       {
         id: "age",
         header: "Age",
-        align: "center",
+        align: "right",
       },
     ],
     getRowId: (data) => data.id.toString(),

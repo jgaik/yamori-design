@@ -1,5 +1,6 @@
 {
   "name": "@yamori-design/icons",
+  "repository": "https://github.com/jgaik/yamori-design",
   "version": "1.9.1",
   "sideEffects": false,
   "license": "MIT",

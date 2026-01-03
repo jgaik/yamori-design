@@ -1,5 +1,6 @@
 {
   "name": "@yamori-design/styles",
+  "repository": "https://github.com/jgaik/yamori-design",
   "version": "2.10.2",
   "description": "Yamori Design stylesheets files",
   "type": "module",

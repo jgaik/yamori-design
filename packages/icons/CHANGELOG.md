@@ -1,5 +1,11 @@
 # @yamori-design/icons
 
+## 1.9.1
+
+### Patch Changes
+
+- Update repository after some time
+
 ## 1.9.0
 
 ### Minor Changes

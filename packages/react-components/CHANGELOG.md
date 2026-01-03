@@ -1,5 +1,11 @@
 # @yamori-design/react-components
 
+## 2.14.5
+
+### Patch Changes
+
+- Update repository after some time
+
 ## 2.14.4
 
 ### Patch Changes

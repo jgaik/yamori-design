@@ -1,5 +1,11 @@
 # @yamori-design/styles
 
+## 2.10.2
+
+### Patch Changes
+
+- Update repository after some time
+
 ## 2.10.1
 
 ### Patch Changes

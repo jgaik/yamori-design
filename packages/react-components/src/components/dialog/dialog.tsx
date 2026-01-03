@@ -24,58 +24,58 @@ export type DialogProps = HtmlDialogProps & {
 
 export type { DialogHeaderProps, DialogFooterProps };
 
-export const Dialog = Object.assign(
-  ({
-    className,
-    children,
-    footer,
-    header,
-    onClick,
-    closeOnOutsideClick,
-    ref,
-    ...props
-  }: DialogProps) => {
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("dialog", className, "body", "content"),
-      [className]
-    );
+export const Dialog = ({
+  className,
+  children,
+  footer,
+  header,
+  onClick,
+  closeOnOutsideClick,
+  ref,
+  ...props
+}: DialogProps) => {
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("dialog", className, "body", "content"),
+    [className]
+  );
 
-    const sectionRef = useRef<ComponentRef<"section">>(null);
-    const dialogRef = useRef<ComponentRef<"dialog">>(null);
+  const sectionRef = useRef<ComponentRef<"section">>(null);
+  const dialogRef = useRef<ComponentRef<"dialog">>(null);
 
-    useImperativeHandle(ref, () => dialogRef.current!);
+  useImperativeHandle(ref, () => dialogRef.current!);
 
-    const dialogContextValue = useMemo<DialogContextValue>(
-      () => ({
-        closeDialog: () => dialogRef.current?.close(),
-      }),
-      []
-    );
+  const dialogContextValue = useMemo<DialogContextValue>(
+    () => ({
+      closeDialog: () => dialogRef.current?.close(),
+    }),
+    []
+  );
 
-    return (
-      <dialog
-        className={bemClassNames["dialog"]}
-        onClick={(event) => {
-          onClick?.(event);
-          if (
-            closeOnOutsideClick &&
-            !sectionRef.current?.contains(event.target as Node)
-          ) {
-            dialogRef.current?.close();
-          }
-        }}
-        ref={dialogRef}
-        {...props}
-      >
-        <section className={bemClassNames["body"]} ref={sectionRef}>
-          <DialogContextProvider value={dialogContextValue}>
-            {header}
-            <div className={bemClassNames["content"]}>{children}</div>
-            {footer}
-          </DialogContextProvider>
-        </section>
-      </dialog>
-    );
-  },
-  { Header: DialogHeader, Footer: DialogFooter }
-);
+  return (
+    <dialog
+      className={bemClassNames["dialog"]}
+      onClick={(event) => {
+        onClick?.(event);
+        if (
+          closeOnOutsideClick &&
+          !sectionRef.current?.contains(event.target as Node)
+        ) {
+          dialogRef.current?.close();
+        }
+      }}
+      ref={dialogRef}
+      {...props}
+    >
+      <section className={bemClassNames["body"]} ref={sectionRef}>
+        <DialogContextProvider value={dialogContextValue}>
+          {header}
+          <div className={bemClassNames["content"]}>{children}</div>
+          {footer}
+        </DialogContextProvider>
+      </section>
+    </dialog>
+  );
+};
+
+Dialog.Header = DialogHeader;
+Dialog.Footer = DialogFooter;

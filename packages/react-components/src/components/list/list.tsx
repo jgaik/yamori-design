@@ -17,33 +17,38 @@ export type ListProps = OverwriteAndMerge<
   { ordered?: boolean; bulleted?: boolean }
 >;
 
-export const List = Object.assign(
-  ({ children, className, bulleted, ordered, ...props }: ListProps) => {
-    const { level } = useListContext();
+export const List = ({
+  children,
+  className,
+  bulleted,
+  ordered,
+  ...props
+}: ListProps) => {
+  const { level } = useListContext();
 
-    const ListTag = ordered ? "ol" : "ul";
+  const ListTag = ordered ? "ol" : "ul";
 
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("list", className),
-      [className]
-    );
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("list", className),
+    [className]
+  );
 
-    const listContextValue = useMemo<ListContextValue>(
-      () => ({
-        level: level < 0 ? 0 : level + 1,
-        ordered,
-        bulleted,
-      }),
-      [bulleted, level, ordered]
-    );
+  const listContextValue = useMemo<ListContextValue>(
+    () => ({
+      level: level < 0 ? 0 : level + 1,
+      ordered,
+      bulleted,
+    }),
+    [bulleted, level, ordered]
+  );
 
-    return (
-      <ListTag className={bemClassNames["list"]} {...props}>
-        <ListContextProvider value={listContextValue}>
-          {children}
-        </ListContextProvider>
-      </ListTag>
-    );
-  },
-  { Item: ListItem }
-);
+  return (
+    <ListTag className={bemClassNames["list"]} {...props}>
+      <ListContextProvider value={listContextValue}>
+        {children}
+      </ListContextProvider>
+    </ListTag>
+  );
+};
+
+List.Item = ListItem;

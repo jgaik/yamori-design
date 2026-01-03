@@ -2,9 +2,14 @@
   "name": "@yamori-design/styles",
   "version": "2.10.1",
   "description": "Yamori Design stylesheets files",
+  "type": "module",
   "files": [
     "dist",
     "src"
+  ],
+  "sideEffects": [
+    "*.css",
+    "dist/**/*.css"
   ],
   "scripts": {
     "build": "npm run clean && sass --no-source-map src:dist",

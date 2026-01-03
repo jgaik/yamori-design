@@ -6,14 +6,13 @@ import "@yamori-design/styles/dist/layouts/form.css";
 export type { FormFieldProps };
 export type FormProps = ComponentPropsWithRef<"form">;
 
-export const Form = Object.assign(
-  ({ className, ...props }: FormProps) => {
-    const bemClassNames = useMemo(
-      () => bemClassNamesCreator.create("form", className),
-      [className]
-    );
+export const Form = ({ className, ...props }: FormProps) => {
+  const bemClassNames = useMemo(
+    () => bemClassNamesCreator.create("form", className),
+    [className]
+  );
 
-    return <form className={bemClassNames["form"]} {...props} />;
-  },
-  { Field: FormField }
-);
+  return <form className={bemClassNames["form"]} {...props} />;
+};
+
+Form.Field = FormField;

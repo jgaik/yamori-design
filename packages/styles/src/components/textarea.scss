@@ -1,6 +1,6 @@
 @use "../mixins";
 
-.yamori-textarea {
+textarea.yamori-textarea {
   font: inherit;
   background-color: var(--yamori-surface-primary);
   border-radius: var(--yamori-border-radius-medium);
@@ -9,13 +9,14 @@
   column-gap: var(--yamori-spacing-small);
   padding: var(--yamori-spacing-medium);
   resize: none;
+  min-height: 1lh;
 
   &::placeholder {
     color: var(--yamori-text-disabled);
   }
 
   &:focus-visible {
-    @include mixins.yamori-focus-visible-outline(0);
+    outline-offset: 0;
     border-color: transparent;
   }
 

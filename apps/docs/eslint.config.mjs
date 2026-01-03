@@ -7,11 +7,15 @@ export default tseslint.config({
   extends: [
     pluginStorybook.configs["flat/recommended"],
     pluginJs.configs.recommended,
-    ...tseslint.configs.recommended,
+    ...tseslint.configs.recommendedTypeChecked,
   ],
   files: ["**/*.{ts,tsx}"],
   languageOptions: {
     ecmaVersion: 2020,
     globals: globals.browser,
+    parserOptions: {
+      project: "./tsconfig.json",
+      tsconfigRootDir: path.resolve(__dirname),
+    },
   },
 });

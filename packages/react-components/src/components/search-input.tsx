@@ -5,7 +5,7 @@ import { SearchIcon, CloseIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import { Input, InputProps } from "./input";
 import { Button } from "./button";
-import { usePackageTranslation } from "../i18n";
+import { useLabels } from "../labels";
 
 export type SearchInputProps = OverwriteAndMerge<
   Omit<InputProps, "type">,
@@ -23,7 +23,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   onChange,
   ...props
 }) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const bemClassNames = useMemo(
     () => bemClassNamesCreator.create("search-input", className),
     [className]
@@ -35,11 +35,11 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     if (value && !disabled) {
       suffixList.push(
         <Button
-          aria-label={t("clear")}
+          aria-label={labels.clear}
           key="clear-button"
           variant="text"
           onClick={() => onChange("")}
-          title={t("clear")}
+          title={labels.clear}
         >
           <CloseIcon />
         </Button>
@@ -47,7 +47,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     }
 
     return [...suffixList, <SearchIcon key="search-icon" />];
-  }, [disabled, onChange, suffix, t, value]);
+  }, [disabled, onChange, suffix, labels, value]);
 
   return (
     <Input

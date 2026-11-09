@@ -37,7 +37,7 @@ import {
   MultiSelectContextProvider,
   MultiSelectContextValue,
 } from "./multi-select-context";
-import { usePackageTranslation } from "../../i18n";
+import { useLabels } from "../../labels";
 import { splitArray } from "@yamori-shared/react-utilities";
 import { MultiSelectValue } from "./multi-select-value";
 import "@yamori-design/styles/dist/components/multi-select.css";
@@ -65,7 +65,7 @@ export const MultiSelect = ({
   ref,
   ...props
 }: MultiSelectProps) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const bemClassNames = useMemo(
     () =>
       bemClassNamesCreator.create(
@@ -212,7 +212,7 @@ export const MultiSelect = ({
             >
               <FloatingList elementsRef={elementsRef}>
                 <MultiSelectOption value={MULTI_SELECT_OPTION_ALL}>
-                  {t("all")}
+                  {labels.all}
                 </MultiSelectOption>
                 {children}
               </FloatingList>

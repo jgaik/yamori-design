@@ -2,8 +2,8 @@
 
 import { ComponentPropsWithoutRef, ReactNode, useMemo } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
+import { useLabels } from "../labels";
 import "@yamori-design/styles/dist/components/table.css";
-import { usePackageTranslation } from "../i18n";
 
 type TypeOrArrayOfType<T> = T | T[];
 
@@ -37,6 +37,10 @@ export type TableColumn<RowData extends BaseRecord> = {
   >;
   headerRenderer?: (props: TableColumnHeaderRendererProps) => ReactNode;
   span?: number;
+  rowHeader?: boolean;
+  cellProps?: (
+    props: TableColumnCellRendererProps<RowData>
+  ) => ComponentPropsWithoutRef<"td">;
 };
 
 export type TableProps<RowData extends BaseRecord> = OverwriteAndMerge<
@@ -55,9 +59,9 @@ export const Table = <RowData extends BaseRecord>({
   getRowId,
   ...props
 }: TableProps<RowData>) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const bemClassNames = useMemo(
-    () => bemClassNamesCreator.create("table", className),
+    () => bemClassNamesCreator.create("table", className, "empty-row"),
     [className]
   );
 
@@ -75,17 +79,25 @@ export const Table = <RowData extends BaseRecord>({
     () =>
       rowData.map((data, index) => (
         <tr key={getRowId(data)}>
-          {columns.flatMap(({ id, valueGetter, cellRenderer, align }) => {
-            const values = [
-              valueGetter?.({ data, index }) ?? data[id] ?? "",
-            ].flat();
-            const renderers = [cellRenderer].flat();
-            return values.map((value, valueIndex) => (
-              <td key={`${id}_${valueIndex}`} data-align={align}>
-                {renderers[valueIndex]?.({ data, value, index }) ?? value}
-              </td>
-            ));
-          })}
+          {columns.flatMap(
+            ({ id, valueGetter, cellRenderer, align, rowHeader, cellProps }) => {
+              const Cell = rowHeader ? "th" : "td";
+              const values = [
+                valueGetter?.({ data, index }) ?? data[id] ?? "",
+              ].flat();
+              const renderers = [cellRenderer].flat();
+              return values.map((value, valueIndex) => (
+                <Cell
+                  key={`${id}_${valueIndex}`}
+                  scope={rowHeader ? "row" : undefined}
+                  data-align={align}
+                  {...cellProps?.({ data, value, index })}
+                >
+                  {renderers[valueIndex]?.({ data, value, index }) ?? value}
+                </Cell>
+              ));
+            }
+          )}
         </tr>
       )),
     [columns, getRowId, rowData]
@@ -104,8 +116,8 @@ export const Table = <RowData extends BaseRecord>({
       <tbody>
         {rows}
         {rows.length === 0 && (
-          <tr>
-            <td colSpan={totalSpan}>{t("noData")}</td>
+          <tr className={bemClassNames["empty-row"]}>
+            <td colSpan={totalSpan}>{labels.noData}</td>
           </tr>
         )}
       </tbody>

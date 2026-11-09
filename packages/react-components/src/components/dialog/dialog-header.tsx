@@ -5,7 +5,7 @@ import { CloseIcon } from "@yamori-design/icons";
 import { bemClassNamesCreator } from "../../utilities";
 import { Button } from "../button";
 import { useDialogContext } from "./dialog-context";
-import { usePackageTranslation } from "../../i18n";
+import { useLabels } from "../../labels";
 
 export type DialogHeaderProps = ComponentPropsWithoutRef<"header"> & {
   withClose?: boolean;
@@ -22,7 +22,7 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({
     [className]
   );
 
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const { closeDialog } = useDialogContext();
 
   return (
@@ -30,8 +30,8 @@ export const DialogHeader: React.FC<DialogHeaderProps> = ({
       <div className={bemClassNames["content"]}>{children}</div>
       {withClose && (
         <Button
-          aria-label={t("close")}
-          title={t("close")}
+          aria-label={labels.close}
+          title={labels.close}
           variant="text"
           onClick={closeDialog}
         >

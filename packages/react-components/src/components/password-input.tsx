@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { bemClassNamesCreator } from "../utilities";
 import { Input, InputProps } from "./input";
 import { Button } from "./button";
-import { usePackageTranslation } from "../i18n";
+import { useLabels } from "../labels";
 import { EyeClosedIcon, EyeOpenIcon } from "@yamori-design/icons";
 
 export type PasswordInputProps = Omit<InputProps, "type">;
@@ -15,7 +15,7 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
   suffix,
   ...props
 }) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const bemClassNames = useMemo(
     () => bemClassNamesCreator.create("password-input", className),
     [className]
@@ -28,16 +28,16 @@ export const PasswordInput: React.FC<PasswordInputProps> = ({
       suffix,
       <Button
         key="eye-icon"
-        aria-label={showPassword ? t("hidePassword") : t("showPassword")}
+        aria-label={showPassword ? labels.hidePassword : labels.showPassword}
         variant="text"
-        title={showPassword ? t("hidePassword") : t("showPassword")}
+        title={showPassword ? labels.hidePassword : labels.showPassword}
         onClick={() => setShowPassword(!showPassword)}
         disabled={disabled}
       >
         {showPassword ? <EyeOpenIcon /> : <EyeClosedIcon />}
       </Button>,
     ],
-    [disabled, showPassword, suffix, t]
+    [disabled, showPassword, suffix, labels]
   );
 
   return (

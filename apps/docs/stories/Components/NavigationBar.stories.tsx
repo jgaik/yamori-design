@@ -11,6 +11,7 @@ export default {
   args: {
     languageSelectProps: {
       supportedLanguages: ["en", "ja"],
+      value: "en",
     },
     homeHref: location.origin,
     links: [

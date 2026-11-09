@@ -4,7 +4,7 @@ import React, { ComponentPropsWithoutRef, MouseEvent, useMemo } from "react";
 import { bemClassNamesCreator } from "../../utilities";
 import { useDialogContext } from "./dialog-context";
 import { Button, ButtonProps } from "../button";
-import { usePackageTranslation } from "../../i18n";
+import { useLabels } from "../../labels";
 
 export type DialogFooterProps = ComponentPropsWithoutRef<"footer"> & {
   withCancel?: boolean;
@@ -29,7 +29,7 @@ export const DialogFooter: React.FC<DialogFooterProps> = ({
     [className]
   );
 
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const { closeDialog } = useDialogContext();
 
   return (
@@ -47,7 +47,7 @@ export const DialogFooter: React.FC<DialogFooterProps> = ({
       </Button>
       {withCancel && (
         <Button onClick={closeDialog} variant="secondary">
-          {t("cancel")}
+          {labels.cancel}
         </Button>
       )}
     </footer>

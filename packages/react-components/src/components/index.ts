@@ -7,6 +7,7 @@ export * from "./input";
 export * from "./language-select";
 export * from "./link";
 export * from "./list";
+export * from "./local-storage-table";
 export * from "./loading";
 export * from "./multi-select";
 export * from "./navigation-bar";

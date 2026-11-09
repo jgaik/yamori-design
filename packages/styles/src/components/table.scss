@@ -5,12 +5,12 @@
 
   &,
   thead th,
-  tbody td {
+  tbody :is(td, th) {
     border: var(--yamori-border-width-small) solid var(--yamori-border-primary);
   }
 
   thead th,
-  tbody td {
+  tbody :is(td, th) {
     padding: var(--yamori-spacing-medium);
   }
 
@@ -22,7 +22,11 @@
     }
   }
 
-  tbody td {
+  tbody th {
+    @include mixins.yamori-font-body(medium, bold);
+  }
+
+  tbody :is(td, th) {
     text-align: left;
 
     &[data-align="center"] {

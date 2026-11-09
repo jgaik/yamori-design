@@ -5,7 +5,7 @@ import {
   MULTI_SELECT_OPTION_ALL,
   MultiSelectContextValue,
 } from "./multi-select-context";
-import { usePackageTranslation } from "../../i18n";
+import { useLabels } from "../../labels";
 import { MultiSelectOptionProps } from "./multi-select-option";
 import { MultiSelectChip } from "./multi-select-chip";
 
@@ -22,7 +22,7 @@ export const MultiSelectValue: React.FC<MultiSelectValueProps> = ({
   selectedIndices,
   options,
 }) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
 
   const containerRef = useRef<ComponentRef<"div">>(null);
 
@@ -46,7 +46,7 @@ export const MultiSelectValue: React.FC<MultiSelectValueProps> = ({
 
   return (
     <div ref={containerRef} className={className}>
-      {selectedIndices === MULTI_SELECT_OPTION_ALL && t("all")}
+      {selectedIndices === MULTI_SELECT_OPTION_ALL && labels.all}
       {selectedIndices !== MULTI_SELECT_OPTION_ALL && [
         ...selectedIndices
           .slice(0, shownChips)

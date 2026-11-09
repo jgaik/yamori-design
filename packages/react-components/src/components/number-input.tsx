@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { bemClassNamesCreator, OverwriteAndMerge } from "../utilities";
 import { Input, InputProps } from "./input";
 import { Button } from "./button";
-import { usePackageTranslation } from "../i18n";
+import { useLabels } from "../labels";
 import { MinusIcon, PlusIcon } from "@yamori-design/icons";
 import { isNil, useHoldClick } from "@yamori-shared/react-utilities";
 
@@ -35,7 +35,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
   min,
   ...props
 }) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const bemClassNames = useMemo(
     () => bemClassNamesCreator.create("number-input", className),
     [className]
@@ -72,11 +72,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       suffixList.push(
         <Button
           key="up"
-          aria-label={t("up")}
+          aria-label={labels.up}
           variant="icon"
           tabIndex={-1}
           onClick={() => stepValue(1)}
-          title={t("up")}
+          title={labels.up}
           {...events}
         >
           <PlusIcon />
@@ -85,7 +85,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     }
 
     return suffixList;
-  }, [disabled, events, stepValue, suffix, t]);
+  }, [disabled, events, stepValue, suffix, labels]);
 
   const inputPrefix = useMemo(() => {
     const prefixList = [prefix];
@@ -94,11 +94,11 @@ export const NumberInput: React.FC<NumberInputProps> = ({
       prefixList.push(
         <Button
           key="down"
-          aria-label={t("down")}
+          aria-label={labels.down}
           variant="icon"
           tabIndex={-1}
           onClick={() => stepValue(-1)}
-          title={t("down")}
+          title={labels.down}
           {...events}
         >
           <MinusIcon />
@@ -107,7 +107,7 @@ export const NumberInput: React.FC<NumberInputProps> = ({
     }
 
     return prefixList;
-  }, [disabled, events, prefix, stepValue, t]);
+  }, [disabled, events, prefix, stepValue, labels]);
 
   return (
     <Input

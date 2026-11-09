@@ -1,5 +1,16 @@
 # @yamori-design/react-components
 
+## 3.0.0
+
+### Major Changes
+
+- f3b3e9a: Remove the i18next dependency. Built-in texts now come from `LabelsProvider` (English by default), and `LanguageSelect` is controlled through `value` and `onChange`.
+
+### Minor Changes
+
+- f3b3e9a: Add `LocalStorageTable`, a table of the `localStorage` entries under a key prefix with a button to delete each entry or nested item. Adds the `delete`, `key` and `value` labels.
+- f3b3e9a: `Table` columns accept `rowHeader` (renders the cells as `<th scope="row">`) and `cellProps`, and the empty row gets a `table__empty-row` class. `LocalStorageTable` marks top-level and nested rows with `group` and `item` classes.
+
 ## 2.14.5
 
 ### Patch Changes

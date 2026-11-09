@@ -1,7 +1,7 @@
 {
   "name": "@yamori-design/i18n",
   "repository": "https://github.com/jgaik/yamori-design",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "sideEffects": false,
   "license": "MIT",
   "author": "Jakub Gaik",

@@ -1,0 +1,48 @@
+{
+  "name": "@yamori-design/i18n",
+  "repository": "https://github.com/jgaik/yamori-design",
+  "version": "0.0.0",
+  "sideEffects": false,
+  "license": "MIT",
+  "author": "Jakub Gaik",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "import": "./dist/index.js",
+    "types": "./dist/index.d.ts"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint . --max-warnings 0",
+    "clean": "rimraf .turbo dist"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "@types/react": "^19.1.11",
+    "@yamori-design/react-components": "*",
+    "eslint": "^9.34.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "globals": "^16.3.0",
+    "i18next": "^26.7.1",
+    "react-i18next": "^17.1.12",
+    "typescript": "latest",
+    "typescript-eslint": "^8.41.0"
+  },
+  "peerDependencies": {
+    "@yamori-design/react-components": "*",
+    "i18next": ">=23.16.4",
+    "react": ">=18.2.0",
+    "react-i18next": ">=15.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "i18next-browser-languagedetector": "^8.0.0"
+  }
+}

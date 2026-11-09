@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo } from "react";
-import { usePackageTranslation } from "../i18n";
 import { Select, SelectProps } from "./select";
 import { OverwriteAndMerge } from "../utilities";
 
@@ -9,6 +8,7 @@ export type LanguageSelectProps = OverwriteAndMerge<
   Omit<SelectProps, "value" | "onChange" | "children">,
   {
     supportedLanguages: string[];
+    value: string | null;
     onChange?: (language: string) => void;
   }
 >;
@@ -20,11 +20,10 @@ const SUPPORTED_LANGUAGES: Record<string, string> = {
 
 export const LanguageSelect: React.FC<LanguageSelectProps> = ({
   supportedLanguages,
+  value,
   onChange,
   ...props
 }) => {
-  const { i18n } = usePackageTranslation();
-
   const options = useMemo(
     () =>
       Object.entries(SUPPORTED_LANGUAGES).filter(([lng]) =>
@@ -39,11 +38,8 @@ export const LanguageSelect: React.FC<LanguageSelectProps> = ({
 
   return (
     <Select
-      value={i18n.resolvedLanguage ?? null}
-      onChange={(value) => {
-        i18n.changeLanguage(value!);
-        onChange?.(value!);
-      }}
+      value={value}
+      onChange={(language) => onChange?.(language!)}
       {...props}
     >
       {options.map(([value, label]) => (

@@ -12,7 +12,6 @@ import {
   useRef,
   useState,
 } from "react";
-import { useTranslation } from "react-i18next";
 import { BurgerIcon, HomeIcon } from "@yamori-design/icons";
 import { useIsClient } from "@yamori-shared/react-utilities";
 import { bemClassNamesCreator } from "../utilities";
@@ -20,7 +19,7 @@ import { Button } from "./button";
 import { LanguageSelect, LanguageSelectProps } from "./language-select";
 import { Link, LinkProps } from "./link";
 import { ThemeSelect } from "./theme-select";
-import { usePackageTranslation } from "../i18n";
+import { useLabels } from "../labels";
 import { FloatingPortalProps } from "@floating-ui/react";
 import "@yamori-design/styles/dist/components/navigation-bar.css";
 
@@ -30,7 +29,7 @@ const Links: React.FC<
     isCollapsed?: boolean;
   }
 > = ({ className, links, homeHref, isCollapsed, onLinkClick }) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
   const isClient = useIsClient();
 
   return (
@@ -38,10 +37,10 @@ const Links: React.FC<
       <Link
         href={homeHref ?? (isClient ? window.location.origin : undefined)}
         onClick={onLinkClick}
-        title={!isCollapsed ? t("home") : undefined}
+        title={!isCollapsed ? labels.home : undefined}
       >
         <HomeIcon />
-        {isCollapsed && t("home")}
+        {isCollapsed && labels.home}
       </Link>
       {links?.map((link) =>
         isValidElement(link) ? (
@@ -66,20 +65,11 @@ const Controls: React.FC<
     portalProps?: FloatingPortalProps;
   }
 > = ({ className, controls, languageSelectProps, portalProps }) => {
-  const { i18n } = useTranslation();
-
   return (
     <div className={className}>
       {controls}
       {languageSelectProps && (
-        <LanguageSelect
-          {...languageSelectProps}
-          onChange={(lng) => {
-            i18n.changeLanguage(lng);
-            languageSelectProps.onChange?.(lng);
-          }}
-          portalProps={portalProps}
-        />
+        <LanguageSelect {...languageSelectProps} portalProps={portalProps} />
       )}
       <ThemeSelect portalProps={portalProps} />
     </div>

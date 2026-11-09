@@ -1,11 +1,11 @@
 "use client";
 
 import { useCallback, useLayoutEffect, useMemo, useState } from "react";
-import { usePackageTranslation } from "../i18n";
+import { useLabels } from "../labels";
 import { Select, SelectProps } from "./select";
 import { MoonIcon, SunIcon } from "@yamori-design/icons";
 import { YAMORI_THEME_LOCAL_STORAGE_KEY } from "../utilities";
-import { useLocalStorage } from "@yamori-shared/react-utilities";
+import { getTypedObjectEntries, useLocalStorage } from "@yamori-shared/react-utilities";
 
 const THEME_OPTIONS_MAP = {
   light: <SunIcon />,
@@ -21,7 +21,7 @@ export type ThemeSelectProps = Omit<
 >;
 
 export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
-  const { t } = usePackageTranslation();
+  const labels = useLabels();
 
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [savedTheme, setSavedTheme, removeSavedTheme] = useLocalStorage<
@@ -74,10 +74,10 @@ export const ThemeSelect: React.FC<ThemeSelectProps> = (props) => {
       }}
       {...props}
     >
-      {Object.entries(THEME_OPTIONS_MAP).map(([themeOption, icon]) => (
+      {getTypedObjectEntries(THEME_OPTIONS_MAP).map(([themeOption, icon]) => (
         <Select.Option key={themeOption} value={themeOption}>
           {icon ?? defaultIcon}
-          {t(themeOption)}
+          {labels[themeOption]}
         </Select.Option>
       ))}
     </Select>
